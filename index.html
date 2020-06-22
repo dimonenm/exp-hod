@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="src/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="src/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="src/img/favicon-16x16.png">
+    <link rel="manifest" href="src/img/site.webmanifest">
+
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/all.css">
+
+    <script src="src/js/classExpertise.js"></script>
+
+    <title>EXP-HOD-02</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container-header">
+            <div class="container-header-title">
+                ЭКЦ МВД по Республике Крым
+            </div>
+        </div>
+        <div class="container-main">
+            <div class="container-main-side">
+                <div class="container-main-side-nav">
+                    <div class="container-main-side-nav-buttons">
+                        <div class="container-main-side-nav-buttons-button btnCreateNewExpertise"><i
+                                class="fas fa-file-archive"></i></div>
+                        <div class="container-main-side-nav-buttons-button"><i class="fas fa-map-pin"></i></div>
+                        <div class="container-main-side-nav-buttons-button"><i class="fas fa-male"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-main-workspase">
+                <div class="container-main-workspase-expertise">
+                    <form action="" method="POST" class="container-main-workspase-expertise-form" name="newExp">
+                        <div class="container-main-workspase-expertise-form-row">
+                            <div class="container-main-workspase-expertise-form-row-first">
+                                <div class="row1-first-cell1">№</div>
+                                <div class="row1-first-cell2">Дата</div>
+                                <div class="row1-first-cell3">Орган</div>
+                                <div class="row1-first-cell4">Подразделение</div>
+                                <div class="row1-first-cell5">Должн. лицо</div>
+                                <div class="row1-first-cell6">Ф.И.О.</div>
+                                <div class="row1-first-cell7">П. мат</div>
+                                <div class="row1-first-cell8">№ материала</div>
+                                <div class="row1-first-cell9">Статья</div>
+                                <div class="row1-first-cell10">По факту</div>
+                            </div>
+                            <div class="container-main-workspase-expertise-form-row-second">
+                                <div class="row1-second-cell1">
+                                    <input type="text" name="id">
+                                </div>
+                                <div class="row1-second-cell2">
+                                    <input class="row1-second-cell2-input" type="date" name="dateOfReceipt">
+                                </div>
+                                <div class="row1-second-cell3">
+                                    <select name="organAppointedExpertise">
+                                        <option>ГСУ СК</option>
+                                        <option>УМВД</option>
+                                    </select>
+                                </div>
+                                <div class="row1-second-cell4">
+                                    <select name="unitOforgan">
+                                        <option>Белогорский МСО</option>
+                                        <option>СО по г. Ялта</option>
+                                        <option>СО по г. Феодосия</option>
+                                        <option>ОП №2 "Ливадийский"</option>
+                                    </select>
+                                </div>
+                                <div class="row1-second-cell5">
+                                    <input type="text" name="officialPerson">
+                                </div>
+                                <div class="row1-second-cell6">
+                                    <input type="text" name="nameOfficialPerson">
+                                </div>
+                                <div class="row1-second-cell7">
+                                    <select name="byTheMaterials">
+                                        <option>ДУЛ</option>
+                                        <option>УД</option>
+                                        <option>КУСП</option>
+                                    </select>
+                                </div>
+                                <div class="row1-second-cell8">
+                                    <input type="text" name="number">
+                                </div>
+                                <div class="row1-second-cell9">
+                                    <select name="article">
+                                        <option>105</option>
+                                        <option>158</option>
+                                        <option>161</option>
+                                    </select>
+                                </div>
+                                <div class="row1-second-cell10">
+                                    <select name="byFact">
+                                        <option>Общее</option>
+                                        <option>Б/п</option>
+                                        <option>Н/т</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="container-main-workspase-expertise-form-row-third">
+                                <div class="row1-third-cell1">
+                                    <ul>
+                                        <li>ОМВД РФ по г. Евпатории</li>
+                                        <li>ОМВД РФ по г. Феодосии</li>
+                                        <li>ОМВД РФ по г. Судаку</li>
+                                        <li>ОМВД РФ по г. Алуште</li>
+                                        <li>ОМВД РФ по г. Армянску</li>
+                                        <li>ОМВД РФ по Бахч-му р-ну</li>
+                                        <li>ОМВД РФ по Белогорскому р-ну</li>
+                                        <li>МО МВД РФ «Джанкойский»</li>
+                                        <li>ОМВД РФ по Кировскому району</li>
+                                        <li>ОМВД РФ по Красногв-му району</li>
+                                        <li>МО МВД РФ «Красноперекопский»</li>
+                                        <li>ОМВД РФ по Ленинскому району</li>
+                                        <li>ОМВД РФ по Нижнегорскому району</li>
+                                        <li>ОМВД РФ по Первомайскому району</li>
+                                        <li>ОМВД РФ по Раздоль-ому району</li>
+                                        <li>МО МВД РФ «Сакский»</li>
+                                        <li>ОМВД РФ по Симф-му району</li>
+                                        <li>ОМВД РФ по Советскому району</li>
+                                        <li>ОМВД РФ по Черн-му району</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-main-workspase-expertise-form-row">
+                            <div class="container-main-workspase-expertise-form-row-first">
+                                <div class="row2-first-cell1">Вид иссл-ния</div>
+                                <div class="row2-first-cell2">Ф.И.О. эксп-та</div>
+                                <div class="row2-first-cell3">Продление</div>
+                                <div class="row2-first-cell4">Исполнение</div>
+                                <div class="row2-first-cell5">Уведомление</div>
+                                <div class="row2-first-cell6">Результат</div>
+                                <div class="row2-first-cell7">Общее</div>
+                                <div class="row2-first-cell8">Пол-е</div>
+                                <div class="row2-first-cell9">Отр-е</div>
+                            </div>
+                            <div class="container-main-workspase-expertise-form-row-second">
+                                <div class="row2-second-cell1">
+                                    <select name="typeOfResearch">
+                                        <option>ДНК</option>
+                                        <option>ДНК и волосы</option>
+                                        <option>Волосы</option>
+                                    </select>
+                                </div>
+                                <div class="row2-second-cell2">
+                                    <select name="expertName">
+                                        <option>Ходырев Н.</option>
+                                        <option>Хоменко А.</option>
+                                        <option>Кирсанова Н.</option>
+                                        <option>Сорокина Е.</option>
+                                        <option>Баркова М.</option>
+                                    </select>
+                                </div>
+                                <div class="row2-second-cell3">
+                                    <input type="date" name="prolongation">
+                                </div>
+                                <div class="row2-second-cell4">
+                                    <input type="date" name="execution">
+                                </div>
+                                <div class="row2-second-cell5">
+                                    <input type="date" name="notification">
+                                </div>
+                                <div class="row2-second-cell6">
+                                    <select name="result">
+                                        <option>Не определен</option>
+                                        <option>Положительный</option>
+                                        <option>Отрицательный</option>
+                                        <option>НПВ</option>
+                                    </select>
+                                </div>
+                                <div class="row2-second-cell7">
+                                    <input type="number" name="countObjectsTotal">
+                                </div>
+                                <div class="row2-second-cell8">
+                                    <input type="number" name="countObjectsPositive">
+                                </div>
+                                <div class="row2-second-cell9">
+                                    <input type="number" name="countObjectsNegative">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-main-workspase-expertise-form-row">
+                            <div class="container-main-workspase-expertise-form-row-wraper">
+                                <div class="container-main-workspase-expertise-form-row-wraper-inner-first">
+                                    <div class="container-main-workspase-expertise-form-row-first">
+                                        <div class="row3-first-cell1">Не забран</div>
+                                        <div class="row3-first-cell2">Получен</div>
+                                    </div>
+                                    <div class="container-main-workspase-expertise-form-row-second">
+                                        <div class="row3-second-cell1">
+                                            <input type="checkbox" name="notTaken" checked>
+                                        </div>
+                                        <div class="row3-second-cell2">
+                                            <input type="checkbox" name="received">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container-main-workspase-expertise-form-row-wraper-inner-second">
+                                    <div
+                                        class="container-main-workspase-expertise-form-row-wraper-inner-second-btn btnAddExp">
+                                        <button type="button"><i class="fas fa-plus-circle"></i></button>
+                                    </div>
+                                    <div
+                                        class="container-main-workspase-expertise-form-row-wraper-inner-second-btn btnResetExp">
+                                        <button type="button"><i class="fas fa-redo"></i></button>
+
+                                    </div>
+                                    <div
+                                        class="container-main-workspase-expertise-form-row-wraper-inner-second-btn btnCancelExp">
+                                        <button type="button"><i class="fas fa-times-circle"></i></button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="container-main-workspase-table"></div>
+                <div class="container-main-workspase-status"></div>
+            </div>
+        </div>
+    </div>
+    <script src="src/js/script.js"></script>
+</body>
+
+</html>

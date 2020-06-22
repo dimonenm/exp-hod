@@ -1,0 +1,627 @@
+@import "normalize.scss";
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+
+    &-header {
+        display: flex;
+        justify-content: center;
+
+        height: 40px;
+
+        background-color: #04628d;
+
+        color: #fff;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 20px;
+        font-weight: bold;
+
+        text-shadow: 1px 1px 3px #000;
+
+        &-title {
+            margin-top: 10px;
+        }
+    }
+
+    &-main {
+        display: flex;
+        flex-grow: 1;
+
+        margin-top: 5px;
+
+        &-side {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 180px;
+
+            min-width: 180px;
+
+            background: linear-gradient(180deg, #04628d, #fff);
+
+            &-nav {
+                &-buttons {
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+
+                    margin-top: 15px;
+
+                    font-size: 30px;
+                    color: white;
+
+                    &-button {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        width: 60px;
+                        height: 60px;
+
+                        margin-left: 42px;
+
+                        border-radius: 10px;
+                        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5), inset 1px 1px 1px rgba(255, 255, 255, 0.2),
+                        inset -1px -1px 1px rgba(0, 0, 0, 0.5);
+                    }
+
+                    &-button:nth-last-child(2){
+                        margin: 15px 0 0 59px;
+                    }
+
+                    &-button:nth-last-child(1){
+                        margin: 15px 0 0 76px;
+                    }
+
+                    &-button:hover {
+                        background-color: rgba(255, 255, 255, 0.2);
+                        transition: all 0.1s linear;
+                    }
+                }
+            }
+        }
+
+        &-workspase {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+
+            margin-left: 5px;
+
+            padding: 2px;
+
+            background-color: #04628d;
+
+            &-expertise {
+                display: none;
+
+                height: 100%;
+
+                background: linear-gradient(180deg, #04628d, #fff);
+
+                &-form {
+                    display: flex;
+                    flex-direction: column;
+
+                    &-row {
+                        display: flex;
+                        flex-direction: column;
+
+                        margin: 5px 0 0 5px;
+
+                        font-family: "Times New Roman", Times, serif;
+                        font-size: 20px;
+                        font-weight: bold;
+
+                        text-align: center;
+
+                        &-first {
+                            display: flex;
+
+                            .row1-first-cell1,
+                            .row1-first-cell2,
+                            .row1-first-cell3,
+                            .row1-first-cell4,
+                            .row1-first-cell5,
+                            .row1-first-cell6,
+                            .row1-first-cell7,
+                            .row1-first-cell8,
+                            .row1-first-cell9,
+                            .row1-first-cell10,
+                            .row2-first-cell1,
+                            .row2-first-cell2,
+                            .row2-first-cell3,
+                            .row2-first-cell4,
+                            .row2-first-cell5,
+                            .row2-first-cell6,
+                            .row2-first-cell7,
+                            .row2-first-cell8,
+                            .row2-first-cell9,
+                            .row3-first-cell1,
+                            .row3-first-cell2 {
+                                background-color: #fff;
+
+                                border: 1px solid #000;
+                            }
+
+                            .row1-first-cell1 {
+                                width: 63px;
+                            }
+
+                            .row1-first-cell2,
+                            .row1-first-cell5,
+                            .row1-first-cell6,
+                            .row1-first-cell8,
+                            .row2-first-cell1,
+                            .row2-first-cell2,
+                            .row2-first-cell3,
+                            .row2-first-cell4,
+                            .row2-first-cell5,
+                            .row2-first-cell6 {
+                                width: 150px;
+                            }
+
+                            .row1-first-cell3,
+                            .row1-first-cell7,
+                            .row1-first-cell9,
+                            .row1-first-cell10,
+                            .row2-first-cell7,
+                            .row2-first-cell8,
+                            .row2-first-cell9 {
+                                width: 90px;
+                            }
+
+                            .row3-first-cell1,
+                            .row3-first-cell2 {
+                                width: 95px;
+                            }
+
+                            .row1-first-cell4 {
+                                width: 200px;
+                            }
+                        }
+                        &-second {
+                            display: flex;
+
+                            .row1-second-cell1,
+                            .row1-second-cell2,
+                            .row1-second-cell3,
+                            .row1-second-cell4,
+                            .row1-second-cell5,
+                            .row1-second-cell6,
+                            .row1-second-cell7,
+                            .row1-second-cell8,
+                            .row1-second-cell9,
+                            .row1-second-cell10,
+                            .row2-second-cell1,
+                            .row2-second-cell2,
+                            .row2-second-cell3,
+                            .row2-second-cell4,
+                            .row2-second-cell5,
+                            .row2-second-cell6,
+                            .row2-second-cell7,
+                            .row2-second-cell8,
+                            .row2-second-cell9,
+                            .row2-second-cell1,
+                            .row2-second-cell2,
+                            .row3-second-cell1,
+                            .row3-second-cell2 {
+                                font-family: "Times New Roman", Times, serif;
+                                font-size: 16px;
+                                font-weight: bold;
+                                line-height: 1;
+
+                                input {
+                                    height: 25px;
+
+                                    padding: 0;
+
+                                    border: 1px solid #000;
+
+                                    font-family: inherit;
+                                    font-size: inherit;
+                                    font-weight: inherit;
+                                }
+                                input:focus {
+                                    background-color: yellow;
+                                }
+                                select {
+                                    height: 27px;
+
+                                    border: 1px solid #000;
+
+                                    font-family: inherit;
+                                    font-size: inherit;
+                                    font-weight: inherit;
+
+                                    option {
+                                        font-family: inherit;
+                                        font-size: inherit;
+                                        font-weight: inherit;
+                                    }
+                                }
+                                select:focus {
+                                    background-color: yellow;
+                                }
+                            }
+                            .row1-second-cell1 {
+                                input {
+                                    width: 63px;
+
+                                    text-align: center;
+                                }
+                            }
+                            .row1-second-cell2,
+                            .row1-second-cell5,
+                            .row1-second-cell6,
+                            .row1-second-cell8,
+                            .row2-second-cell1,
+                            .row2-second-cell2,
+                            .row2-second-cell3,
+                            .row2-second-cell4,
+                            .row2-second-cell5,
+                            .row2-second-cell6 {
+                                input {
+                                    width: 150px;
+
+                                    text-align: center;
+                                }
+                                select {
+                                    width: 152px;
+
+                                    text-align: center;
+                                }
+                            }
+                            .row1-second-cell3,
+                            .row1-second-cell7,
+                            .row1-second-cell9,
+                            .row1-second-cell10,
+                            .row2-second-cell7,
+                            .row2-second-cell8,
+                            .row2-second-cell9 {
+                                input {
+                                    width: 90px;
+
+                                    text-align: center;
+                                }
+                                select {
+                                    width: 92px;
+                                }
+                            }
+                            .row3-second-cell1,
+                            .row3-second-cell2 {
+                                input {
+                                    width: 25px;
+
+                                    text-align: center;
+                                }
+                                width: 95px;
+
+                                border: 1px solid #000;
+
+                                background-color: #fff;
+                            }
+
+                            .row1-second-cell4 {
+                                select {
+                                    width: 202px;
+                                }
+                            }
+                        }
+                        &-third{
+                            display: flex;   
+                            
+                            
+                            height: 150px;
+
+                            .row1-third-cell1 {
+                                font-family: "Times New Roman", Times, serif;
+                                font-size: 16px;
+                                font-weight: bold;
+                                line-height: 1;
+
+                                width: 200px;
+
+                                margin-left: 309px;
+
+                                background-color: #fff;
+
+                                border: 1px solid #000;
+                            }
+                            .row1-third-cell1 ul{
+                                text-align: start;
+                                padding: 0;
+                                margin: 0;
+                                list-style-type: none;
+                                
+                                li{
+                                    border: 1px solid #000;
+                                }
+                            }
+
+                        }
+
+                        &-wraper {
+                            display: flex;
+
+                            &-inner-first {
+                                flex-direction: column;
+                            }
+                            &-inner-second {
+                                display: flex;
+                                flex-direction: row;
+                                flex-basis: 150px;
+
+                                justify-content: space-around;
+                                align-items: center;
+
+                                background-color: #fff;
+
+                                border: 1px solid black;
+
+                                &-btn {
+                                    display: flex;
+                                    flex-basis: 45px;
+
+                                    height: 45px;
+                                }
+
+                                .btnAddExp, .btnResetExp, .btnCancelExp {
+                                    button {
+                                        display: flex;
+                                        flex-basis: 45px;
+
+                                        justify-content: center;
+                                        align-items: center;
+
+                                        height: 45px;
+
+                                        font-size: 40px;
+
+                                        padding: 0;
+
+                                        background-color: white;
+
+                                        border: 1px solid white;
+
+                                        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+                                    }
+                                }
+                                .btnAddExp, .btnResetExp, .btnCancelExp {
+                                    button:hover {
+                                        border: 1px solid black;
+                                    }
+                                }
+                                .btnAddExp {
+                                    button {
+                                        color: #1c9248;
+                                    }
+                                }
+                                .btnResetExp {
+                                    button {
+                                        color: #00507a;
+                                    }
+                                    
+                                }
+                                .btnCancelExp {
+                                    button {
+                                        color: #b30f0f;
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+
+                    &-row:nth-child(3n) {
+                        margin-top: 150px;
+                    }
+                }
+            }
+
+            &-table {
+                flex-grow: 1;
+
+                background-color: #f2f2f2;
+
+                &-title {
+                    display: flex;
+                    &-row {
+                        display: flex;
+
+                        height: 54px;
+
+                        margin: 2px;
+
+                        &-cell {
+                            display: flex;
+                            flex-grow: 1;
+                            justify-content: center;
+                            align-items: center;
+
+                            border: 1px solid #000;
+
+                            background-color: #fafafa;
+
+                            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                            font-size: 16px;
+                        }
+
+                        .cell1 {
+                            flex-basis: 40px;
+                            min-width: 40px;
+                            max-width: 42px;
+                        }
+
+                        .cell2,
+                        .cell3,
+                        .cell7,
+                        .cell8,
+                        .cell11,
+                        .cell12,
+                        .cell13,
+                        .cell14,
+                        .cell15 {
+                            flex-basis: 90px;
+                            min-width: 90px;
+                            max-width: 92px;
+
+                            text-align: center;
+                        }
+                        .cell4 {
+                            flex-basis: 200px;
+                            min-width: 200px;
+                            max-width: 202px;
+                        }
+
+                        .cell5,
+                        .cell6,
+                        .cell9,
+                        .cell10 {
+                            flex-basis: 150px;
+                            min-width: 150px;
+                            max-width: 152px;
+                        }
+                    }
+                }
+
+                &-inner {
+                    display: flex;
+                    flex-direction: column;
+
+                    &-row-data {
+                        display: flex;
+
+                        height: 26px;
+
+                        margin: 0 2px 0 2px;
+
+                        text-align: center;
+
+                        &-cell {
+                            display: flex;
+                            flex-grow: 1;
+                            justify-content: center;
+                            align-items: center;
+
+                            background-color: #fafafa;
+
+                            font-family: "Times New Roman", Times, serif;
+                            font-weight: bold;
+                            font-size: 16px;
+
+                            border: 1px solid black;
+                        }
+                        .cell1 {
+                            flex-basis: 40px;
+                            max-width: 40px;
+                        }
+
+                        .cell2,
+                        .cell3,
+                        .cell7,
+                        .cell8,
+                        .cell11,
+                        .cell12,
+                        .cell13,
+                        .cell14,
+                        .cell15 {
+                            flex-basis: 90px;
+                            max-width: 90px;
+                        }
+
+                        .cell4 {
+                            flex-basis: 200px;
+                            max-width: 200px;
+                        }
+
+                        .cell5,
+                        .cell6,
+                        .cell9,
+                        .cell10 {
+                            flex-basis: 150px;
+                            max-width: 150px;
+                        }
+                        .cell12-linear-gradient0 {
+                            background: linear-gradient(90deg, green 0, white 0);
+                        }
+                        .cell12-linear-gradient05 {
+                            background: linear-gradient(90deg, green 0.05, white 0.05);
+                        }
+                        .cell12-linear-gradient10 {
+                            background: linear-gradient(90deg, green 0.1, white 0.1);
+                        }
+                        .cell12-linear-gradient15 {
+                            background: linear-gradient(90deg, green 0.15, white 0.15);
+                        }
+                        .cell12-linear-gradient20 {
+                            background: linear-gradient(90deg, green 0.2, white 0.2);
+                        }
+                        .cell12-linear-gradient25 {
+                            background: linear-gradient(90deg, green 0.25, white 0.25);
+                        }
+                        .cell12-linear-gradient30 {
+                            background: linear-gradient(90deg, green 0.3, white 0.3);
+                        }
+                        .cell12-linear-gradient35 {
+                            background: linear-gradient(90deg, green 0.35, white 0.35);
+                        }
+                        .cell12-linear-gradient40 {
+                            background: linear-gradient(90deg, green 0.4, white 0.4);
+                        }
+                        .cell12-linear-gradient45 {
+                            background: linear-gradient(90deg, green 0.45, white 0.45);
+                        }
+                        .cell12-linear-gradient50 {
+                            background: linear-gradient(90deg, green 0.5, white 0.5);
+                        }
+                        .cell12-linear-gradient55 {
+                            background: linear-gradient(90deg, green 0.55, white 0.55);
+                        }
+                        .cell12-linear-gradient60 {
+                            background: linear-gradient(90deg, green 0.6, white 0.6);
+                        }
+                        .cell12-linear-gradient65 {
+                            background: linear-gradient(90deg, green 0.65, white 0.65);
+                        }
+                        .cell12-linear-gradient70 {
+                            background: linear-gradient(90deg, green 0.7, white 0.7);
+                        }
+                        .cell12-linear-gradient75 {
+                            background: linear-gradient(90deg, green 0.75, white 0.75);
+                        }
+                        .cell12-linear-gradient80 {
+                            background: linear-gradient(90deg, red 0.8, white 0.8);
+                        }
+                        .cell12-linear-gradient85 {
+                            background: linear-gradient(90deg, red 0.85, white 0.85);
+                        }
+                        .cell12-linear-gradient90 {
+                            background: linear-gradient(90deg, red 0.9, white 0.9);
+                        }
+                        .cell12-linear-gradient95 {
+                            background: linear-gradient(90deg, red 0.95, white 0.95);
+                        }
+                        .cell12-linear-gradient100 {
+                            background: linear-gradient(90deg, red 1, white 1);
+                        }
+                    }
+                }
+            }
+
+            &-status {
+                height: 40px;
+
+                background-color: #00507a;
+            }
+        }
+    }
+}

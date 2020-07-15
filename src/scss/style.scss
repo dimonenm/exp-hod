@@ -70,14 +70,14 @@ body {
 
                         border-radius: 10px;
                         box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5), inset 1px 1px 1px rgba(255, 255, 255, 0.2),
-                        inset -1px -1px 1px rgba(0, 0, 0, 0.5);
+                            inset -1px -1px 1px rgba(0, 0, 0, 0.5);
                     }
 
-                    &-button:nth-last-child(2){
+                    &-button:nth-last-child(2) {
                         margin: 15px 0 0 59px;
                     }
 
-                    &-button:nth-last-child(1){
+                    &-button:nth-last-child(1) {
                         margin: 15px 0 0 76px;
                     }
 
@@ -314,39 +314,45 @@ body {
                                 select {
                                     width: 202px;
                                 }
-                            }
-                        }
-                        &-third{
-                            display: flex;   
-                            
-                            
-                            height: 150px;
+                                .bropdown {
+                                    position: absolute;
+                                    width: 200px;
+                                    overflow: auto;
 
-                            .row1-third-cell1 {
-                                font-family: "Times New Roman", Times, serif;
-                                font-size: 16px;
-                                font-weight: bold;
-                                line-height: 1;
+                                    border: 1px solid black;
 
-                                width: 200px;
+                                    max-height: 500px;
+                                    overflow-x: hidden;
+                                    z-index: 1;
 
-                                margin-left: 309px;
+                                    ul {
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: center;
+                                        align-items: center;                                     
 
-                                background-color: #fff;
+                                        margin: 0;
+                                        padding: 0;
 
-                                border: 1px solid #000;
-                            }
-                            .row1-third-cell1 ul{
-                                text-align: start;
-                                padding: 0;
-                                margin: 0;
-                                list-style-type: none;
-                                
-                                li{
-                                    border: 1px solid #000;
+                                        list-style: none;
+
+                                        background-color: #fff;
+
+                                        li {
+                                            display: flex;
+                                            flex-basis: 50px;
+                                            width: 100%;
+
+                                            justify-content: center;
+                                            align-items: center;
+
+                                            &:hover{
+                                                background: #ddd;
+                                            }
+                                        }
+                                    }
                                 }
                             }
-
                         }
 
                         &-wraper {
@@ -374,7 +380,9 @@ body {
                                     height: 45px;
                                 }
 
-                                .btnAddExp, .btnResetExp, .btnCancelExp {
+                                .btnAddExp,
+                                .btnResetExp,
+                                .btnCancelExp {
                                     button {
                                         display: flex;
                                         flex-basis: 45px;
@@ -395,7 +403,9 @@ body {
                                         text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
                                     }
                                 }
-                                .btnAddExp, .btnResetExp, .btnCancelExp {
+                                .btnAddExp,
+                                .btnResetExp,
+                                .btnCancelExp {
                                     button:hover {
                                         border: 1px solid black;
                                     }
@@ -409,13 +419,11 @@ body {
                                     button {
                                         color: #00507a;
                                     }
-                                    
                                 }
                                 .btnCancelExp {
                                     button {
                                         color: #b30f0f;
                                     }
-                                    
                                 }
                             }
                         }

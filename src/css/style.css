@@ -813,33 +813,53 @@ body {
   width: 202px;
 }
 
-.container-main-workspase-expertise-form-row-third {
+.container-main-workspase-expertise-form-row-second .row1-second-cell4 .bropdown {
+  position: absolute;
+  width: 200px;
+  overflow: auto;
+  border: 1px solid black;
+  max-height: 500px;
+  overflow-x: hidden;
+  z-index: 1;
+}
+
+.container-main-workspase-expertise-form-row-second .row1-second-cell4 .bropdown ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 150px;
-}
-
-.container-main-workspase-expertise-form-row-third .row1-third-cell1 {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 1;
-  width: 200px;
-  margin-left: 309px;
-  background-color: #fff;
-  border: 1px solid #000;
-}
-
-.container-main-workspase-expertise-form-row-third .row1-third-cell1 ul {
-  text-align: start;
-  padding: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0;
-  list-style-type: none;
+  padding: 0;
+  list-style: none;
+  background-color: #fff;
 }
 
-.container-main-workspase-expertise-form-row-third .row1-third-cell1 ul li {
-  border: 1px solid #000;
+.container-main-workspase-expertise-form-row-second .row1-second-cell4 .bropdown ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-preferred-size: 50px;
+      flex-basis: 50px;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container-main-workspase-expertise-form-row-second .row1-second-cell4 .bropdown ul li:hover {
+  background: #ddd;
 }
 
 .container-main-workspase-expertise-form-row-wraper {
@@ -883,7 +903,9 @@ body {
   height: 45px;
 }
 
-.container-main-workspase-expertise-form-row-wraper-inner-second .btnAddExp button, .container-main-workspase-expertise-form-row-wraper-inner-second .btnResetExp button, .container-main-workspase-expertise-form-row-wraper-inner-second .btnCancelExp button {
+.container-main-workspase-expertise-form-row-wraper-inner-second .btnAddExp button,
+.container-main-workspase-expertise-form-row-wraper-inner-second .btnResetExp button,
+.container-main-workspase-expertise-form-row-wraper-inner-second .btnCancelExp button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -903,7 +925,9 @@ body {
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
 }
 
-.container-main-workspase-expertise-form-row-wraper-inner-second .btnAddExp button:hover, .container-main-workspase-expertise-form-row-wraper-inner-second .btnResetExp button:hover, .container-main-workspase-expertise-form-row-wraper-inner-second .btnCancelExp button:hover {
+.container-main-workspase-expertise-form-row-wraper-inner-second .btnAddExp button:hover,
+.container-main-workspase-expertise-form-row-wraper-inner-second .btnResetExp button:hover,
+.container-main-workspase-expertise-form-row-wraper-inner-second .btnCancelExp button:hover {
   border: 1px solid black;
 }
 

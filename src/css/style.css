@@ -809,8 +809,14 @@ body {
   text-align: center;
 }
 
-.container-main-workspase-expertise-form-row-second .row1-second-cell4 select {
-  width: 202px;
+.container-main-workspase-expertise-form-row-second .row1-second-cell4 input {
+  height: 25px;
+  width: 195px;
+  padding: 0 0 0 5px;
+  border: 1px solid #000;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 .container-main-workspase-expertise-form-row-second .row1-second-cell4 .bropdown {
@@ -821,6 +827,14 @@ body {
   max-height: 500px;
   overflow-x: hidden;
   z-index: 1;
+}
+
+.container-main-workspase-expertise-form-row-second .row1-second-cell4 .bropdown-list-police {
+  display: none;
+}
+
+.container-main-workspase-expertise-form-row-second .row1-second-cell4 .bropdown-list-so {
+  display: none;
 }
 
 .container-main-workspase-expertise-form-row-second .row1-second-cell4 .bropdown ul {
@@ -856,6 +870,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: pointer;
 }
 
 .container-main-workspase-expertise-form-row-second .row1-second-cell4 .bropdown ul li:hover {

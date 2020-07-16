@@ -330,6 +330,27 @@ function forBtnCreateNewExpertise() {
 	dateTemp = +dateTemp + (15 * 24 * 60 * 60 * 1000);
 	row2SecondCell3.valueAsDate = new Date(dateTemp);
 
+	const row1SecondCell4Input = document.querySelector('.row1-second-cell4-input');
+	row1SecondCell4Input.addEventListener('focus', () => {
+		const dropdown = document.querySelector('.dropdown');
+		dropdown.classList.add('dropdown-show');
+		const row1SecondCell3Select = document.querySelector('.row1-second-cell3-select');
+		const dropdownListSo = document.querySelector('.dropdown-list-so');
+		const dropdownListPolice = document.querySelector('.dropdown-list-police');
+		if (row1SecondCell3Select.value === 'ГСУ СК') {
+			dropdownListPolice.classList.remove('dropdown-show');
+			dropdownListSo.classList.add('dropdown-show');
+		} else if (row1SecondCell3Select.value === 'УМВД') {	
+			dropdownListSo.classList.remove('dropdown-show');
+			dropdownListPolice.classList.add('dropdown-show');
+		};
+	});
+	row1SecondCell4Input.addEventListener('blur', () => {
+		const dropdown = document.querySelector('.dropdown');
+		dropdown.classList.remove('dropdown-show');
+	})
+
+
 	row1SecondCell2.addEventListener('change', () => {
 		const row2SecondCell3 = document.querySelector('.row2-second-cell3 input');
 		let dateTemp = new Date(row1SecondCell2.value);

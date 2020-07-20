@@ -307,13 +307,14 @@ function forBtnCreateNewExpertise() {
 	const form = document.querySelector('.container-main-workspase-expertise-form');
 	form.reset();
 
-	const modsl = function (event) {
+	form.addEventListener('click', (event) => {
 		const target = event.target;
-		console.log(target);
-		console.log(target === this);
-	};
-
-	form.addEventListener('click', modsl);
+		if (target.closest('.row1-second-cell4-input') || target.closest('.dropdown')) {
+			return;
+		} else {
+			dropdown.classList.remove('dropdown-show');
+		}
+	});
 
 	//нахождение и включение рабочего окна
 	const workspaseExpertise = document.querySelector('.container-main-workspase-expertise');
@@ -328,7 +329,7 @@ function forBtnCreateNewExpertise() {
 	const btnResetExp = document.querySelector('.btnResetExp');
 	btnAddExp.addEventListener('click', forBtnAddNewExp);
 	btnResetExp.addEventListener('click', forBtnResetNewExp);
-	
+
 	//изменение стиля кнопкок
 	btnAddExp.childNodes[1].innerHTML = '<i class="fas fa-plus-circle"></i>';
 	btnResetExp.childNodes[1].innerHTML = '<i class="fas fa-redo"></i>';
@@ -356,9 +357,12 @@ function forBtnCreateNewExpertise() {
 
 	//поле органа, направившего экспертизу
 	const row1SecondCell4Input = document.querySelector('.row1-second-cell4-input');
+	const row1SecondCell3Select = document.querySelector('.row1-second-cell3-select');
+	const dropdown = document.querySelector('.dropdown');
+	const dropdownListSo = document.querySelector('.dropdown-list-so');
+	const dropdownListPolice = document.querySelector('.dropdown-list-police');
 	const arrLiOfDropdownListSo = document.querySelectorAll('.dropdown-list-so ul li');
 	const arrLiOfDropdownListPolice = document.querySelectorAll('.dropdown-list-police ul li');
-	const dropdown = document.querySelector('.dropdown');
 
 	for (let li of arrLiOfDropdownListSo) {
 		li.addEventListener('click', (event) => {
@@ -376,11 +380,21 @@ function forBtnCreateNewExpertise() {
 		})
 	}
 
+	row1SecondCell4Input.addEventListener('focus', () => {
+		if (!row1SecondCell4Input.value) {
+			dropdown.classList.add('dropdown-show');
+			if (row1SecondCell3Select.value === 'ГСУ СК') {
+				dropdownListPolice.classList.remove('dropdown-show');
+				dropdownListSo.classList.add('dropdown-show');
+			} else if (row1SecondCell3Select.value === 'УМВД') {
+				dropdownListSo.classList.remove('dropdown-show');
+				dropdownListPolice.classList.add('dropdown-show');
+			};
+		}
+	})
+
 	row1SecondCell4Input.addEventListener('input', () => {
-		const row1SecondCell3Select = document.querySelector('.row1-second-cell3-select');
 		const inputData = row1SecondCell4Input.value.toLowerCase();
-		const dropdownListSo = document.querySelector('.dropdown-list-so');
-		const dropdownListPolice = document.querySelector('.dropdown-list-police');
 
 		if (!row1SecondCell4Input.value) {
 			dropdown.classList.add('dropdown-show');
@@ -406,7 +420,7 @@ function forBtnCreateNewExpertise() {
 			}
 			for (let item of arrLiOfDropdownListSo) {
 				if (item.innerHTML.toLocaleLowerCase().includes(inputData)) {
-					item.style.display = 'flex';					
+					item.style.display = 'flex';
 				} else {
 					item.style.display = 'none';
 				}
@@ -431,7 +445,7 @@ function forBtnCreateNewExpertise() {
 			}
 		};
 	});
-	
+
 	//изменение обработчиков кнопки меню
 	btnCreateNewExpertise.removeEventListener('click', forBtnCreateNewExpertise);
 	btnCreateNewExpertise.addEventListener('click', forBtnReturnToTable);
@@ -471,9 +485,9 @@ function resetForm(form) {
 	const count = dbOfExpertises.length + 1; // определение номера последней экспертизы
 	row1SecondCell1Nodes[1].value = `7/${count}`; // внесение в поле инпут номера экспертизы
 
-	const row1SecondCell2 = document.querySelector('.row1-second-cell2 input');
+	const row1SecondCell2 = document.querySelector('.row1-second-cell2 input'); // нахождение второй ячейки "дата"
 	row1SecondCell2.valueAsDate = new Date();
-	const row2SecondCell3 = document.querySelector('.row2-second-cell3 input');
+	const row2SecondCell3 = document.querySelector('.row2-second-cell3 input');// нахождение ячейки "продление"
 	let dateTemp = new Date();
 	dateTemp = +dateTemp + (15 * 24 * 60 * 60 * 1000);
 	row2SecondCell3.valueAsDate = new Date(dateTemp);
@@ -530,16 +544,13 @@ function forUpdateExpertise(data) {
 	workspaseStatus.style.display = 'none';
 	workspaseExpertise.style.display = 'flex';
 
-	// const btnAddExp = document.querySelector('.btnAddExp');
-	// const btnResetExp = document.querySelector('.btnResetExp');
-
 	btnAddExp.childNodes[1].innerHTML = '<i class="far fa-edit"></i>';
 	btnResetExp.childNodes[1].innerHTML = '<i class="fas fa-trash-alt"></i>';
 
 	const row1SecondCell1 = document.querySelector('.row1-second-cell1 input');
 	const row1SecondCell2 = document.querySelector('.row1-second-cell2 input');
 	const row1SecondCell3 = document.querySelector('.row1-second-cell3 select');
-	const row1SecondCell4 = document.querySelector('.row1-second-cell4 select');
+	const row1SecondCell4 = document.querySelector('.row1-second-cell4 input');
 	const row1SecondCell5 = document.querySelector('.row1-second-cell5 input');
 	const row1SecondCell6 = document.querySelector('.row1-second-cell6 input');
 	const row1SecondCell7 = document.querySelector('.row1-second-cell7 select');
@@ -560,106 +571,20 @@ function forUpdateExpertise(data) {
 
 	row1SecondCell1.value = `7/${data.getId()}`;
 	row1SecondCell2.valueAsDate = new Date(+data.getDateOfReceipt());
-	switch (data.getOrganAppointedExpertise()) {
-		case 'ГСУ СК':
-			row1SecondCell3.value = 'ГСУ СК';
-			break;
-		case 'УМВД':
-			row1SecondCell3.value = 'УМВД';
-			break;
-	}
-	switch (data.getUnitOforgan()) {
-		case 'Белогорский МСО':
-			row1SecondCell4.value = 'Белогорский МСО';
-			break;
-		case 'СО по г. Ялта':
-			row1SecondCell4.value = 'СО по г. Ялта';
-			break;
-		case 'СО по г. Феодосия':
-			row1SecondCell4.value = 'СО по г. Феодосия';
-			break;
-		case 'ОП №2 "Ливадийский"':
-			row1SecondCell4.value = 'ОП №2 "Ливадийский"';
-			break;
-	}
-	row1SecondCell5.value = `${data.getOfficialPerson()}`;
-	row1SecondCell6.value = `${data.getNameOfficialPerson()}`;
-	switch (data.getByTheMaterials()) {
-		case 'УД':
-			row1SecondCell7.value = 'УД';
-			break;
-		case 'ДУЛ':
-			row1SecondCell7.value = 'ДУЛ';
-			break;
-		case 'КУСП':
-			row1SecondCell7.value = 'КУСП';
-			break;
-	}
-	row1SecondCell8.value = `${data.getNumber()}`;
-	switch (data.getArticle()) {
-		case '161':
-			row1SecondCell9.value = '161';
-			break;
-		case '105':
-			row1SecondCell9.value = '105';
-			break;
-		case '158':
-			row1SecondCell9.value = '158';
-			break;
-	}
-	switch (data.getByFact()) {
-		case 'Общее':
-			row1SecondCell10.value = 'Общее';
-			break;
-		case 'Б/п':
-			row1SecondCell10.value = 'Б/п';
-			break;
-		case 'Н/т':
-			row1SecondCell10.value = 'Н/т';
-			break;
-	}
-	switch (data.getTypeOfResearch()) {
-		case 'ДНК':
-			row2SecondCell1.value = 'ДНК';
-			break;
-		case 'Волосы':
-			row2SecondCell1.value = 'Волосы';
-			break;
-		case 'ДНК и волосы':
-			row2SecondCell1.value = 'ДНК и волосы';
-			break;
-	}
-	switch (data.getExpertName()) {
-		case 'Ходырев Н.':
-			row2SecondCell2.value = 'Ходырев Н.';
-			break;
-		case 'Хоменко А.':
-			row2SecondCell2.value = 'Хоменко А.';
-			break;
-		case 'Кирсанова Н.':
-			row2SecondCell2.value = 'Кирсанова Н.';
-			break;
-		case 'Сорокина Е.':
-			row2SecondCell2.value = 'Сорокина Е.';
-			break;
-		case 'Баркова М.':
-			row2SecondCell2.value = 'Баркова М.';
-			break;
-	}
+	row1SecondCell3.value = data.getOrganAppointedExpertise();
+	row1SecondCell4.value = data.getUnitOforgan();
+	row1SecondCell5.value = data.getOfficialPerson();
+	row1SecondCell6.value = data.getNameOfficialPerson();
+	row1SecondCell7.value = data.getByTheMaterials();
+	row1SecondCell8.value = data.getNumber();
+	row1SecondCell9.value = data.getArticle();
+	row1SecondCell10.value = data.getByFact();
+	row2SecondCell1.value = data.getTypeOfResearch();
+	row2SecondCell2.value = data.getExpertName();
 	row2SecondCell3.valueAsDate = new Date(+data.getProlongation());
 	row2SecondCell4.valueAsDate = new Date(+data.getExecution());
 	if (+data.getNotification()) { row2SecondCell5.valueAsDate = new Date(+data.getNotification()); }
-	switch (data.getResult()) {
-		case 'Положительный':
-			row2SecondCell6.value = 'Положительный';
-			break;
-		case 'Отрицательный':
-			row2SecondCell6.value = 'Отрицательный';
-			break;
-		case 'НПВ':
-			row2SecondCell6.value = 'НПВ';
-			break;
-	}
+	row2SecondCell6.value = data.getResult();
 	row2SecondCell7.value = +data.getCountObjectsTotal();
 	row2SecondCell8.value = +data.getCountObjectsPositive();
 	row2SecondCell9.value = +data.getCountObjectsNegative();
@@ -670,14 +595,59 @@ function forUpdateExpertise(data) {
 		row3SecondCell1.checked = false;
 	}
 
+	row3SecondCell1.addEventListener('change', () => {
+		if (row3SecondCell1.checked === false) row3SecondCell2.checked = true;
+		else if (row3SecondCell1.checked === true) row3SecondCell2.checked = false;
+	})
+	row3SecondCell2.addEventListener('change', () => {
+		if (row3SecondCell2.checked === false) row3SecondCell1.checked = true;
+		if (row3SecondCell2.checked === true) row3SecondCell1.checked = false;
+	})
+
+
 
 	btnAddExp.removeEventListener('click', forBtnAddNewExp);
 	btnResetExp.removeEventListener('click', forBtnResetNewExp);
 
-	btnResetExp.addEventListener('click', forDeleteLastExp);
+	btnAddExp.addEventListener('click', forBtnUpdateExp);
+	btnResetExp.addEventListener('click', forBtnDeleteLastExp);
 }
 
-function forDeleteLastExp() {
+function forBtnUpdateExp() {
+	const form = document.querySelector('.container-main-workspase-expertise-form');
+	let id = form.elements.id.value.split('/');
+	let currentDate = new Date(form.elements.dateOfReceipt.value);
+	let prolongationDate = new Date(form.elements.prolongation.value);
+
+	const exp = new Expertise(
+		id[1],
+		+currentDate,
+		form.elements.organAppointedExpertise.value,
+		form.elements.unitOforgan.value,
+		form.elements.officialPerson.value,
+		form.elements.nameOfficialPerson.value,
+		form.elements.byTheMaterials.value,
+		form.elements.number.value,
+		form.elements.article.value,
+		form.elements.byFact.value,
+		form.elements.typeOfResearch.value,
+		form.elements.expertName.value,
+		+prolongationDate,
+		form.elements.execution.value,
+		form.elements.notification.value,
+		form.elements.result.value,
+		form.elements.countObjectsTotal.value,
+		form.elements.countObjectsPositive.value,
+		form.elements.countObjectsNegative.value,
+		String(form.elements.notTaken.checked),
+		String(form.elements.received.checked));
+
+	// dbOfExpertises.push(exp);
+	console.log(exp);
+	// resetForm(form);
+}
+
+function forBtnDeleteLastExp() {
 	function forDeleteLastExpInner(db) {
 		db.pop();
 		const workspaseExpertise = document.querySelector('.container-main-workspase-expertise');
@@ -689,7 +659,7 @@ function forDeleteLastExp() {
 
 		renderDb(db);
 
-		btnResetExp.removeEventListener('click', forDeleteLastExp);
+		btnResetExp.removeEventListener('click', forBtnDeleteLastExp);
 		btnResetExp.addEventListener('click', forBtnResetNewExp);
 	}
 	forDeleteLastExpInner(dbOfExpertises);

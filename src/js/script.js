@@ -298,13 +298,16 @@ function addExpsInWorkspaseTable(tableInner, db) {
 }
 
 function forBtnCreateNewExpertise() {
+	//изменение стиля кнопки меню
 	btnCreateNewExpertise.style.boxShadow = `1px 1px 1px rgba(255, 255, 255, 0.5), 
 	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
 	inset -1px -1px 1px rgba(255, 255, 255, 0.5)`;
 
+	//нахождение и очищение формы
 	const form = document.querySelector('.container-main-workspase-expertise-form');
 	form.reset();
 
+	//нахождение и включение рабочего окна
 	const workspaseExpertise = document.querySelector('.container-main-workspase-expertise');
 	const workspaseTable = document.querySelector('.container-main-workspase-table');
 	const workspaseStatus = document.querySelector('.container-main-workspase-status');
@@ -312,52 +315,101 @@ function forBtnCreateNewExpertise() {
 	workspaseStatus.style.display = 'none';
 	workspaseExpertise.style.display = 'flex';
 
+	//нахождение кнопок и подключение обработчиков событий
 	const btnAddExp = document.querySelector('.btnAddExp');
 	const btnResetExp = document.querySelector('.btnResetExp');
 	btnAddExp.addEventListener('click', forBtnAddNewExp);
 	btnResetExp.addEventListener('click', forBtnResetNewExp);
+	
+	//изменение стиля кнопкок
 	btnAddExp.childNodes[1].innerHTML = '<i class="fas fa-plus-circle"></i>';
 	btnResetExp.childNodes[1].innerHTML = '<i class="fas fa-redo"></i>';
 
+	//внесение даннных в поля таблицы
+	//поле номера экспертизы
 	const row1SecondCell1 = document.querySelector('.row1-second-cell1 input'); // нахождение первой ячейки "ид"
 	const count = dbOfExpertises.length + 1; // определение номера последней экспертизы
 	row1SecondCell1.value = `7/${count}`; // внесение в поле инпут номера экспертизы
 
+	//поле даты начала экспертизы
 	const row1SecondCell2 = document.querySelector('.row1-second-cell2 input');
 	row1SecondCell2.valueAsDate = new Date();
-	const row2SecondCell3 = document.querySelector('.row2-second-cell3 input');
-	let dateTemp = new Date();
-	dateTemp = +dateTemp + (15 * 24 * 60 * 60 * 1000);
-	row2SecondCell3.valueAsDate = new Date(dateTemp);
-
-	const row1SecondCell4Input = document.querySelector('.row1-second-cell4-input');
-	row1SecondCell4Input.addEventListener('focus', () => {
-		const dropdown = document.querySelector('.dropdown');
-		dropdown.classList.add('dropdown-show');
-		const row1SecondCell3Select = document.querySelector('.row1-second-cell3-select');
-		const dropdownListSo = document.querySelector('.dropdown-list-so');
-		const dropdownListPolice = document.querySelector('.dropdown-list-police');
-		if (row1SecondCell3Select.value === 'ГСУ СК') {
-			dropdownListPolice.classList.remove('dropdown-show');
-			dropdownListSo.classList.add('dropdown-show');
-		} else if (row1SecondCell3Select.value === 'УМВД') {	
-			dropdownListSo.classList.remove('dropdown-show');
-			dropdownListPolice.classList.add('dropdown-show');
-		};
-	});
-	row1SecondCell4Input.addEventListener('blur', () => {
-		const dropdown = document.querySelector('.dropdown');
-		dropdown.classList.remove('dropdown-show');
-	})
-
-
 	row1SecondCell2.addEventListener('change', () => {
 		const row2SecondCell3 = document.querySelector('.row2-second-cell3 input');
 		let dateTemp = new Date(row1SecondCell2.value);
 		dateTemp = +dateTemp + (15 * 24 * 60 * 60 * 1000);
 		row2SecondCell3.valueAsDate = new Date(dateTemp);
 	});
+	//поле даты окончания экспертизы
+	const row2SecondCell3 = document.querySelector('.row2-second-cell3 input');
+	let dateTemp = new Date();
+	dateTemp = +dateTemp + (15 * 24 * 60 * 60 * 1000);
+	row2SecondCell3.valueAsDate = new Date(dateTemp);
 
+	//поле органа, направившего экспертизу
+	const row1SecondCell4Input = document.querySelector('.row1-second-cell4-input');
+	const arrLiOfDropdownListSo = document.querySelectorAll('.dropdown-list-so ul li');
+	const dropdown = document.querySelector('.dropdown');
+
+	for (let li of arrLiOfDropdownListSo) {
+		li.addEventListener('click', (event) => {
+			const target = event.target;
+			row1SecondCell4Input.value = target.innerText;
+			dropdown.classList.remove('dropdown-show');
+		})
+	}
+
+	row1SecondCell4Input.addEventListener('focus', () => {
+		if (!row1SecondCell4Input.value) {
+			dropdown.classList.add('dropdown-show');
+			const row1SecondCell3Select = document.querySelector('.row1-second-cell3-select');
+			const dropdownListSo = document.querySelector('.dropdown-list-so');
+			const dropdownListPolice = document.querySelector('.dropdown-list-police');
+			if (row1SecondCell3Select.value === 'ГСУ СК') {
+				dropdownListPolice.classList.remove('dropdown-show');
+				dropdownListSo.classList.add('dropdown-show');
+			} else if (row1SecondCell3Select.value === 'УМВД') {
+				dropdownListSo.classList.remove('dropdown-show');
+				dropdownListPolice.classList.add('dropdown-show');
+			};
+		}
+	});
+
+	row1SecondCell4Input.addEventListener('input', () => {
+		if (!row1SecondCell4Input.value) {
+			dropdown.classList.add('dropdown-show');
+			const row1SecondCell3Select = document.querySelector('.row1-second-cell3-select');
+			const dropdownListSo = document.querySelector('.dropdown-list-so');
+			const dropdownListPolice = document.querySelector('.dropdown-list-police');
+			if (row1SecondCell3Select.value === 'ГСУ СК') {
+				dropdownListPolice.classList.remove('dropdown-show');
+				dropdownListSo.classList.add('dropdown-show');
+			} else if (row1SecondCell3Select.value === 'УМВД') {
+				dropdownListSo.classList.remove('dropdown-show');
+				dropdownListPolice.classList.add('dropdown-show');
+			};
+		}
+		const row1SecondCell3Select = document.querySelector('.row1-second-cell3-select');
+		const inputData = row1SecondCell4Input.value.toLowerCase();
+
+		if (!dropdown.classList.contains('dropdown-show')) {
+			dropdown.classList.add('dropdown-show');
+		}
+
+		if (row1SecondCell3Select.value === 'ГСУ СК') {
+			for (let item of arrLiOfDropdownListSo) {
+				if (item.innerHTML.toLocaleLowerCase().includes(inputData)) {
+					item.style.display = 'flex';					
+				} else {
+					item.style.display = 'none';
+				}
+			}
+		} else if (row1SecondCell3Select.value === 'УМВД') {
+			//dropdown - list - police
+		};
+	});
+	
+	//изменение обработчиков кнопки меню
 	btnCreateNewExpertise.removeEventListener('click', forBtnCreateNewExpertise);
 	btnCreateNewExpertise.addEventListener('click', forBtnReturnToTable);
 }
@@ -383,6 +435,7 @@ function forBtnReturnToTable() {
 
 	renderDb(dbOfExpertises);
 
+	//изменение обработчиков кнопки меню
 	btnCreateNewExpertise.removeEventListener('click', forBtnReturnToTable);
 	btnCreateNewExpertise.addEventListener('click', forBtnCreateNewExpertise);
 }
@@ -599,7 +652,6 @@ function forUpdateExpertise(data) {
 	btnResetExp.removeEventListener('click', forBtnResetNewExp);
 
 	btnResetExp.addEventListener('click', forDeleteLastExp);
-	//??????????????????????????????????????????????????????????????????????????
 }
 
 function forDeleteLastExp() {

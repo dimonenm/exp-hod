@@ -305,6 +305,7 @@ function forBtnCreateNewExpertise() {
 
 	//нахождение и очищение формы
 	const form = document.querySelector('.container-main-workspase-expertise-form');
+	const dropdown = document.querySelector('.dropdown');
 	form.reset();
 
 	form.addEventListener('click', (event) => {
@@ -356,6 +357,14 @@ function forBtnCreateNewExpertise() {
 	row2SecondCell3.valueAsDate = new Date(dateTemp);
 
 	//поле органа, направившего экспертизу
+	forDropdownListInRow1SecondCell4Input();
+
+	//изменение обработчиков кнопки меню
+	btnCreateNewExpertise.removeEventListener('click', forBtnCreateNewExpertise);
+	btnCreateNewExpertise.addEventListener('click', forBtnReturnToTable);
+}
+
+function forDropdownListInRow1SecondCell4Input(){
 	const row1SecondCell4Input = document.querySelector('.row1-second-cell4-input');
 	const row1SecondCell3Select = document.querySelector('.row1-second-cell3-select');
 	const dropdown = document.querySelector('.dropdown');
@@ -445,10 +454,6 @@ function forBtnCreateNewExpertise() {
 			}
 		};
 	});
-
-	//изменение обработчиков кнопки меню
-	btnCreateNewExpertise.removeEventListener('click', forBtnCreateNewExpertise);
-	btnCreateNewExpertise.addEventListener('click', forBtnReturnToTable);
 }
 
 function forBtnReturnToTable() {
@@ -604,7 +609,7 @@ function forUpdateExpertise(data) {
 		if (row3SecondCell2.checked === true) row3SecondCell1.checked = false;
 	})
 
-
+	forDropdownListInRow1SecondCell4Input();
 
 	btnAddExp.removeEventListener('click', forBtnAddNewExp);
 	btnResetExp.removeEventListener('click', forBtnResetNewExp);
@@ -616,12 +621,10 @@ function forUpdateExpertise(data) {
 function forBtnUpdateExp() {
 	const form = document.querySelector('.container-main-workspase-expertise-form');
 	let id = form.elements.id.value.split('/');
-	let currentDate = new Date(form.elements.dateOfReceipt.value);
-	let prolongationDate = new Date(form.elements.prolongation.value);
 
 	const exp = new Expertise(
-		id[1],
-		+currentDate,
+		(form.elements.id.value.split('/'))[1],
+		String(+(new Date(form.elements.dateOfReceipt.value))),
 		form.elements.organAppointedExpertise.value,
 		form.elements.unitOforgan.value,
 		form.elements.officialPerson.value,
@@ -632,9 +635,9 @@ function forBtnUpdateExp() {
 		form.elements.byFact.value,
 		form.elements.typeOfResearch.value,
 		form.elements.expertName.value,
-		+prolongationDate,
-		form.elements.execution.value,
-		form.elements.notification.value,
+		String(+(new Date(form.elements.prolongation.value))),
+		String(+(new Date(form.elements.execution.value))),
+		String(+(new Date(form.elements.notification.value))),
 		form.elements.result.value,
 		form.elements.countObjectsTotal.value,
 		form.elements.countObjectsPositive.value,
@@ -642,9 +645,32 @@ function forBtnUpdateExp() {
 		String(form.elements.notTaken.checked),
 		String(form.elements.received.checked));
 
-	// dbOfExpertises.push(exp);
-	console.log(exp);
-	// resetForm(form);
+	dbOfExpertises.forEach(item => {
+		if(item.id === exp.id){			
+			item.id = item.id;
+			item.dateOfReceipt = exp.dateOfReceipt;
+			item.organAppointedExpertise = exp.organAppointedExpertise;
+			item.unitOforgan = exp.unitOforgan;
+			item.officialPerson = exp.officialPerson;
+			item.nameOfficialPerson = exp.nameOfficialPerson;
+			item.byTheMaterials = exp.byTheMaterials;
+			item.number = exp.number;
+			item.article = exp.article;
+			item.byFact = exp.byFact;
+			item.typeOfResearch = exp.typeOfResearch;
+			item.expertName = exp.expertName;
+			item.prolongation = exp.prolongation;
+			item.execution = exp.execution;
+			item.notification = exp.notification;
+			item.result = exp.result;
+			item.countObjectsTotal = exp.countObjectsTotal;
+			item.countObjectsPositive = exp.countObjectsPositive;
+			item.countObjectsNegative = exp.countObjectsNegative;
+			item.notTaken = exp.notTaken;
+			item.received = exp.received;
+		}		
+	})
+	forBtnReturnToTable();
 }
 
 function forBtnDeleteLastExp() {

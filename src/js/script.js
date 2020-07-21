@@ -328,6 +328,8 @@ function forBtnCreateNewExpertise() {
 	//нахождение кнопок и подключение обработчиков событий
 	const btnAddExp = document.querySelector('.btnAddExp');
 	const btnResetExp = document.querySelector('.btnResetExp');
+	btnAddExp.removeEventListener('click', forBtnUpdateExp);
+	btnResetExp.removeEventListener('click', forBtnDeleteLastExp);
 	btnAddExp.addEventListener('click', forBtnAddNewExp);
 	btnResetExp.addEventListener('click', forBtnResetNewExp);
 
@@ -470,6 +472,8 @@ function forBtnReturnToTable() {
 
 	const btnAddExp = document.querySelector('.btnAddExp');
 	const btnResetExp = document.querySelector('.btnResetExp');
+	btnAddExp.removeEventListener('click', forBtnUpdateExp);
+	btnResetExp.removeEventListener('click', forBtnDeleteLastExp);
 	btnAddExp.addEventListener('click', forBtnAddNewExp);
 	btnResetExp.addEventListener('click', forBtnResetNewExp);
 	btnAddExp.childNodes[1].innerHTML = '<i class="fas fa-plus-circle"></i>';

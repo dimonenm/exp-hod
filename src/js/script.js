@@ -41,31 +41,33 @@ const getDb = () => {
 }
 
 //метод сохранения экспертизы в базе данных и рендеринг БД в таблице
-const setExpInDb = (exp) => {
+const setExpInDb = () => {
 
-	let exp7 = new Expertise('', '01.02.2020', 'ГСУ СК', 'Белогорский МСО', 'Ст. следовтель', 'Иванов. И.И.', 'УД',
-		'11902350019000000', '161 Грабеж', 'общее', 'ДНК исследование', 'Ходырев Н.', '10.04.2020', '02.04.2020', '*', '+', '10', '5', '5', '*', '*');
+	// const request = new XMLHttpRequest();
+	// request.open('POST', 'saveDb.php', true);
+	// request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+	// request.addEventListener('readystatechange', () => {
+	// 	if (request.readyState !== 4) return;
+	// 	if (request.status === 200) {
+	// 		console.log(request.response);
+	// 		const status = request.response;//
+	// 		(status === 'ok') ? () => console.log(status) : () => console.log(status);
+	// 	} else {
+	// 		console.error(request.status);
+	// 	}
+	// });
+	// request.send('db=' + JSON.stringify(dbOfExpertises));
 
-	exp7.id = '7/' + (dbOfExpertises.length + 1);
+	fetch('saveDb.php',{
+		method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		headers: {
+		'Content-Type': 'application/x-www-form-urlencoded'
+		  // 'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		body: 'db=' + JSON.stringify(dbOfExpertises)
+	}).then(() => {renderDb(dbOfExpertises); console.log('save is ok');});
 
-	dbOfExpertises.push(exp7);
-
-	const request = new XMLHttpRequest();
-	request.open('POST', 'saveDb.php', true);
-	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-	request.addEventListener('readystatechange', () => {
-		if (request.readyState !== 4) return;
-		if (request.status === 200) {
-			console.log(request.response);
-			const status = request.response;//
-			(status === 'ok') ? () => console.log(status) : () => console.log(status);
-		} else {
-			console.error(request.status);
-		}
-	});
-	request.send('db=' + JSON.stringify(dbOfExpertises));
-
-	renderDb(dbOfExpertises);
+	
 }
 
 //метод рендеринга БД в таблице
@@ -266,9 +268,15 @@ function addExpsInWorkspaseTable(tableInner, db) {
 
 		const cell13 = document.createElement('div');
 		cell13.classList.add('container-main-workspase-table-inner-row-data-cell', 'cell13');
-		let currentDate3 = new Date(Number(element.execution));
-		cell13.textContent = `${currentDate3.getDate()}.${currentDate3.getMonth() + 1}.${currentDate3.getFullYear()}`;
-		rowData.appendChild(cell13);
+		if (element.execution && element.execution !== '0') {
+			let currentDate3 = new Date(Number(element.execution));
+			cell13.textContent = `${currentDate3.getDate()}.${currentDate3.getMonth() + 1}.${currentDate3.getFullYear()}`;
+			rowData.appendChild(cell13);
+		} else if (element.execution === '' || element.execution === '0' || element.execution === 'NaN') {
+			cell13.textContent = `не выполнена`;
+			rowData.appendChild(cell13);
+		}
+
 
 		const cell14 = document.createElement('div');
 		cell14.classList.add('container-main-workspase-table-inner-row-data-cell', 'cell14');
@@ -366,7 +374,7 @@ function forBtnCreateNewExpertise() {
 	btnCreateNewExpertise.addEventListener('click', forBtnReturnToTable);
 }
 
-function forDropdownListInRow1SecondCell4Input(){
+function forDropdownListInRow1SecondCell4Input() {
 	const row1SecondCell4Input = document.querySelector('.row1-second-cell4-input');
 	const row1SecondCell3Select = document.querySelector('.row1-second-cell3-select');
 	const dropdown = document.querySelector('.dropdown');
@@ -564,7 +572,7 @@ function forUpdateExpertise(data) {
 	const row1SecondCell6 = document.querySelector('.row1-second-cell6 input');
 	const row1SecondCell7 = document.querySelector('.row1-second-cell7 select');
 	const row1SecondCell8 = document.querySelector('.row1-second-cell8 input');
-	const row1SecondCell9 = document.querySelector('.row1-second-cell9 select');
+	const row1SecondCell9 = document.querySelector('.row1-second-cell9 input');
 	const row1SecondCell10 = document.querySelector('.row1-second-cell10 select');
 	const row2SecondCell1 = document.querySelector('.row2-second-cell1 select');
 	const row2SecondCell2 = document.querySelector('.row2-second-cell2 select');
@@ -591,7 +599,8 @@ function forUpdateExpertise(data) {
 	row2SecondCell1.value = data.getTypeOfResearch();
 	row2SecondCell2.value = data.getExpertName();
 	row2SecondCell3.valueAsDate = new Date(+data.getProlongation());
-	row2SecondCell4.valueAsDate = new Date(+data.getExecution());
+	// row2SecondCell4.valueAsDate = new Date(+data.getExecution());
+	if (+data.getExecution()) { row2SecondCell4.valueAsDate = new Date(+data.getExecution()); }
 	if (+data.getNotification()) { row2SecondCell5.valueAsDate = new Date(+data.getNotification()); }
 	row2SecondCell6.value = data.getResult();
 	row2SecondCell7.value = +data.getCountObjectsTotal();
@@ -620,6 +629,13 @@ function forUpdateExpertise(data) {
 
 	btnAddExp.addEventListener('click', forBtnUpdateExp);
 	btnResetExp.addEventListener('click', forBtnDeleteLastExp);
+
+	row1SecondCell2.addEventListener('change', () => {
+		let dateTemp = new Date(row1SecondCell2.value);
+		dateTemp = +dateTemp + (15 * 24 * 60 * 60 * 1000);
+		row2SecondCell3.valueAsDate = new Date(dateTemp);
+	});
+
 }
 
 function forBtnUpdateExp() {
@@ -650,7 +666,7 @@ function forBtnUpdateExp() {
 		String(form.elements.received.checked));
 
 	dbOfExpertises.forEach(item => {
-		if(item.id === exp.id){			
+		if (item.id === exp.id) {
 			item.id = item.id;
 			item.dateOfReceipt = exp.dateOfReceipt;
 			item.organAppointedExpertise = exp.organAppointedExpertise;
@@ -664,7 +680,13 @@ function forBtnUpdateExp() {
 			item.typeOfResearch = exp.typeOfResearch;
 			item.expertName = exp.expertName;
 			item.prolongation = exp.prolongation;
-			item.execution = exp.execution;
+			if (exp.execution >= exp.dateOfReceipt) {
+				if (exp.execution !== 'NaN') {
+					item.execution = exp.execution;
+				}
+			} else {
+				item.execution = '0';
+			}
 			item.notification = exp.notification;
 			item.result = exp.result;
 			item.countObjectsTotal = exp.countObjectsTotal;
@@ -672,7 +694,8 @@ function forBtnUpdateExp() {
 			item.countObjectsNegative = exp.countObjectsNegative;
 			item.notTaken = exp.notTaken;
 			item.received = exp.received;
-		}		
+			console.log(item);
+		}
 	})
 	forBtnReturnToTable();
 }

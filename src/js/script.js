@@ -58,16 +58,15 @@ const setExpInDb = () => {
 	// });
 	// request.send('db=' + JSON.stringify(dbOfExpertises));
 
-	fetch('saveDb.php',{
+	fetch('saveDb.php', {
 		method: 'POST',
-		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 		body: 'db=' + JSON.stringify(dbOfExpertises)
 	}).then((res) => {
 		renderDb(dbOfExpertises);
-		console.log(res);
 	});
 
-	
+
 }
 
 //метод рендеринга БД в таблице
@@ -696,9 +695,11 @@ function forBtnUpdateExp() {
 			item.countObjectsNegative = exp.countObjectsNegative;
 			item.notTaken = exp.notTaken;
 			item.received = exp.received;
-			console.log(item);
 		}
-	})
+	});
+
+	setExpInDb();
+
 	forBtnReturnToTable();
 }
 
@@ -711,7 +712,7 @@ function forBtnDeleteLastExp() {
 		workspaseExpertise.style.display = 'none';
 		workspaseTable.style.display = 'block';
 		workspaseStatus.style.display = 'flex';
-
+		setExpInDb();
 		renderDb(db);
 
 		btnResetExp.removeEventListener('click', forBtnDeleteLastExp);
@@ -719,8 +720,6 @@ function forBtnDeleteLastExp() {
 	}
 	forDeleteLastExpInner(dbOfExpertises);
 }
-
-
 
 //объявление методов конец
 //----------------------------------------------------------------------

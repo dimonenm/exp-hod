@@ -59,13 +59,13 @@ const setExpInDb = () => {
 	// request.send('db=' + JSON.stringify(dbOfExpertises));
 
 	fetch('saveDb.php',{
-		method: 'POST', // *GET, POST, PUT, DELETE, etc.
-		headers: {
-		'Content-Type': 'application/x-www-form-urlencoded'
-		  // 'Content-Type': 'application/x-www-form-urlencoded',
-		},
+		method: 'POST',
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		body: 'db=' + JSON.stringify(dbOfExpertises)
-	}).then(() => {renderDb(dbOfExpertises); console.log('save is ok');});
+	}).then((res) => {
+		renderDb(dbOfExpertises);
+		console.log(res);
+	});
 
 	
 }
@@ -542,6 +542,8 @@ function forBtnAddNewExp() {
 	dbOfExpertises.push(exp);
 
 	resetForm(form);
+
+	setExpInDb();
 }
 
 function forBtnResetNewExp() {

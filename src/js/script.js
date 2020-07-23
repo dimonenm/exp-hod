@@ -43,21 +43,6 @@ const getDb = () => {
 //метод сохранения экспертизы в базе данных и рендеринг БД в таблице
 const setExpInDb = () => {
 
-	// const request = new XMLHttpRequest();
-	// request.open('POST', 'saveDb.php', true);
-	// request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-	// request.addEventListener('readystatechange', () => {
-	// 	if (request.readyState !== 4) return;
-	// 	if (request.status === 200) {
-	// 		console.log(request.response);
-	// 		const status = request.response;//
-	// 		(status === 'ok') ? () => console.log(status) : () => console.log(status);
-	// 	} else {
-	// 		console.error(request.status);
-	// 	}
-	// });
-	// request.send('db=' + JSON.stringify(dbOfExpertises));
-
 	fetch('saveDb.php', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

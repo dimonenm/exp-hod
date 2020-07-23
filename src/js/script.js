@@ -1,6 +1,7 @@
 //объявление переменных начало
 
 const btnCreateNewExpertise = document.querySelector('.btnCreateNewExpertise'); // кнопка создания новой экспертизы и возвращения к таблице
+const btnSearch = document.querySelector('.btnSearch'); // кнопка поиска экспертиз
 
 const inputRow2SecondCell7 = document.querySelector('.row2-second-cell7 input'); // ячейка окна новой экспертизы общее кол-во объектов
 const inputRow2SecondCell8 = document.querySelector('.row2-second-cell8 input'); // ячейка окна новой экспертизы кол-во пол объектов
@@ -225,29 +226,30 @@ function addExpsInWorkspaseTable(tableInner, db) {
 		let date1 = Number(element.dateOfReceipt);
 		let date2 = Number(element.prolongation);
 		let date3 = new Date();
-		let date4 = ((date3 - date1) * 100) / (date2 - date1);
-		if (date4 < 5) { cell12.classList.add('cell12-linear-gradient0'); }
-		else if (date4 >= 5 && date4 < 10) { cell12.classList.add('cell12-linear-gradient05'); }
-		else if (date4 >= 10 && date4 < 15) { cell12.classList.add('cell12-linear-gradient10'); }
-		else if (date4 >= 15 && date4 < 20) { cell12.classList.add('cell12-linear-gradient15'); }
-		else if (date4 >= 20 && date4 < 25) { cell12.classList.add('cell12-linear-gradient20'); }
-		else if (date4 >= 25 && date4 < 30) { cell12.classList.add('cell12-linear-gradient25'); }
-		else if (date4 >= 30 && date4 < 35) { cell12.classList.add('cell12-linear-gradient30'); }
-		else if (date4 >= 35 && date4 < 40) { cell12.classList.add('cell12-linear-gradient35'); }
-		else if (date4 >= 40 && date4 < 45) { cell12.classList.add('cell12-linear-gradient40'); }
-		else if (date4 >= 45 && date4 < 50) { cell12.classList.add('cell12-linear-gradient45'); }
-		else if (date4 >= 50 && date4 < 55) { cell12.classList.add('cell12-linear-gradient50'); }
-		else if (date4 >= 55 && date4 < 60) { cell12.classList.add('cell12-linear-gradient55'); }
-		else if (date4 >= 60 && date4 < 65) { cell12.classList.add('cell12-linear-gradient60'); }
-		else if (date4 >= 65 && date4 < 70) { cell12.classList.add('cell12-linear-gradient65'); }
-		else if (date4 >= 70 && date4 < 75) { cell12.classList.add('cell12-linear-gradient70'); }
-		else if (date4 >= 75 && date4 < 80) { cell12.classList.add('cell12-linear-gradient75'); }
-		else if (date4 >= 80 && date4 < 85) { cell12.classList.add('cell12-linear-gradient80'); }
-		else if (date4 >= 85 && date4 < 90) { cell12.classList.add('cell12-linear-gradient85'); }
-		else if (date4 >= 90 && date4 < 95) { cell12.classList.add('cell12-linear-gradient90'); }
-		else if (date4 >= 95 && date4 < 100) { cell12.classList.add('cell12-linear-gradient95'); }
-		else if (date4 >= 100) { cell12.classList.add('cell12-linear-gradient100'); }
-		cell12.textContent = date4.toFixed();
+		let date4 = ((date3 - date2)/1000/60/60/24);
+		let date5 = ((date3 - date1) * 100) / (date2 - date1);
+		if (date5 < 5) { cell12.classList.add('cell12-linear-gradient0'); }
+		else if (date5 >= 5 && date5 < 10) { cell12.classList.add('cell12-linear-gradient05'); }
+		else if (date5 >= 10 && date5 < 15) { cell12.classList.add('cell12-linear-gradient10'); }
+		else if (date5 >= 15 && date5 < 20) { cell12.classList.add('cell12-linear-gradient15'); }
+		else if (date5 >= 20 && date5 < 25) { cell12.classList.add('cell12-linear-gradient20'); }
+		else if (date5 >= 25 && date5 < 30) { cell12.classList.add('cell12-linear-gradient25'); }
+		else if (date5 >= 30 && date5 < 35) { cell12.classList.add('cell12-linear-gradient30'); }
+		else if (date5 >= 35 && date5 < 40) { cell12.classList.add('cell12-linear-gradient35'); }
+		else if (date5 >= 40 && date5 < 45) { cell12.classList.add('cell12-linear-gradient40'); }
+		else if (date5 >= 45 && date5 < 50) { cell12.classList.add('cell12-linear-gradient45'); }
+		else if (date5 >= 50 && date5 < 55) { cell12.classList.add('cell12-linear-gradient50'); }
+		else if (date5 >= 55 && date5 < 60) { cell12.classList.add('cell12-linear-gradient55'); }
+		else if (date5 >= 60 && date5 < 65) { cell12.classList.add('cell12-linear-gradient60'); }
+		else if (date5 >= 65 && date5 < 70) { cell12.classList.add('cell12-linear-gradient65'); }
+		else if (date5 >= 70 && date5 < 75) { cell12.classList.add('cell12-linear-gradient70'); }
+		else if (date5 >= 75 && date5 < 80) { cell12.classList.add('cell12-linear-gradient75'); }
+		else if (date5 >= 80 && date5 < 85) { cell12.classList.add('cell12-linear-gradient80'); }
+		else if (date5 >= 85 && date5 < 90) { cell12.classList.add('cell12-linear-gradient85'); }
+		else if (date5 >= 90 && date5 < 95) { cell12.classList.add('cell12-linear-gradient90'); }
+		else if (date5 >= 95 && date5 < 100) { cell12.classList.add('cell12-linear-gradient95'); }
+		else if (date5 >= 100) { cell12.classList.add('cell12-linear-gradient100'); }
+		cell12.textContent = `Осталось дней: \n ${date4.toFixed() * -1}`;
 		rowData.appendChild(cell12);
 
 		const cell13 = document.createElement('div');
@@ -448,6 +450,24 @@ function forDropdownListInRow1SecondCell4Input() {
 			}
 		};
 	});
+}
+
+function forBtnSearchOn(){
+	btnSearch.style.boxShadow = `1px 1px 1px rgba(255, 255, 255, 0.5), 
+	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
+	inset -1px -1px 1px rgba(255, 255, 255, 0.5)`;
+
+	btnSearch.removeEventListener('click', forBtnSearchOn);
+	btnSearch.addEventListener('click', forBtnSearchOff);
+}
+
+function forBtnSearchOff(){
+	btnSearch.style.boxShadow = `1px 1px 1px rgba(0, 0, 0, 0.5), 
+	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
+	inset -1px -1px 1px rgba(0, 0, 0, 0.5)`;
+
+	btnSearch.removeEventListener('click', forBtnSearchOff);
+	btnSearch.addEventListener('click', forBtnSearchOn);
 }
 
 function forBtnReturnToTable() {
@@ -711,6 +731,7 @@ function forBtnDeleteLastExp() {
 //объявление обработчиков событий начало
 
 btnCreateNewExpertise.addEventListener('click', forBtnCreateNewExpertise);
+btnSearch.addEventListener('click', forBtnSearchOn);
 
 function selectRow(allRows) {
 	allRows.forEach(element => {

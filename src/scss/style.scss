@@ -87,6 +87,15 @@ body {
 					}
 				}
 			}
+
+			&-search-container{
+				height: 100%;
+				width: 100%;
+
+				margin: 15px 0 0 0;
+
+				background: #000;
+			}
 		}
 
 		&-workspase {

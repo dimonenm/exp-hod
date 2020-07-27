@@ -2,6 +2,7 @@
 
 const btnCreateNewExpertise = document.querySelector('.btnCreateNewExpertise'); // кнопка создания новой экспертизы и возвращения к таблице
 const btnSearch = document.querySelector('.btnSearch'); // кнопка поиска экспертиз
+const containerMainSideSearchContainer = document.querySelector('.container-main-side-search-container');
 
 const inputRow2SecondCell7 = document.querySelector('.row2-second-cell7 input'); // ячейка окна новой экспертизы общее кол-во объектов
 const inputRow2SecondCell8 = document.querySelector('.row2-second-cell8 input'); // ячейка окна новой экспертизы кол-во пол объектов
@@ -387,11 +388,12 @@ function forDropdownListInRow1SecondCell4Input() {
 
 	row1SecondCell4Input.addEventListener('focus', () => {
 		if (!row1SecondCell4Input.value) {
-			dropdown.classList.add('dropdown-show');
 			if (row1SecondCell3Select.value === 'ГСУ СК') {
+				dropdown.classList.add('dropdown-show');
 				dropdownListPolice.classList.remove('dropdown-show');
 				dropdownListSo.classList.add('dropdown-show');
 			} else if (row1SecondCell3Select.value === 'УМВД') {
+				dropdown.classList.add('dropdown-show');
 				dropdownListSo.classList.remove('dropdown-show');
 				dropdownListPolice.classList.add('dropdown-show');
 			};
@@ -402,11 +404,12 @@ function forDropdownListInRow1SecondCell4Input() {
 		const inputData = row1SecondCell4Input.value.toLowerCase();
 
 		if (!row1SecondCell4Input.value) {
-			dropdown.classList.add('dropdown-show');
 			if (row1SecondCell3Select.value === 'ГСУ СК') {
+				dropdown.classList.add('dropdown-show');
 				dropdownListPolice.classList.remove('dropdown-show');
 				dropdownListSo.classList.add('dropdown-show');
 			} else if (row1SecondCell3Select.value === 'УМВД') {
+				dropdown.classList.add('dropdown-show');
 				dropdownListSo.classList.remove('dropdown-show');
 				dropdownListPolice.classList.add('dropdown-show');
 			};
@@ -457,6 +460,8 @@ function forBtnSearchOn(){
 	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
 	inset -1px -1px 1px rgba(255, 255, 255, 0.5)`;
 
+	containerMainSideSearchContainer.classList.remove('hide');
+
 	btnSearch.removeEventListener('click', forBtnSearchOn);
 	btnSearch.addEventListener('click', forBtnSearchOff);
 }
@@ -465,6 +470,8 @@ function forBtnSearchOff(){
 	btnSearch.style.boxShadow = `1px 1px 1px rgba(0, 0, 0, 0.5), 
 	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
 	inset -1px -1px 1px rgba(0, 0, 0, 0.5)`;
+
+	containerMainSideSearchContainer.classList.add('hide');
 
 	btnSearch.removeEventListener('click', forBtnSearchOff);
 	btnSearch.addEventListener('click', forBtnSearchOn);

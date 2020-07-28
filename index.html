@@ -42,13 +42,48 @@
 							<div class="container-main-side-search-container-panel-button-img">
 								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
 							</div>
-						</div>						
+						</div>
+						<div class="container-main-side-search-container-panel-dropdown">
+							<div class="container-main-side-search-container-panel-dropdown-row">
+								<div class="container-main-side-search-container-panel-dropdown-row-label">с</div>
+								<input type="date"
+									class="container-main-side-search-container-panel-dropdown-row-inputDate"
+									name="sideSearchDateOfReceiptStart">
+							</div>
+							<div class="container-main-side-search-container-panel-dropdown-row">
+								<div class="container-main-side-search-container-panel-dropdown-row-label">по</div>
+								<input type="date"
+									class="container-main-side-search-container-panel-dropdown-row-inputDate"
+									name="sideSearchDateOfReceiptStop">
+							</div>
+						</div>
 					</div>
 					<div class="container-main-side-search-container-panel">
 						<div class="container-main-side-search-container-panel-button">
 							<div class="container-main-side-search-container-panel-button-name">По органу</div>
 							<div class="container-main-side-search-container-panel-button-img">
 								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+							</div>
+						</div>
+						<div class="container-main-side-search-container-panel-dropdown">
+							<div class="container-main-side-search-container-panel-dropdown-row">
+								<div class="container-main-side-search-container-panel-dropdown-row-label">ГСУ</div>
+								<input type="checkbox" name="sideSearchOrganChSo">
+							</div>
+
+							<div class="container-main-side-search-container-panel-dropdown-row">
+								<div class="container-main-side-search-container-panel-dropdown-row-label">МВД</div>
+								<input type="checkbox" name="sideSearchOrganChPolice">
+							</div>
+
+							<div class="container-main-side-search-container-panel-dropdown-row">
+								<div class="container-main-side-search-container-panel-dropdown-row-label">ФСБ</div>
+								<input type="checkbox" name="sideSearchOrganChFSB">
+							</div>
+
+							<div class="container-main-side-search-container-panel-dropdown-row">
+								<div class="container-main-side-search-container-panel-dropdown-row-label">Суд</div>
+								<input type="checkbox" name="sideSearchOrganChJudgment">
 							</div>
 						</div>
 					</div>
@@ -59,12 +94,35 @@
 								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
 							</div>
 						</div>
+						<div class="container-main-side-search-container-panel-dropdown">
+							<div class="container-main-side-search-container-panel-dropdown-row">
+								<input type="text"
+									class="container-main-side-search-container-panel-dropdown-row-inputTextUnitOfOrgan"
+									name="sideSearchUnitOfOrgan">
+							</div>
+						</div>
 					</div>
 					<div class="container-main-side-search-container-panel">
 						<div class="container-main-side-search-container-panel-button">
 							<div class="container-main-side-search-container-panel-button-name">По материалу</div>
 							<div class="container-main-side-search-container-panel-button-img">
 								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+							</div>
+						</div>
+						<div class="container-main-side-search-container-panel-dropdown">
+							<div class="container-main-side-search-container-panel-dropdown-row">
+								<div class="container-main-side-search-container-panel-dropdown-row-label">Дул</div>
+								<input type="checkbox" name="sideSearchMaterialChDul">
+							</div>
+
+							<div class="container-main-side-search-container-panel-dropdown-row">
+								<div class="container-main-side-search-container-panel-dropdown-row-label">Уд</div>
+								<input type="checkbox" name="sideSearchMaterialChUd">
+							</div>
+
+							<div class="container-main-side-search-container-panel-dropdown-row">
+								<div class="container-main-side-search-container-panel-dropdown-row-label">КУСП</div>
+								<input type="checkbox" name="sideSearchMaterialChKusp">
 							</div>
 						</div>
 					</div>

@@ -486,8 +486,10 @@ body {
           align-items: center;
   width: 180px;
   height: 40px;
+  background: #3E86A7;
   -webkit-box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.5), inset 0px -1px 1px rgba(0, 0, 0, 0.5), inset 1px 0px 1px rgba(255, 255, 255, 0.5), inset -1px 0px 1px rgba(0, 0, 0, 0.5);
           box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.5), inset 0px -1px 1px rgba(0, 0, 0, 0.5), inset 1px 0px 1px rgba(255, 255, 255, 0.5), inset -1px 0px 1px rgba(0, 0, 0, 0.5);
+  cursor: default;
 }
 
 .container-main-side-search-container-panel-button-name {
@@ -513,6 +515,52 @@ body {
   background-color: rgba(255, 255, 255, 0.2);
   -webkit-transition: all 0.1s linear;
   transition: all 0.1s linear;
+}
+
+.container-main-side-search-container-panel-dropdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #ffffff33;
+}
+
+.container-main-side-search-container-panel-dropdown-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 10px 7px 10px 7px;
+  font-family: "Times New Roman";
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.container-main-side-search-container-panel-dropdown-row-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container-main-side-search-container-panel-dropdown-row-inputDate {
+  width: 130px;
+}
+
+.container-main-side-search-container-panel-dropdown-row-inputTextUnitOfOrgan {
+  width: 158px;
 }
 
 .container-main-side .hide {
@@ -1031,7 +1079,7 @@ body {
   color: #b30f0f;
 }
 
-.container-main-workspase-expertise-form-row:nth-child(n+2) {
+.container-main-workspase-expertise-form-row:nth-child(n + 2) {
   margin-top: 150px;
 }
 

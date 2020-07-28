@@ -298,6 +298,8 @@ function forBtnCreateNewExpertise() {
 	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
 	inset -1px -1px 1px rgba(255, 255, 255, 0.5)`;
 
+	forBtnSearchOff()
+
 	//нахождение и очищение формы
 	const form = document.querySelector('.container-main-workspase-expertise-form');
 	const dropdown = document.querySelector('.dropdown');
@@ -459,11 +461,26 @@ function forBtnSearchOn(){
 	btnSearch.style.boxShadow = `1px 1px 1px rgba(255, 255, 255, 0.5), 
 	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
 	inset -1px -1px 1px rgba(255, 255, 255, 0.5)`;
+	btnCreateNewExpertise.style.boxShadow = `1px 1px 1px rgba(0, 0, 0, 0.5), 
+	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
+	inset -1px -1px 1px rgba(0, 0, 0, 0.5)`;
+
+	const workspaseExpertise = document.querySelector('.container-main-workspase-expertise');
+	const workspaseTable = document.querySelector('.container-main-workspase-table');
+	const workspaseStatus = document.querySelector('.container-main-workspase-status');
+	workspaseExpertise.style.display = 'none';
+	workspaseTable.style.display = 'block';
+	workspaseStatus.style.display = 'flex';
 
 	containerMainSideSearchContainer.classList.remove('hide');
 
+	renderDb(dbOfExpertises);
+
+	//изменение обработчиков кнопки меню
 	btnSearch.removeEventListener('click', forBtnSearchOn);
 	btnSearch.addEventListener('click', forBtnSearchOff);
+	btnCreateNewExpertise.removeEventListener('click', forBtnReturnToTable);
+	btnCreateNewExpertise.addEventListener('click', forBtnCreateNewExpertise);
 }
 
 function forBtnSearchOff(){

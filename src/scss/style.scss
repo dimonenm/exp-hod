@@ -15,8 +15,9 @@ body {
 	&-header {
 		display: flex;
 		justify-content: center;
+		align-items: center;
 
-		height: 40px;
+		min-height: 40px;
 
 		background-color: #04628d;
 
@@ -107,9 +108,11 @@ body {
 						align-items: center;
 						width: 180px;
 						height: 40px;
-						background: #3E86A7;
+						background: #3e86a7;
 						box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.5), inset 0px -1px 1px rgba(0, 0, 0, 0.5),
 							inset 1px 0px 1px rgba(255, 255, 255, 0.5), inset -1px 0px 1px rgba(0, 0, 0, 0.5);
+
+						user-select: none;
 
 						cursor: default;
 
@@ -136,7 +139,7 @@ body {
 					&-dropdown {
 						display: flex;
 						flex-direction: column;
-						background: #ffffff33;
+						background: #ccc;
 						&-row {
 							display: flex;
 							justify-content: space-between;
@@ -159,7 +162,7 @@ body {
 								width: 130px;
 							}
 
-							&-inputTextUnitOfOrgan{
+							&-inputText {
 								width: 158px;
 							}
 						}

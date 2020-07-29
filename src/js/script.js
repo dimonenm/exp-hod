@@ -458,6 +458,7 @@ function forDropdownListInRow1SecondCell4Input() {
 }
 
 function forBtnSearchOn(){
+	// изменение стиля кнопок меню
 	btnSearch.style.boxShadow = `1px 1px 1px rgba(255, 255, 255, 0.5), 
 	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
 	inset -1px -1px 1px rgba(255, 255, 255, 0.5)`;
@@ -465,18 +466,65 @@ function forBtnSearchOn(){
 	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
 	inset -1px -1px 1px rgba(0, 0, 0, 0.5)`;
 
+	// включение таблицы
 	const workspaseExpertise = document.querySelector('.container-main-workspase-expertise');
 	const workspaseTable = document.querySelector('.container-main-workspase-table');
 	const workspaseStatus = document.querySelector('.container-main-workspase-status');
 	workspaseExpertise.style.display = 'none';
 	workspaseTable.style.display = 'block';
 	workspaseStatus.style.display = 'flex';
-
+	
+	// включение панели для поиска
 	containerMainSideSearchContainer.classList.remove('hide');
 
+	//поиск элементов панели поиска
+	const sideSearchBtnDateOfReceipt = document.querySelector('.sideSearchBtnDateOfReceipt');
+	const sideSearchDropdownDateOfReceipt = document.querySelector('.sideSearchDropdownDateOfReceipt');
+	const sideSearchBtnOrgan = document.querySelector('.sideSearchBtnOrgan');
+	const sideSearchDropdownOrgan = document.querySelector('.sideSearchDropdownOrgan');
+	const sideSearchBtnUnit = document.querySelector('.sideSearchBtnUnit');
+	const sideSearchDropdownUnit = document.querySelector('.sideSearchDropdownUnit');
+	const sideSearchBtnMaterial = document.querySelector('.sideSearchBtnMaterial');
+	const sideSearchDropdownMaterial = document.querySelector('.sideSearchDropdownMaterial');
+	const sideSearchBtnNumber = document.querySelector('.sideSearchBtnNumber');
+	const sideSearchDropdownNumber = document.querySelector('.sideSearchDropdownNumber');
+	const sideSearchBtnArticle = document.querySelector('.sideSearchBtnArticle');
+	const sideSearchDropdownArticle = document.querySelector('.sideSearchDropdownArticle');
+	const sideSearchBtnFact = document.querySelector('.sideSearchBtnFact');
+	const sideSearchDropdownFact = document.querySelector('.sideSearchDropdownFact');
+	const sideSearchBtnType = document.querySelector('.sideSearchBtnType');
+	const sideSearchDropdownType = document.querySelector('.sideSearchDropdownType');
+	const sideSearchBtnExp = document.querySelector('.sideSearchBtnExp');
+	const sideSearchDropdownExp = document.querySelector('.sideSearchDropdownExp');
+	const sideSearchBtnStatus = document.querySelector('.sideSearchBtnStatus');
+	const sideSearchDropdownStatus = document.querySelector('.sideSearchDropdownStatus');
+	const sideSearchBtnExec = document.querySelector('.sideSearchBtnExec');
+	const sideSearchDropdownExec = document.querySelector('.sideSearchDropdownExec');
+	const sideSearchBtnRes = document.querySelector('.sideSearchBtnRes');
+	const sideSearchDropdownRes = document.querySelector('.sideSearchDropdownRes');
+	const sideSearchBtnTaken = document.querySelector('.sideSearchBtnTaken');
+	const sideSearchDropdownTaken = document.querySelector('.sideSearchDropdownTaken');
+	const sideSearchBtnSearch = document.querySelector('.sideSearchBtnSearch');
+
+	//обработчики элементов панели поиска
+	sideSearchBtnDateOfReceipt.addEventListener('click', () => sideSearchDropdownDateOfReceipt.classList.toggle('hide'));
+	sideSearchBtnOrgan.addEventListener('click', () => sideSearchDropdownOrgan.classList.toggle('hide'));
+	sideSearchBtnUnit.addEventListener('click', () => sideSearchDropdownUnit.classList.toggle('hide'));
+	sideSearchBtnMaterial.addEventListener('click', () => sideSearchDropdownMaterial.classList.toggle('hide'));
+	sideSearchBtnNumber.addEventListener('click', () => sideSearchDropdownNumber.classList.toggle('hide'));
+	sideSearchBtnArticle.addEventListener('click', () => sideSearchDropdownArticle.classList.toggle('hide'));
+	sideSearchBtnFact.addEventListener('click', () => sideSearchDropdownFact.classList.toggle('hide'));
+	sideSearchBtnType.addEventListener('click', () => sideSearchDropdownType.classList.toggle('hide'));
+	sideSearchBtnExp.addEventListener('click', () => sideSearchDropdownExp.classList.toggle('hide'));
+	sideSearchBtnStatus.addEventListener('click', () => sideSearchDropdownStatus.classList.toggle('hide'));
+	sideSearchBtnExec.addEventListener('click', () => sideSearchDropdownExec.classList.toggle('hide'));
+	sideSearchBtnRes.addEventListener('click', () => sideSearchDropdownRes.classList.toggle('hide'));
+	sideSearchBtnTaken.addEventListener('click', () => sideSearchDropdownTaken.classList.toggle('hide'));
+
+	//отрисовывание таблицы
 	renderDb(dbOfExpertises);
 
-	//изменение обработчиков кнопки меню
+	//изменение обработчиков кнопок меню
 	btnSearch.removeEventListener('click', forBtnSearchOn);
 	btnSearch.addEventListener('click', forBtnSearchOff);
 	btnCreateNewExpertise.removeEventListener('click', forBtnReturnToTable);

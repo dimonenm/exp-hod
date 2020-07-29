@@ -365,7 +365,10 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 40px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 40px;
   background-color: #04628d;
   color: #fff;
   font-family: "Times New Roman", Times, serif;
@@ -486,9 +489,13 @@ body {
           align-items: center;
   width: 180px;
   height: 40px;
-  background: #3E86A7;
+  background: #3e86a7;
   -webkit-box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.5), inset 0px -1px 1px rgba(0, 0, 0, 0.5), inset 1px 0px 1px rgba(255, 255, 255, 0.5), inset -1px 0px 1px rgba(0, 0, 0, 0.5);
           box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.5), inset 0px -1px 1px rgba(0, 0, 0, 0.5), inset 1px 0px 1px rgba(255, 255, 255, 0.5), inset -1px 0px 1px rgba(0, 0, 0, 0.5);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   cursor: default;
 }
 
@@ -525,7 +532,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: #ffffff33;
+  background: #ccc;
 }
 
 .container-main-side-search-container-panel-dropdown-row {
@@ -559,7 +566,7 @@ body {
   width: 130px;
 }
 
-.container-main-side-search-container-panel-dropdown-row-inputTextUnitOfOrgan {
+.container-main-side-search-container-panel-dropdown-row-inputText {
   width: 158px;
 }
 

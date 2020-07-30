@@ -12,6 +12,7 @@ const btnResetExp = document.querySelector('.btnResetExp'); // кнопка Rese
 const btnAddExp = document.querySelector('.btnAddExp'); // кнопка Add окна новой экспертизы
 
 let dbOfExpertises;// переменная для получения базы данных
+const findList = {};
 
 //объявление переменных конец
 //----------------------------------------------------------------------
@@ -227,7 +228,7 @@ function addExpsInWorkspaseTable(tableInner, db) {
 		let date1 = Number(element.dateOfReceipt);
 		let date2 = Number(element.prolongation);
 		let date3 = new Date();
-		let date4 = ((date3 - date2)/1000/60/60/24);
+		let date4 = ((date3 - date2) / 1000 / 60 / 60 / 24);
 		let date5 = ((date3 - date1) * 100) / (date2 - date1);
 		if (date5 < 5) { cell12.classList.add('cell12-linear-gradient0'); }
 		else if (date5 >= 5 && date5 < 10) { cell12.classList.add('cell12-linear-gradient05'); }
@@ -457,7 +458,7 @@ function forDropdownListInRow1SecondCell4Input() {
 	});
 }
 
-function forBtnSearchOn(){
+function forBtnSearchOn() {
 	// изменение стиля кнопок меню
 	btnSearch.style.boxShadow = `1px 1px 1px rgba(255, 255, 255, 0.5), 
 	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
@@ -473,7 +474,7 @@ function forBtnSearchOn(){
 	workspaseExpertise.style.display = 'none';
 	workspaseTable.style.display = 'block';
 	workspaseStatus.style.display = 'flex';
-	
+
 	// включение панели для поиска
 	containerMainSideSearchContainer.classList.remove('hide');
 
@@ -521,8 +522,62 @@ function forBtnSearchOn(){
 	sideSearchBtnRes.addEventListener('click', () => sideSearchDropdownRes.classList.toggle('hide'));
 	sideSearchBtnTaken.addEventListener('click', () => sideSearchDropdownTaken.classList.toggle('hide'));
 
+	sideSearchBtnSearch.addEventListener('click', () => {
+
+		findList.dateOfReceipt = {
+			start: `${+sideSearchDropdownDateOfReceipt.children[0].children[1].valueAsDate}`,
+			stop: `${+sideSearchDropdownDateOfReceipt.children[1].children[1].valueAsDate}`
+		};
+		findList.organ = {
+			gsu: `${sideSearchDropdownOrgan.children[0].children[1].checked}`,
+			mvd: `${sideSearchDropdownOrgan.children[1].children[1].checked}`,
+			fsb: `${sideSearchDropdownOrgan.children[2].children[1].checked}`,
+			sud: `${sideSearchDropdownOrgan.children[3].children[1].checked}`
+		};
+		findList.unit = `${sideSearchDropdownUnit.childNodes[1].childNodes[1].value}`;
+		findList.material = {
+			dul: `${sideSearchDropdownMaterial.children[0].children[1].checked}`,
+			ud: `${sideSearchDropdownMaterial.children[1].children[1].checked}`,
+			kusp: `${sideSearchDropdownMaterial.children[2].children[1].checked}`
+		};
+		findList.number = `${sideSearchDropdownNumber.children[0].children[0].value}`;
+		findList.article = `${sideSearchDropdownArticle.children[0].children[0].value}`;
+		findList.fact = {
+			ob: `${sideSearchDropdownFact.children[0].children[1].checked}`,
+			bp: `${sideSearchDropdownFact.children[1].children[1].checked}`,
+			nt: `${sideSearchDropdownFact.children[2].children[1].checked}`
+		};
+		findList.type = {
+			dna: `${sideSearchDropdownType.children[0].children[1].checked}`,
+			dna_and_hair: `${sideSearchDropdownType.children[1].children[1].checked}`,
+			hair: `${sideSearchDropdownType.children[2].children[1].checked}`
+		};
+		findList.exp = {
+			hod: `${sideSearchDropdownExp.children[0].children[1].checked}`,
+			hom: `${sideSearchDropdownExp.children[1].children[1].checked}`,
+			kir: `${sideSearchDropdownExp.children[2].children[1].checked}`,
+			sor: `${sideSearchDropdownExp.children[3].children[1].checked}`,
+			bar: `${sideSearchDropdownExp.children[4].children[1].checked}`
+		};
+		findList.status = `${sideSearchDropdownStatus.children[0].children[0].value}`;
+
+		findList.exec = {
+			start: `${+sideSearchDropdownExec.children[0].children[1].valueAsDate}`,
+			stop: `${+sideSearchDropdownExec.children[1].children[1].valueAsDate}`
+		};
+		findList.res = {
+			pol: `${sideSearchDropdownRes.children[0].children[1].checked}`,
+			otr: `${sideSearchDropdownRes.children[1].children[1].checked}`,
+			npv: `${sideSearchDropdownRes.children[2].children[1].checked}`
+		};
+		findList.taken = {
+			pol: `${sideSearchDropdownTaken.children[0].children[1].checked}`,
+			otr: `${sideSearchDropdownTaken.children[1].children[1].checked}`
+		};
+	})
+
 	//отрисовывание таблицы
-	renderDb(dbOfExpertises);
+	// renderDb(dbOfExpertises);
 
 	//изменение обработчиков кнопок меню
 	btnSearch.removeEventListener('click', forBtnSearchOn);
@@ -531,7 +586,7 @@ function forBtnSearchOn(){
 	btnCreateNewExpertise.addEventListener('click', forBtnCreateNewExpertise);
 }
 
-function forBtnSearchOff(){
+function forBtnSearchOff() {
 	btnSearch.style.boxShadow = `1px 1px 1px rgba(0, 0, 0, 0.5), 
 	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
 	inset -1px -1px 1px rgba(0, 0, 0, 0.5)`;

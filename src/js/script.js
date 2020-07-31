@@ -574,6 +574,42 @@ function forBtnSearchOn() {
 			pol: `${sideSearchDropdownTaken.children[0].children[1].checked}`,
 			otr: `${sideSearchDropdownTaken.children[1].children[1].checked}`
 		};
+
+		const dbOfFindExpertises = dbOfExpertises.map(item => {
+			if(findList.dateOfReceipt.start !== '0') console.log(+findList.dateOfReceipt.start, +item.getDateOfReceipt());
+			if(findList.dateOfReceipt.stop !== '0') console.log(findList.dateOfReceipt.stop);
+			if(findList.organ.gsu !== 'false') console.log(findList.organ.gsu);
+			if(findList.organ.mvd !== 'false') console.log(findList.organ.mvd);
+			if(findList.organ.fsb !== 'false') console.log(findList.organ.fsb);
+			if(findList.organ.sud !== 'false') console.log(findList.organ.sud);
+			if(findList.unit) console.log(findList.unit);
+			if(findList.material.dul !== 'false') console.log(findList.material.dul);
+			if(findList.material.ud !== 'false') console.log(findList.material.ud);
+			if(findList.material.kusp !== 'false') console.log(findList.material.kusp);
+			if(findList.number) console.log(findList.number);
+			if(findList.article) console.log(findList.article);
+			if(findList.fact.ob !== 'false') console.log(findList.fact.ob);
+			if(findList.fact.bp !== 'false') console.log(findList.fact.bp);
+			if(findList.fact.nt !== 'false') console.log(findList.fact.nt);
+			if(findList.type.dna !== 'false') console.log(findList.type.dna);
+			if(findList.type.dna_and_hair !== 'false') console.log(findList.type.dna_and_hair);
+			if(findList.type.hair !== 'false') console.log(findList.type.hair);
+			if(findList.exp.hod !== 'false') console.log(findList.exp.hod);
+			if(findList.exp.hom !== 'false') console.log(findList.exp.hom);
+			if(findList.exp.kir !== 'false') console.log(findList.exp.kir);
+			if(findList.exp.sor !== 'false') console.log(findList.exp.sor);
+			if(findList.exp.bar !== 'false') console.log(findList.exp.bar);
+			if(findList.status) console.log(findList.status);
+			if(findList.exec.start !== '0') console.log(findList.exec.start);
+			if(findList.exec.stop !== '0') console.log(findList.exec.stop);
+			if(findList.res.pol !== 'false') console.log(findList.res.pol);
+			if(findList.res.otr !== 'false') console.log(findList.res.otr);
+			if(findList.res.npv !== 'false') console.log(findList.res.npv);
+			if(findList.taken.pol !== 'false') console.log(findList.taken.pol);
+			if(findList.taken.otr !== 'false') console.log(findList.taken.otr);
+
+
+		});
 	})
 
 	//отрисовывание таблицы

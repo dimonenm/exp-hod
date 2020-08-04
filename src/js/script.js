@@ -3,6 +3,35 @@
 const btnCreateNewExpertise = document.querySelector('.btnCreateNewExpertise'); // кнопка создания новой экспертизы и возвращения к таблице
 const btnSearch = document.querySelector('.btnSearch'); // кнопка поиска экспертиз
 const containerMainSideSearchContainer = document.querySelector('.container-main-side-search-container');
+//поиск элементов панели поиска
+const sideSearchForm = document.querySelector('.sideSearchForm');
+const sideSearchBtnDateOfReceipt = document.querySelector('.sideSearchBtnDateOfReceipt');
+const sideSearchDropdownDateOfReceipt = document.querySelector('.sideSearchDropdownDateOfReceipt');
+const sideSearchBtnOrgan = document.querySelector('.sideSearchBtnOrgan');
+const sideSearchDropdownOrgan = document.querySelector('.sideSearchDropdownOrgan');
+const sideSearchBtnUnit = document.querySelector('.sideSearchBtnUnit');
+const sideSearchDropdownUnit = document.querySelector('.sideSearchDropdownUnit');
+const sideSearchBtnMaterial = document.querySelector('.sideSearchBtnMaterial');
+const sideSearchDropdownMaterial = document.querySelector('.sideSearchDropdownMaterial');
+const sideSearchBtnNumber = document.querySelector('.sideSearchBtnNumber');
+const sideSearchDropdownNumber = document.querySelector('.sideSearchDropdownNumber');
+const sideSearchBtnArticle = document.querySelector('.sideSearchBtnArticle');
+const sideSearchDropdownArticle = document.querySelector('.sideSearchDropdownArticle');
+const sideSearchBtnFact = document.querySelector('.sideSearchBtnFact');
+const sideSearchDropdownFact = document.querySelector('.sideSearchDropdownFact');
+const sideSearchBtnType = document.querySelector('.sideSearchBtnType');
+const sideSearchDropdownType = document.querySelector('.sideSearchDropdownType');
+const sideSearchBtnExp = document.querySelector('.sideSearchBtnExp');
+const sideSearchDropdownExp = document.querySelector('.sideSearchDropdownExp');
+const sideSearchBtnStatus = document.querySelector('.sideSearchBtnStatus');
+const sideSearchDropdownStatus = document.querySelector('.sideSearchDropdownStatus');
+const sideSearchBtnExec = document.querySelector('.sideSearchBtnExec');
+const sideSearchDropdownExec = document.querySelector('.sideSearchDropdownExec');
+const sideSearchBtnRes = document.querySelector('.sideSearchBtnRes');
+const sideSearchDropdownRes = document.querySelector('.sideSearchDropdownRes');
+const sideSearchBtnTaken = document.querySelector('.sideSearchBtnTaken');
+const sideSearchDropdownTaken = document.querySelector('.sideSearchDropdownTaken');
+const sideSearchBtnSearch = document.querySelector('.sideSearchBtnSearch');
 
 const inputRow2SecondCell7 = document.querySelector('.row2-second-cell7 input'); // ячейка окна новой экспертизы общее кол-во объектов
 const inputRow2SecondCell8 = document.querySelector('.row2-second-cell8 input'); // ячейка окна новой экспертизы кол-во пол объектов
@@ -478,35 +507,6 @@ function forBtnSearchOn() {
 	// включение панели для поиска
 	containerMainSideSearchContainer.classList.remove('hide');
 
-	//поиск элементов панели поиска
-	const sideSearchBtnDateOfReceipt = document.querySelector('.sideSearchBtnDateOfReceipt');
-	const sideSearchDropdownDateOfReceipt = document.querySelector('.sideSearchDropdownDateOfReceipt');
-	const sideSearchBtnOrgan = document.querySelector('.sideSearchBtnOrgan');
-	const sideSearchDropdownOrgan = document.querySelector('.sideSearchDropdownOrgan');
-	const sideSearchBtnUnit = document.querySelector('.sideSearchBtnUnit');
-	const sideSearchDropdownUnit = document.querySelector('.sideSearchDropdownUnit');
-	const sideSearchBtnMaterial = document.querySelector('.sideSearchBtnMaterial');
-	const sideSearchDropdownMaterial = document.querySelector('.sideSearchDropdownMaterial');
-	const sideSearchBtnNumber = document.querySelector('.sideSearchBtnNumber');
-	const sideSearchDropdownNumber = document.querySelector('.sideSearchDropdownNumber');
-	const sideSearchBtnArticle = document.querySelector('.sideSearchBtnArticle');
-	const sideSearchDropdownArticle = document.querySelector('.sideSearchDropdownArticle');
-	const sideSearchBtnFact = document.querySelector('.sideSearchBtnFact');
-	const sideSearchDropdownFact = document.querySelector('.sideSearchDropdownFact');
-	const sideSearchBtnType = document.querySelector('.sideSearchBtnType');
-	const sideSearchDropdownType = document.querySelector('.sideSearchDropdownType');
-	const sideSearchBtnExp = document.querySelector('.sideSearchBtnExp');
-	const sideSearchDropdownExp = document.querySelector('.sideSearchDropdownExp');
-	const sideSearchBtnStatus = document.querySelector('.sideSearchBtnStatus');
-	const sideSearchDropdownStatus = document.querySelector('.sideSearchDropdownStatus');
-	const sideSearchBtnExec = document.querySelector('.sideSearchBtnExec');
-	const sideSearchDropdownExec = document.querySelector('.sideSearchDropdownExec');
-	const sideSearchBtnRes = document.querySelector('.sideSearchBtnRes');
-	const sideSearchDropdownRes = document.querySelector('.sideSearchDropdownRes');
-	const sideSearchBtnTaken = document.querySelector('.sideSearchBtnTaken');
-	const sideSearchDropdownTaken = document.querySelector('.sideSearchDropdownTaken');
-	const sideSearchBtnSearch = document.querySelector('.sideSearchBtnSearch');
-
 	//обработчики элементов панели поиска
 	sideSearchBtnDateOfReceipt.addEventListener('click', () => sideSearchDropdownDateOfReceipt.classList.toggle('hide'));
 	sideSearchBtnOrgan.addEventListener('click', () => sideSearchDropdownOrgan.classList.toggle('hide'));
@@ -523,6 +523,7 @@ function forBtnSearchOn() {
 	sideSearchBtnTaken.addEventListener('click', () => sideSearchDropdownTaken.classList.toggle('hide'));
 
 	sideSearchBtnSearch.addEventListener('click', () => {
+		let dbOfFindExpertises = [];
 
 		findList.dateOfReceipt = {
 			start: `${+sideSearchDropdownDateOfReceipt.children[0].children[1].valueAsDate}`,
@@ -560,7 +561,6 @@ function forBtnSearchOn() {
 			bar: `${sideSearchDropdownExp.children[4].children[1].checked}`
 		};
 		findList.status = `${sideSearchDropdownStatus.children[0].children[0].value}`;
-
 		findList.exec = {
 			start: `${+sideSearchDropdownExec.children[0].children[1].valueAsDate}`,
 			stop: `${+sideSearchDropdownExec.children[1].children[1].valueAsDate}`
@@ -575,63 +575,232 @@ function forBtnSearchOn() {
 			otr: `${sideSearchDropdownTaken.children[1].children[1].checked}`
 		};
 
-		let dbOfFindExpertises = dbOfExpertises.filter(item => {
+		if (findList.dateOfReceipt.start !== '0' || findList.dateOfReceipt.stop !== '0') {
+			let dbOfFindExpertisesTemp = dbOfExpertises.filter(item => {
+				if (findList.dateOfReceipt.start !== '0' && findList.dateOfReceipt.start > 1388534400000 &&
+					findList.dateOfReceipt.stop !== '0' && findList.dateOfReceipt.stop <= +(new Date()) &&
+					+findList.dateOfReceipt.start <= +item.getDateOfReceipt() && +findList.dateOfReceipt.stop >= +item.getDateOfReceipt()) {
+					return true;
+				} else if (findList.dateOfReceipt.start !== '0' && findList.dateOfReceipt.start > 1388534400000 &&
+					findList.dateOfReceipt.stop === '0' && +findList.dateOfReceipt.start <= +item.getDateOfReceipt()) {
+					return true;
+				} else if (findList.dateOfReceipt.stop !== '0' && findList.dateOfReceipt.stop <= +(new Date()) &&
+					findList.dateOfReceipt.start === '0' && +findList.dateOfReceipt.stop >= +item.getDateOfReceipt()) {
+					return true;
+				}
+			});
+			dbOfFindExpertises = dbOfFindExpertisesTemp;
+		}
 
-			if(findList.dateOfReceipt.start !== '0' && findList.dateOfReceipt.start > 1388534400000 && 
-			findList.dateOfReceipt.stop !== '0' && findList.dateOfReceipt.stop <= +(new Date()) &&
-			+findList.dateOfReceipt.start <= +item.getDateOfReceipt() && +findList.dateOfReceipt.stop >= +item.getDateOfReceipt()){
-				console.log('v1');
-				return true;
-			} else if(findList.dateOfReceipt.start !== '0' && findList.dateOfReceipt.start > 1388534400000 && 
-			findList.dateOfReceipt.stop === '0' && +findList.dateOfReceipt.start <= +item.getDateOfReceipt()){
-				console.log('v2');
-				return true;
-			}else if(findList.dateOfReceipt.stop !== '0' && findList.dateOfReceipt.stop <= +(new Date()) && 
-			findList.dateOfReceipt.start === '0' && +findList.dateOfReceipt.stop >= +item.getDateOfReceipt()){
-				console.log('v3');
-				return true;
+		if (findList.organ.gsu !== 'false' || findList.organ.mvd !== 'false' || findList.organ.fsb !== 'false' ||
+			findList.organ.sud !== 'false') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.organ.gsu !== 'false' && 'ГСУ СК' === item.getOrganAppointedExpertise())
+						return true;
+					if (findList.organ.mvd !== 'false' && 'УМВД' === item.getOrganAppointedExpertise())
+						return true;
+					if (findList.organ.fsb !== 'false' && 'ФСБ' === item.getOrganAppointedExpertise())
+						return true;
+					if (findList.organ.sud !== 'false' && 'Суд' === item.getOrganAppointedExpertise())
+						return true;
+				});
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.organ.gsu !== 'false' && 'ГСУ СК' === item.getOrganAppointedExpertise())
+						return true;
+					if (findList.organ.mvd !== 'false' && 'УМВД' === item.getOrganAppointedExpertise())
+						return true;
+					if (findList.organ.fsb !== 'false' && 'ФСБ' === item.getOrganAppointedExpertise())
+						return true;
+					if (findList.organ.sud !== 'false' && 'Суд' === item.getOrganAppointedExpertise())
+						return true;
+				});
+			};
+		}
+
+		if (findList.unit) {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (item.getUnitOforgan().toLocaleLowerCase().includes(findList.unit)) {
+						return true;
+					}
+				})
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (item.getUnitOforgan().toLocaleLowerCase().includes(findList.unit)) {
+						return true;
+					}
+				})
 			}
+		};
 
-			// // if(findList.dateOfReceipt.start !== '0' && findList.dateOfReceipt.start > 1388534400000) console.log(+findList.dateOfReceipt.start, );
-			// // if(findList.dateOfReceipt.stop !== '0' && findList.dateOfReceipt.stop <= +(new Date())) console.log(findList.dateOfReceipt.stop);
-			// if(findList.organ.gsu !== 'false') console.log(findList.organ.gsu);
-			// if(findList.organ.mvd !== 'false') console.log(findList.organ.mvd);
-			// if(findList.organ.fsb !== 'false') console.log(findList.organ.fsb);
-			// if(findList.organ.sud !== 'false') console.log(findList.organ.sud);
-			// if(findList.unit) console.log(findList.unit);
-			// if(findList.material.dul !== 'false') console.log(findList.material.dul);
-			// if(findList.material.ud !== 'false') console.log(findList.material.ud);
-			// if(findList.material.kusp !== 'false') console.log(findList.material.kusp);
-			// if(findList.number) console.log(findList.number);
-			// if(findList.article) console.log(findList.article);
-			// if(findList.fact.ob !== 'false') console.log(findList.fact.ob);
-			// if(findList.fact.bp !== 'false') console.log(findList.fact.bp);
-			// if(findList.fact.nt !== 'false') console.log(findList.fact.nt);
-			// if(findList.type.dna !== 'false') console.log(findList.type.dna);
-			// if(findList.type.dna_and_hair !== 'false') console.log(findList.type.dna_and_hair);
-			// if(findList.type.hair !== 'false') console.log(findList.type.hair);
-			// if(findList.exp.hod !== 'false') console.log(findList.exp.hod);
-			// if(findList.exp.hom !== 'false') console.log(findList.exp.hom);
-			// if(findList.exp.kir !== 'false') console.log(findList.exp.kir);
-			// if(findList.exp.sor !== 'false') console.log(findList.exp.sor);
-			// if(findList.exp.bar !== 'false') console.log(findList.exp.bar);
-			// if(findList.status) console.log(findList.status);
-			// if(findList.exec.start !== '0') console.log(findList.exec.start);
-			// if(findList.exec.stop !== '0') console.log(findList.exec.stop);
-			// if(findList.res.pol !== 'false') console.log(findList.res.pol);
-			// if(findList.res.otr !== 'false') console.log(findList.res.otr);
-			// if(findList.res.npv !== 'false') console.log(findList.res.npv);
-			// if(findList.taken.pol !== 'false') console.log(findList.taken.pol);
-			// if(findList.taken.otr !== 'false') console.log(findList.taken.otr);
+		if (findList.material.dul !== 'false' || findList.material.ud !== 'false' || findList.material.kusp !== 'false') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.material.dul !== 'false' && 'ДУЛ' === item.getByTheMaterials())
+						return true;
+					if (findList.material.ud !== 'false' && 'УД' === item.getByTheMaterials())
+						return true;
+					if (findList.material.kusp !== 'false' && 'КУСП' === item.getByTheMaterials())
+						return true;
+				});
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.material.dul !== 'false' && 'ДУЛ' === item.getByTheMaterials())
+						return true;
+					if (findList.material.ud !== 'false' && 'УД' === item.getByTheMaterials())
+						return true;
+					if (findList.material.kusp !== 'false' && 'КУСП' === item.getByTheMaterials())
+						return true;
+				});
+			};
+		}
 
-			
-		});
-		renderDb(dbOfFindExpertises);
+		if (findList.number) {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (item.getNumber().toLocaleLowerCase().includes(findList.number)) {
+						return true;
+					}
+				})
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (item.getNumber().toLocaleLowerCase().includes(findList.number)) {
+						return true;
+					}
+				})
+			}
+		};
 		
-		if(!dbOfFindExpertises.length){
+		if (findList.article) {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (item.getArticle().toLocaleLowerCase().includes(findList.article)) {
+						return true;
+					}
+				})
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (item.getArticle().toLocaleLowerCase().includes(findList.article)) {
+						return true;
+					}
+				})
+			}
+		};
+
+		if (findList.fact.ob !== 'false' || findList.fact.bp !== 'false' || findList.fact.nt !== 'false') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.fact.ob !== 'false' && 'Общее' === item.getByFact())
+						return true;
+					if (findList.fact.bp !== 'false' && 'Б/п' === item.getByFact())
+						return true;
+					if (findList.fact.nt !== 'false' && 'Н/т' === item.getByFact())
+						return true;
+				});
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.fact.ob !== 'false' && 'Общее' === item.getByFact())
+						return true;
+					if (findList.fact.bp !== 'false' && 'Б/п' === item.getByFact())
+						return true;
+					if (findList.fact.nt !== 'false' && 'Н/т' === item.getByFact())
+						return true;
+				});
+			};
+		}
+
+		if (findList.type.dna !== 'false' || findList.type.dna_and_hair !== 'false' || findList.type.hair !== 'false') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.type.dna !== 'false' && 'ДНК' === item.getTypeOfResearch())
+						return true;
+					if (findList.type.dna_and_hair !== 'false' && 'ДНК и волосы' === item.getTypeOfResearch())
+						return true;
+					if (findList.type.hair !== 'false' && 'Волосы' === item.getTypeOfResearch())
+						return true;
+				});
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.type.dna !== 'false' && 'ДНК' === item.getTypeOfResearch())
+						return true;
+					if (findList.type.dna_and_hair !== 'false' && 'ДНК и волосы' === item.getTypeOfResearch())
+						return true;
+					if (findList.type.hair !== 'false' && 'Волосы' === item.getTypeOfResearch())
+						return true;
+				});
+			};
+		}
+
+
+		if (findList.exp.hod !== 'false' || findList.exp.hom !== 'false' || findList.exp.kir !== 'false' ||
+		findList.exp.sor !== 'false' || findList.exp.bar !== 'false') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.exp.hod !== 'false' && 'Ходырев Н.' === item.getExpertName())
+						return true;
+					if (findList.exp.hom !== 'false' && 'Хоменко А.' === item.getExpertName())
+						return true;
+					if (findList.exp.kir !== 'false' && 'Кирсанова Н.' === item.getExpertName())
+						return true;
+					if (findList.exp.sor !== 'false' && 'Сорокина Е.' === item.getExpertName())
+						return true;
+					if (findList.exp.bar !== 'false' && 'Баркова М.' === item.getExpertName())
+						return true;
+				});
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.exp.hod !== 'false' && 'Ходырев Н.' === item.getExpertName())
+						return true;
+					if (findList.exp.hom !== 'false' && 'Хоменко А.' === item.getExpertName())
+						return true;
+					if (findList.exp.kir !== 'false' && 'Кирсанова Н.' === item.getExpertName())
+						return true;
+					if (findList.exp.sor !== 'false' && 'Сорокина Е.' === item.getExpertName())
+						return true;
+					if (findList.exp.bar !== 'false' && 'Баркова М.' === item.getExpertName())
+						return true;
+				});
+			};
+		}
+
+		if (findList.status) {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if ((+item.getProlongation() - (new Date())) <= (findList.status * 24 * 60 * 60 * 1000) && 
+					item.getExecution() !== '0') {
+						return true;
+					}
+				})
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if ((+item.getProlongation() - (new Date())) <= (findList.status * 24 * 60 * 60 * 1000) && 
+					item.getExecution() !== '0') {
+						return true;
+					}
+				})
+			}
+		};
+
+
+		// if(findList.exec.start !== '0') console.log(findList.exec.start);
+		// if(findList.exec.stop !== '0') console.log(findList.exec.stop);
+		
+		// if(findList.res.pol !== 'false') console.log(findList.res.pol);
+		// if(findList.res.otr !== 'false') console.log(findList.res.otr);
+		// if(findList.res.npv !== 'false') console.log(findList.res.npv);
+		// if(findList.taken.pol !== 'false') console.log(findList.taken.pol);
+		// if(findList.taken.otr !== 'false') console.log(findList.taken.otr);
+
+
+
+		renderDb(dbOfFindExpertises);
+
+		if (!dbOfFindExpertises.length) {
 			renderDb(dbOfExpertises);
 			console.log('1 - ', dbOfFindExpertises);
-		}else{
+		} else {
 			console.log('2 - ', dbOfFindExpertises);
 		}
 		// dbOfFindExpertises = [];
@@ -652,12 +821,29 @@ function forBtnSearchOff() {
 	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
 	inset -1px -1px 1px rgba(0, 0, 0, 0.5)`;
 
+	sideSearchForm.reset();
+
 	containerMainSideSearchContainer.classList.add('hide');
 
 	renderDb(dbOfExpertises);
 
 	btnSearch.removeEventListener('click', forBtnSearchOff);
 	btnSearch.addEventListener('click', forBtnSearchOn);
+
+	//обработчики элементов панели поиска
+	sideSearchBtnDateOfReceipt.addEventListener('click', () => sideSearchDropdownDateOfReceipt.classList.toggle('hide'));
+	sideSearchBtnOrgan.addEventListener('click', () => sideSearchDropdownOrgan.classList.toggle('hide'));
+	sideSearchBtnUnit.addEventListener('click', () => sideSearchDropdownUnit.classList.toggle('hide'));
+	sideSearchBtnMaterial.addEventListener('click', () => sideSearchDropdownMaterial.classList.toggle('hide'));
+	sideSearchBtnNumber.addEventListener('click', () => sideSearchDropdownNumber.classList.toggle('hide'));
+	sideSearchBtnArticle.addEventListener('click', () => sideSearchDropdownArticle.classList.toggle('hide'));
+	sideSearchBtnFact.addEventListener('click', () => sideSearchDropdownFact.classList.toggle('hide'));
+	sideSearchBtnType.addEventListener('click', () => sideSearchDropdownType.classList.toggle('hide'));
+	sideSearchBtnExp.addEventListener('click', () => sideSearchDropdownExp.classList.toggle('hide'));
+	sideSearchBtnStatus.addEventListener('click', () => sideSearchDropdownStatus.classList.toggle('hide'));
+	sideSearchBtnExec.addEventListener('click', () => sideSearchDropdownExec.classList.toggle('hide'));
+	sideSearchBtnRes.addEventListener('click', () => sideSearchDropdownRes.classList.toggle('hide'));
+	sideSearchBtnTaken.addEventListener('click', () => sideSearchDropdownTaken.classList.toggle('hide'));
 }
 
 function forBtnReturnToTable() {
@@ -671,6 +857,8 @@ function forBtnReturnToTable() {
 	workspaseExpertise.style.display = 'none';
 	workspaseTable.style.display = 'block';
 	workspaseStatus.style.display = 'flex';
+
+	sideSearchForm.reset();
 
 	const btnAddExp = document.querySelector('.btnAddExp');
 	const btnResetExp = document.querySelector('.btnResetExp');
@@ -958,44 +1146,3 @@ init();
 
 //запуск приложения конец
 //----------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let dbOfExpertisesJson = JSON.stringify(dbOfExpertises);
-
-// let url = 'saveDB.php';
-
-// const getData = (url, dbOfExpertisesJson) => {
-//   const request = new XMLHttpRequest();
-//   request.open('POST', url, true);
-//   request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-//   request.addEventListener('readystatechange', () => {
-//     if (request.readyState !== 4) return;
-
-//     if (request.status === 200) {
-//       console.log(request.response);
-//     } else {
-//       console.error(request.status);
-//     }
-//   });
-
-
-
-// request.send('db=' + dbOfExpertisesJson);
-// }
-
-// getData(url, dbOfExpertisesJson);

@@ -36,293 +36,334 @@
 					</div>
 				</div>
 				<div class="container-main-side-search-container hide">
-					<div class="container-main-side-search-container-panel">
-						<div class="container-main-side-search-container-panel-button sideSearchBtnDateOfReceipt">
-							<div class="container-main-side-search-container-panel-button-name">По дате регистр-и</div>
-							<div class="container-main-side-search-container-panel-button-img">
-								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+					<form action="" class="sideSearchForm">
+						<div class="container-main-side-search-container-panel">
+							<div class="container-main-side-search-container-panel-button sideSearchBtnDateOfReceipt">
+								<div class="container-main-side-search-container-panel-button-name">По дате регистр-и
+								</div>
+								<div class="container-main-side-search-container-panel-button-img">
+									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
+										height="11px" />
+								</div>
+							</div>
+							<div
+								class="container-main-side-search-container-panel-dropdown sideSearchDropdownDateOfReceipt hide">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">с</div>
+									<input type="date"
+										class="container-main-side-search-container-panel-dropdown-row-inputDate"
+										name="sideSearchDateOfReceiptStart">
+								</div>
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">по</div>
+									<input type="date"
+										class="container-main-side-search-container-panel-dropdown-row-inputDate"
+										name="sideSearchDateOfReceiptStop">
+								</div>
 							</div>
 						</div>
-						<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownDateOfReceipt hide">
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">с</div>
-								<input type="date"
-									class="container-main-side-search-container-panel-dropdown-row-inputDate"
-									name="sideSearchDateOfReceiptStart">
+						<div class="container-main-side-search-container-panel">
+							<div class="container-main-side-search-container-panel-button sideSearchBtnOrgan">
+								<div class="container-main-side-search-container-panel-button-name">По органу</div>
+								<div class="container-main-side-search-container-panel-button-img">
+									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
+										height="11px" />
+								</div>
 							</div>
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">по</div>
-								<input type="date"
-									class="container-main-side-search-container-panel-dropdown-row-inputDate"
-									name="sideSearchDateOfReceiptStop">
-							</div>
-						</div>
-					</div>
-					<div class="container-main-side-search-container-panel">
-						<div class="container-main-side-search-container-panel-button sideSearchBtnOrgan">
-							<div class="container-main-side-search-container-panel-button-name">По органу</div>
-							<div class="container-main-side-search-container-panel-button-img">
-								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownOrgan hide">
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">ГСУ</div>
-								<input type="checkbox" name="sideSearchOrganChSo">
-							</div>
+							<div
+								class="container-main-side-search-container-panel-dropdown sideSearchDropdownOrgan hide">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">ГСУ</div>
+									<input type="checkbox" name="sideSearchOrganChSo">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">МВД</div>
-								<input type="checkbox" name="sideSearchOrganChPolice">
-							</div>
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">МВД</div>
+									<input type="checkbox" name="sideSearchOrganChPolice">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">ФСБ</div>
-								<input type="checkbox" name="sideSearchOrganChFSB">
-							</div>
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">ФСБ</div>
+									<input type="checkbox" name="sideSearchOrganChFSB">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Суд</div>
-								<input type="checkbox" name="sideSearchOrganChJudgment">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">Суд</div>
+									<input type="checkbox" name="sideSearchOrganChJudgment">
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="container-main-side-search-container-panel">
-						<div class="container-main-side-search-container-panel-button sideSearchBtnUnit">
-							<div class="container-main-side-search-container-panel-button-name">По подраздел-ю</div>
-							<div class="container-main-side-search-container-panel-button-img">
-								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+						<div class="container-main-side-search-container-panel">
+							<div class="container-main-side-search-container-panel-button sideSearchBtnUnit">
+								<div class="container-main-side-search-container-panel-button-name">По подраздел-ю</div>
+								<div class="container-main-side-search-container-panel-button-img">
+									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
+										height="11px" />
+								</div>
+							</div>
+							<div
+								class="container-main-side-search-container-panel-dropdown sideSearchDropdownUnit hide">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<input type="text"
+										class="container-main-side-search-container-panel-dropdown-row-inputText"
+										name="sideSearchUnitOfOrgan">
+								</div>
 							</div>
 						</div>
-						<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownUnit hide">
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<input type="text"
-									class="container-main-side-search-container-panel-dropdown-row-inputText"
-									name="sideSearchUnitOfOrgan">
+						<div class="container-main-side-search-container-panel">
+							<div class="container-main-side-search-container-panel-button sideSearchBtnMaterial">
+								<div class="container-main-side-search-container-panel-button-name">По материалу</div>
+								<div class="container-main-side-search-container-panel-button-img">
+									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
+										height="11px" />
+								</div>
 							</div>
-						</div>
-					</div>
-					<div class="container-main-side-search-container-panel">
-						<div class="container-main-side-search-container-panel-button sideSearchBtnMaterial">
-							<div class="container-main-side-search-container-panel-button-name">По материалу</div>
-							<div class="container-main-side-search-container-panel-button-img">
-								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownMaterial hide">
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Дул</div>
-								<input type="checkbox" name="sideSearchMaterialChDul">
-							</div>
+							<div
+								class="container-main-side-search-container-panel-dropdown sideSearchDropdownMaterial hide">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">Дул</div>
+									<input type="checkbox" name="sideSearchMaterialChDul">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Уд</div>
-								<input type="checkbox" name="sideSearchMaterialChUd">
-							</div>
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">Уд</div>
+									<input type="checkbox" name="sideSearchMaterialChUd">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">КУСП</div>
-								<input type="checkbox" name="sideSearchMaterialChKusp">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">КУСП
+									</div>
+									<input type="checkbox" name="sideSearchMaterialChKusp">
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="container-main-side-search-container-panel">
-						<div class="container-main-side-search-container-panel-button sideSearchBtnNumber">
-							<div class="container-main-side-search-container-panel-button-name">По номеру</div>
-							<div class="container-main-side-search-container-panel-button-img">
-								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+						<div class="container-main-side-search-container-panel">
+							<div class="container-main-side-search-container-panel-button sideSearchBtnNumber">
+								<div class="container-main-side-search-container-panel-button-name">По номеру</div>
+								<div class="container-main-side-search-container-panel-button-img">
+									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
+										height="11px" />
+								</div>
+							</div>
+							<div
+								class="container-main-side-search-container-panel-dropdown sideSearchDropdownNumber hide">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<input type="number"
+										class="container-main-side-search-container-panel-dropdown-row-inputText"
+										name="sideSearchNumber">
+								</div>
 							</div>
 						</div>
-						<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownNumber hide">
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<input type="number"
-									class="container-main-side-search-container-panel-dropdown-row-inputText"
-									name="sideSearchNumber">
+						<div class="container-main-side-search-container-panel">
+							<div class="container-main-side-search-container-panel-button sideSearchBtnArticle">
+								<div class="container-main-side-search-container-panel-button-name">По статье</div>
+								<div class="container-main-side-search-container-panel-button-img">
+									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
+										height="11px" />
+								</div>
+							</div>
+							<div
+								class="container-main-side-search-container-panel-dropdown sideSearchDropdownArticle hide">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<input type="number"
+										class="container-main-side-search-container-panel-dropdown-row-inputText"
+										name="sideSearchArticle">
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="container-main-side-search-container-panel">
-						<div class="container-main-side-search-container-panel-button sideSearchBtnArticle">
-							<div class="container-main-side-search-container-panel-button-name">По статье</div>
-							<div class="container-main-side-search-container-panel-button-img">
-								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+						<div class="container-main-side-search-container-panel">
+							<div class="container-main-side-search-container-panel-button sideSearchBtnFact">
+								<div class="container-main-side-search-container-panel-button-name">По факту</div>
+								<div class="container-main-side-search-container-panel-button-img">
+									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
+										height="11px" />
+								</div>
 							</div>
-						</div>
-						<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownArticle hide">
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<input type="number"
-									class="container-main-side-search-container-panel-dropdown-row-inputText"
-									name="sideSearchArticle">
-							</div>
-						</div>
-					</div>
-					<div class="container-main-side-search-container-panel">
-						<div class="container-main-side-search-container-panel-button sideSearchBtnFact">
-							<div class="container-main-side-search-container-panel-button-name">По факту</div>
-							<div class="container-main-side-search-container-panel-button-img">
-								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownFact hide">
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Общее</div>
-								<input type="checkbox" name="sideSearchFactChOb">
-							</div>
+							<div
+								class="container-main-side-search-container-panel-dropdown sideSearchDropdownFact hide">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">Общее
+									</div>
+									<input type="checkbox" name="sideSearchFactChOb">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Б/п</div>
-								<input type="checkbox" name="sideSearchFactChBp">
-							</div>
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">Б/п</div>
+									<input type="checkbox" name="sideSearchFactChBp">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Н/т</div>
-								<input type="checkbox" name="sideSearchFactChNt">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">Н/т</div>
+									<input type="checkbox" name="sideSearchFactChNt">
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="container-main-side-search-container-panel">
-						<div class="container-main-side-search-container-panel-button sideSearchBtnType">
-							<div class="container-main-side-search-container-panel-button-name">По типу иссл-ния</div>
-							<div class="container-main-side-search-container-panel-button-img">
-								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+						<div class="container-main-side-search-container-panel">
+							<div class="container-main-side-search-container-panel-button sideSearchBtnType">
+								<div class="container-main-side-search-container-panel-button-name">По типу иссл-ния
+								</div>
+								<div class="container-main-side-search-container-panel-button-img">
+									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
+										height="11px" />
+								</div>
 							</div>
-						</div>
-						<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownType hide">
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">ДНК</div>
-								<input type="checkbox" name="sideSearchTypeChDna">
-							</div>
+							<div
+								class="container-main-side-search-container-panel-dropdown sideSearchDropdownType hide">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">ДНК</div>
+									<input type="checkbox" name="sideSearchTypeChDna">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">ДНК и волосы</div>
-								<input type="checkbox" name="sideSearchTypeChDnaAndHair">
-							</div>
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">ДНК и
+										волосы</div>
+									<input type="checkbox" name="sideSearchTypeChDnaAndHair">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Волосы</div>
-								<input type="checkbox" name="sideSearchTypeChHair">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">Волосы
+									</div>
+									<input type="checkbox" name="sideSearchTypeChHair">
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="container-main-side-search-container-panel">
-						<div class="container-main-side-search-container-panel-button sideSearchBtnExp">
-							<div class="container-main-side-search-container-panel-button-name">По эксперту</div>
-							<div class="container-main-side-search-container-panel-button-img">
-								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+						<div class="container-main-side-search-container-panel">
+							<div class="container-main-side-search-container-panel-button sideSearchBtnExp">
+								<div class="container-main-side-search-container-panel-button-name">По эксперту</div>
+								<div class="container-main-side-search-container-panel-button-img">
+									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
+										height="11px" />
+								</div>
 							</div>
-						</div>
-						<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownExp hide">
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Ходырев Н.</div>
-								<input type="checkbox" name="sideSearchExpChHod">
-							</div>
+							<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownExp hide">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">Ходырев
+										Н.</div>
+									<input type="checkbox" name="sideSearchExpChHod">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Хоменко А.</div>
-								<input type="checkbox" name="sideSearchExpChHom">
-							</div>
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">Хоменко
+										А.</div>
+									<input type="checkbox" name="sideSearchExpChHom">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Кирсанова Н.</div>
-								<input type="checkbox" name="sideSearchExpChKir">
-							</div>
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">Кирсанова
+										Н.</div>
+									<input type="checkbox" name="sideSearchExpChKir">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Сорокина Е.</div>
-								<input type="checkbox" name="sideSearchExpChSor">
-							</div>
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">Сорокина
+										Е.</div>
+									<input type="checkbox" name="sideSearchExpChSor">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Баркова М.</div>
-								<input type="checkbox" name="sideSearchExpChBar">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">Баркова
+										М.</div>
+									<input type="checkbox" name="sideSearchExpChBar">
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="container-main-side-search-container-panel">
-						<div class="container-main-side-search-container-panel-button sideSearchBtnStatus">
-							<div class="container-main-side-search-container-panel-button-name">По состоянию</div>
-							<div class="container-main-side-search-container-panel-button-img">
-								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+						<div class="container-main-side-search-container-panel">
+							<div class="container-main-side-search-container-panel-button sideSearchBtnStatus">
+								<div class="container-main-side-search-container-panel-button-name">По состоянию</div>
+								<div class="container-main-side-search-container-panel-button-img">
+									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
+										height="11px" />
+								</div>
+							</div>
+							<div
+								class="container-main-side-search-container-panel-dropdown sideSearchDropdownStatus hide">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<input type="text"
+										class="container-main-side-search-container-panel-dropdown-row-inputText"
+										name="sideSearchStatus">
+								</div>
 							</div>
 						</div>
-						<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownStatus hide">
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<input type="text"
-									class="container-main-side-search-container-panel-dropdown-row-inputText"
-									name="sideSearchStatus">
+						<div class="container-main-side-search-container-panel">
+							<div class="container-main-side-search-container-panel-button sideSearchBtnExec">
+								<div class="container-main-side-search-container-panel-button-name">По дате выпол-я
+								</div>
+								<div class="container-main-side-search-container-panel-button-img">
+									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
+										height="11px" />
+								</div>
+							</div>
+							<div
+								class="container-main-side-search-container-panel-dropdown sideSearchDropdownExec hide">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">с</div>
+									<input type="date"
+										class="container-main-side-search-container-panel-dropdown-row-inputDate"
+										name="sideSearchDateOfExecutionStart">
+								</div>
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">по</div>
+									<input type="date"
+										class="container-main-side-search-container-panel-dropdown-row-inputDate"
+										name="sideSearchDateOfExecutionStop">
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="container-main-side-search-container-panel">
-						<div class="container-main-side-search-container-panel-button sideSearchBtnExec">
-							<div class="container-main-side-search-container-panel-button-name">По дате выпол-я</div>
-							<div class="container-main-side-search-container-panel-button-img">
-								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+						<div class="container-main-side-search-container-panel">
+							<div class="container-main-side-search-container-panel-button sideSearchBtnRes">
+								<div class="container-main-side-search-container-panel-button-name">По результату</div>
+								<div class="container-main-side-search-container-panel-button-img">
+									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
+										height="11px" />
+								</div>
 							</div>
-						</div>
-						<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownExec hide">
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">с</div>
-								<input type="date"
-									class="container-main-side-search-container-panel-dropdown-row-inputDate"
-									name="sideSearchDateOfExecutionStart">
-							</div>
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">по</div>
-								<input type="date"
-									class="container-main-side-search-container-panel-dropdown-row-inputDate"
-									name="sideSearchDateOfExecutionStop">
-							</div>
-						</div>
-					</div>
-					<div class="container-main-side-search-container-panel">
-						<div class="container-main-side-search-container-panel-button sideSearchBtnRes">
-							<div class="container-main-side-search-container-panel-button-name">По результату</div>
-							<div class="container-main-side-search-container-panel-button-img">
-								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownRes hide">
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Положительный</div>
-								<input type="checkbox" name="sideSearchResChPol">
-							</div>
+							<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownRes hide">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">
+										Положительный</div>
+									<input type="checkbox" name="sideSearchResChPol">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Отрицательный</div>
-								<input type="checkbox" name="sideSearchResChOtr">
-							</div>
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">
+										Отрицательный</div>
+									<input type="checkbox" name="sideSearchResChOtr">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">НПВ</div>
-								<input type="checkbox" name="sideSearchResChNpv">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">НПВ</div>
+									<input type="checkbox" name="sideSearchResChNpv">
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="container-main-side-search-container-panel">
-						<div class="container-main-side-search-container-panel-button sideSearchBtnTaken">
-							<div class="container-main-side-search-container-panel-button-name">Забран</div>
-							<div class="container-main-side-search-container-panel-button-img">
-								<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+						<div class="container-main-side-search-container-panel">
+							<div class="container-main-side-search-container-panel-button sideSearchBtnTaken">
+								<div class="container-main-side-search-container-panel-button-name">Забран</div>
+								<div class="container-main-side-search-container-panel-button-img">
+									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
+										height="11px" />
+								</div>
 							</div>
-						</div>
-						<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownTaken hide">
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Да</div>
-								<input type="checkbox" name="sideSearchTakenChPol">
-							</div>
+							<div
+								class="container-main-side-search-container-panel-dropdown sideSearchDropdownTaken hide">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">Да</div>
+									<input type="checkbox" name="sideSearchTakenChPol">
+								</div>
 
-							<div class="container-main-side-search-container-panel-dropdown-row">
-								<div class="container-main-side-search-container-panel-dropdown-row-label">Нет</div>
-								<input type="checkbox" name="sideSearchTakenChOtr">
+								<div class="container-main-side-search-container-panel-dropdown-row">
+									<div class="container-main-side-search-container-panel-dropdown-row-label">Нет</div>
+									<input type="checkbox" name="sideSearchTakenChOtr">
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="container-main-side-search-container-panel">
-						<div class="container-main-side-search-container-panel-button sideSearchBtnSearch">
-							<div class="container-main-side-search-container-panel-button-name">Поиск</div>
+						<div class="container-main-side-search-container-panel">
+							<div class="container-main-side-search-container-panel-button sideSearchBtnSearch">
+								<div class="container-main-side-search-container-panel-button-name">Поиск</div>
+							</div>
 						</div>
-					</div>
+					</form>
+
 
 				</div>
 			</div>

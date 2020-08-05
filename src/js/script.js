@@ -259,7 +259,8 @@ function addExpsInWorkspaseTable(tableInner, db) {
 		let date3 = new Date();
 		let date4 = ((date3 - date2) / 1000 / 60 / 60 / 24);
 		let date5 = ((date3 - date1) * 100) / (date2 - date1);
-		if (date5 < 5) { cell12.classList.add('cell12-linear-gradient0'); }
+		if (element.execution && element.execution !== '0'){cell12.classList.add('cell12-done');}
+		else if (date5 >= 0 && date5 < 5) { cell12.classList.add('cell12-linear-gradient0'); }
 		else if (date5 >= 5 && date5 < 10) { cell12.classList.add('cell12-linear-gradient05'); }
 		else if (date5 >= 10 && date5 < 15) { cell12.classList.add('cell12-linear-gradient10'); }
 		else if (date5 >= 15 && date5 < 20) { cell12.classList.add('cell12-linear-gradient15'); }
@@ -279,8 +280,12 @@ function addExpsInWorkspaseTable(tableInner, db) {
 		else if (date5 >= 85 && date5 < 90) { cell12.classList.add('cell12-linear-gradient85'); }
 		else if (date5 >= 90 && date5 < 95) { cell12.classList.add('cell12-linear-gradient90'); }
 		else if (date5 >= 95 && date5 < 100) { cell12.classList.add('cell12-linear-gradient95'); }
-		else if (date5 >= 100) { cell12.classList.add('cell12-linear-gradient100'); }
-		cell12.textContent = `Осталось дней: \n ${date4.toFixed() * -1}`;
+		else if (date5 >= 100) { cell12.classList.add('cell12-expired'); }
+
+		if (element.execution && element.execution !== '0'){cell12.textContent = `Готова`;}
+		else if(date5 >= 0 && date5 < 100){cell12.textContent = `Осталось дней: \n ${date4.toFixed() * -1}`;}
+		else if(date5 >= 100){cell12.textContent = `Срок вышел!`;}
+		
 		rowData.appendChild(cell12);
 
 		const cell13 = document.createElement('div');
@@ -508,20 +513,6 @@ function forBtnSearchOn() {
 	containerMainSideSearchContainer.classList.remove('hide');
 
 	//обработчики элементов панели поиска
-	sideSearchBtnDateOfReceipt.addEventListener('click', () => sideSearchDropdownDateOfReceipt.classList.toggle('hide'));
-	sideSearchBtnOrgan.addEventListener('click', () => sideSearchDropdownOrgan.classList.toggle('hide'));
-	sideSearchBtnUnit.addEventListener('click', () => sideSearchDropdownUnit.classList.toggle('hide'));
-	sideSearchBtnMaterial.addEventListener('click', () => sideSearchDropdownMaterial.classList.toggle('hide'));
-	sideSearchBtnNumber.addEventListener('click', () => sideSearchDropdownNumber.classList.toggle('hide'));
-	sideSearchBtnArticle.addEventListener('click', () => sideSearchDropdownArticle.classList.toggle('hide'));
-	sideSearchBtnFact.addEventListener('click', () => sideSearchDropdownFact.classList.toggle('hide'));
-	sideSearchBtnType.addEventListener('click', () => sideSearchDropdownType.classList.toggle('hide'));
-	sideSearchBtnExp.addEventListener('click', () => sideSearchDropdownExp.classList.toggle('hide'));
-	sideSearchBtnStatus.addEventListener('click', () => sideSearchDropdownStatus.classList.toggle('hide'));
-	sideSearchBtnExec.addEventListener('click', () => sideSearchDropdownExec.classList.toggle('hide'));
-	sideSearchBtnRes.addEventListener('click', () => sideSearchDropdownRes.classList.toggle('hide'));
-	sideSearchBtnTaken.addEventListener('click', () => sideSearchDropdownTaken.classList.toggle('hide'));
-
 	sideSearchBtnSearch.addEventListener('click', () => {
 		let dbOfFindExpertises = [];
 
@@ -591,7 +582,6 @@ function forBtnSearchOn() {
 			});
 			dbOfFindExpertises = dbOfFindExpertisesTemp;
 		}
-
 		if (findList.organ.gsu !== 'false' || findList.organ.mvd !== 'false' || findList.organ.fsb !== 'false' ||
 			findList.organ.sud !== 'false') {
 			if (dbOfFindExpertises.length) {
@@ -618,7 +608,6 @@ function forBtnSearchOn() {
 				});
 			};
 		}
-
 		if (findList.unit) {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
@@ -634,7 +623,6 @@ function forBtnSearchOn() {
 				})
 			}
 		};
-
 		if (findList.material.dul !== 'false' || findList.material.ud !== 'false' || findList.material.kusp !== 'false') {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
@@ -656,7 +644,6 @@ function forBtnSearchOn() {
 				});
 			};
 		}
-
 		if (findList.number) {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
@@ -672,7 +659,6 @@ function forBtnSearchOn() {
 				})
 			}
 		};
-		
 		if (findList.article) {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
@@ -688,7 +674,6 @@ function forBtnSearchOn() {
 				})
 			}
 		};
-
 		if (findList.fact.ob !== 'false' || findList.fact.bp !== 'false' || findList.fact.nt !== 'false') {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
@@ -709,8 +694,7 @@ function forBtnSearchOn() {
 						return true;
 				});
 			};
-		}
-
+		};
 		if (findList.type.dna !== 'false' || findList.type.dna_and_hair !== 'false' || findList.type.hair !== 'false') {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
@@ -731,11 +715,9 @@ function forBtnSearchOn() {
 						return true;
 				});
 			};
-		}
-
-
+		};
 		if (findList.exp.hod !== 'false' || findList.exp.hom !== 'false' || findList.exp.kir !== 'false' ||
-		findList.exp.sor !== 'false' || findList.exp.bar !== 'false') {
+			findList.exp.sor !== 'false' || findList.exp.bar !== 'false') {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
 					if (findList.exp.hod !== 'false' && 'Ходырев Н.' === item.getExpertName())
@@ -763,47 +745,101 @@ function forBtnSearchOn() {
 						return true;
 				});
 			};
-		}
-
+		};
 		if (findList.status) {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
-					if ((+item.getProlongation() - (new Date())) <= (findList.status * 24 * 60 * 60 * 1000) && 
-					item.getExecution() !== '0') {
+					if ((+item.getProlongation() - (new Date())) <= (findList.status * 24 * 60 * 60 * 1000) &&
+						item.getExecution() !== '0') {
 						return true;
 					}
 				})
 			} else {
 				dbOfFindExpertises = dbOfExpertises.filter(item => {
-					if ((+item.getProlongation() - (new Date())) <= (findList.status * 24 * 60 * 60 * 1000) && 
-					item.getExecution() !== '0') {
+					if ((+item.getProlongation() - (new Date())) <= (findList.status * 24 * 60 * 60 * 1000) &&
+						item.getExecution() !== '0') {
 						return true;
 					}
 				})
 			}
 		};
-
-
-		// if(findList.exec.start !== '0') console.log(findList.exec.start);
-		// if(findList.exec.stop !== '0') console.log(findList.exec.stop);
-		
-		// if(findList.res.pol !== 'false') console.log(findList.res.pol);
-		// if(findList.res.otr !== 'false') console.log(findList.res.otr);
-		// if(findList.res.npv !== 'false') console.log(findList.res.npv);
-		// if(findList.taken.pol !== 'false') console.log(findList.taken.pol);
-		// if(findList.taken.otr !== 'false') console.log(findList.taken.otr);
-
-
+		if (findList.exec.start !== '0' || findList.exec.stop !== '0') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
+						findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
+						+findList.exec.start <= +item.getExecution() && +findList.exec.stop >= +item.getExecution()) {
+						return true;
+					} else if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
+						findList.exec.stop === '0' && +findList.exec.start <= +item.getExecution()) {
+						return true;
+					} else if (findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
+						findList.exec.start === '0' && +findList.exec.stop >= +item.getExecution()) {
+						return true;
+					}
+				})
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
+						findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
+						+findList.exec.start <= +item.getExecution() && +findList.exec.stop >= +item.getExecution()) {
+						return true;
+					} else if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
+						findList.exec.stop === '0' && +findList.exec.start <= +item.getExecution()) {
+						return true;
+					} else if (findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
+						findList.exec.start === '0' && +findList.exec.stop >= +item.getExecution()) {
+						return true;
+					}
+				})
+			}
+		};
+		if (findList.res.pol !== 'false' || findList.res.otr !== 'false' || findList.res.npv !== 'false') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.res.pol !== 'false' && 'Положительный' === item.getResult())
+						return true;
+					if (findList.res.otr !== 'false' && 'Отрицательный' === item.getResult())
+						return true;
+					if (findList.res.npv !== 'false' && 'НПВ' === item.getResult())
+						return true;
+				});
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.res.pol !== 'false' && 'Положительный' === item.getResult())
+						return true;
+					if (findList.res.otr !== 'false' && 'Отрицательный' === item.getResult())
+						return true;
+					if (findList.res.npv !== 'false' && 'НПВ' === item.getResult())
+						return true;
+				});
+			};
+		};
+		if (findList.taken.pol !== 'false' || findList.taken.otr !== 'false') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.taken.pol !== 'false' && 'true' === item.getReceived())
+						return true;
+					if (findList.taken.otr !== 'false' && 'false' === item.getReceived())
+						return true;
+				});
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.taken.pol !== 'false' && 'true' === item.getReceived())
+						return true;
+					if (findList.taken.otr !== 'false' && 'false' === item.getReceived())
+						return true;
+				});
+			};
+		};
 
 		renderDb(dbOfFindExpertises);
-
-		if (!dbOfFindExpertises.length) {
-			renderDb(dbOfExpertises);
-			console.log('1 - ', dbOfFindExpertises);
-		} else {
-			console.log('2 - ', dbOfFindExpertises);
-		}
-		// dbOfFindExpertises = [];
+		// if(dbOfFindExpertises.length){
+		// 	renderDb(dbOfFindExpertises);
+		// }else{
+		// 	renderDb(dbOfExpertises);
+		// }
+		
 	})
 
 	//отрисовывание таблицы
@@ -829,21 +865,6 @@ function forBtnSearchOff() {
 
 	btnSearch.removeEventListener('click', forBtnSearchOff);
 	btnSearch.addEventListener('click', forBtnSearchOn);
-
-	//обработчики элементов панели поиска
-	sideSearchBtnDateOfReceipt.addEventListener('click', () => sideSearchDropdownDateOfReceipt.classList.toggle('hide'));
-	sideSearchBtnOrgan.addEventListener('click', () => sideSearchDropdownOrgan.classList.toggle('hide'));
-	sideSearchBtnUnit.addEventListener('click', () => sideSearchDropdownUnit.classList.toggle('hide'));
-	sideSearchBtnMaterial.addEventListener('click', () => sideSearchDropdownMaterial.classList.toggle('hide'));
-	sideSearchBtnNumber.addEventListener('click', () => sideSearchDropdownNumber.classList.toggle('hide'));
-	sideSearchBtnArticle.addEventListener('click', () => sideSearchDropdownArticle.classList.toggle('hide'));
-	sideSearchBtnFact.addEventListener('click', () => sideSearchDropdownFact.classList.toggle('hide'));
-	sideSearchBtnType.addEventListener('click', () => sideSearchDropdownType.classList.toggle('hide'));
-	sideSearchBtnExp.addEventListener('click', () => sideSearchDropdownExp.classList.toggle('hide'));
-	sideSearchBtnStatus.addEventListener('click', () => sideSearchDropdownStatus.classList.toggle('hide'));
-	sideSearchBtnExec.addEventListener('click', () => sideSearchDropdownExec.classList.toggle('hide'));
-	sideSearchBtnRes.addEventListener('click', () => sideSearchDropdownRes.classList.toggle('hide'));
-	sideSearchBtnTaken.addEventListener('click', () => sideSearchDropdownTaken.classList.toggle('hide'));
 }
 
 function forBtnReturnToTable() {
@@ -1136,7 +1157,20 @@ btnCancelExp.addEventListener('click', forBtnReturnToTable);
 btnResetExp.addEventListener('click', forBtnResetNewExp);
 btnAddExp.addEventListener('click', forBtnAddNewExp);
 
-
+//обработчики элементов панели поиска
+sideSearchBtnDateOfReceipt.addEventListener('click', () => sideSearchDropdownDateOfReceipt.classList.toggle('hide'));
+sideSearchBtnOrgan.addEventListener('click', () => sideSearchDropdownOrgan.classList.toggle('hide'));
+sideSearchBtnUnit.addEventListener('click', () => sideSearchDropdownUnit.classList.toggle('hide'));
+sideSearchBtnMaterial.addEventListener('click', () => sideSearchDropdownMaterial.classList.toggle('hide'));
+sideSearchBtnNumber.addEventListener('click', () => sideSearchDropdownNumber.classList.toggle('hide'));
+sideSearchBtnArticle.addEventListener('click', () => sideSearchDropdownArticle.classList.toggle('hide'));
+sideSearchBtnFact.addEventListener('click', () => sideSearchDropdownFact.classList.toggle('hide'));
+sideSearchBtnType.addEventListener('click', () => sideSearchDropdownType.classList.toggle('hide'));
+sideSearchBtnExp.addEventListener('click', () => sideSearchDropdownExp.classList.toggle('hide'));
+sideSearchBtnStatus.addEventListener('click', () => sideSearchDropdownStatus.classList.toggle('hide'));
+sideSearchBtnExec.addEventListener('click', () => sideSearchDropdownExec.classList.toggle('hide'));
+sideSearchBtnRes.addEventListener('click', () => sideSearchDropdownRes.classList.toggle('hide'));
+sideSearchBtnTaken.addEventListener('click', () => sideSearchDropdownTaken.classList.toggle('hide'));
 
 //объявление обработчиков событий конец
 //----------------------------------------------------------------------

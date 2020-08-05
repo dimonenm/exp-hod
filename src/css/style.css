@@ -1349,7 +1349,67 @@ body {
   background: linear-gradient(90deg, red 1, white 1);
 }
 
+.container-main-workspase-table-inner-row-data .cell12-done {
+  background-color: green;
+}
+
+.container-main-workspase-table-inner-row-data .cell12-expired {
+  background-color: red;
+}
+
 .container-main-workspase-status {
-  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 80px;
   background-color: #00507a;
+}
+
+.container-main-workspase-status-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-preferred-size: 240px;
+      flex-basis: 240px;
+  background-color: #fff;
+}
+
+.container-main-workspase-status-wrapper-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-preferred-size: 40px;
+      flex-basis: 40px;
+  background-color: #cccfff;
+}
+
+.container-main-workspase-status-wrapper-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #dddccc;
 }

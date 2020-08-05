@@ -731,14 +731,47 @@ body {
 						.cell12-linear-gradient100 {
 							background: linear-gradient(90deg, red 1, white 1);
 						}
+						.cell12-done{
+							background-color: green;
+						}
+						.cell12-expired{
+							background-color: red;
+						}
 					}
 				}
 			}
 
 			&-status {
-				height: 40px;
+				display: flex;
+				justify-content: space-around;
+				height: 80px;
 
 				background-color: #00507a;
+
+				&-wrapper{
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					flex-basis: 240px;
+					background-color: #fff;
+
+					&-title{
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						flex-basis: 40px;
+
+
+						background-color: #cccfff;
+					}
+					&-data{
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						background-color: #dddccc;
+					}
+				}
 			}
 		}
 	}

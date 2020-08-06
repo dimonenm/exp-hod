@@ -746,6 +746,12 @@ body {
 				justify-content: space-around;
 				height: 80px;
 
+				font-family: "Times New Roman";
+				font-size: 18px;
+				font-weight: bold;
+				color: #ffffff;
+				text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+
 				background-color: #00507a;
 
 				&-wrapper{
@@ -754,22 +760,80 @@ body {
 					justify-content: center;
 					align-items: center;
 					flex-basis: 240px;
-					background-color: #fff;
+					// background-color: #fff;
 
 					&-title{
 						display: flex;
 						justify-content: center;
 						align-items: center;
 						flex-basis: 40px;
-
-
-						background-color: #cccfff;
+						
+						text-align: center;
+						
+						// background-color: #cccfff;
 					}
 					&-data{
 						display: flex;
-						justify-content: center;
+						justify-content: space-around;
 						align-items: center;
-						background-color: #dddccc;
+						flex-basis: 40px;
+						flex-grow: 1;
+
+						width: 100%;
+
+						// background-color: #dddccc;
+
+						&-ob{
+							display: flex;
+							flex-direction: column;
+							justify-content: space-between;
+							
+							&-title{
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								text-align: center;								
+							}
+							&-data{
+								display: flex;
+								justify-content: center;
+								align-items: center;
+							}
+						}
+						&-pol{
+							display: flex;
+							flex-direction: column;
+							justify-content: space-between;
+							
+							&-title{
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								text-align: center;								
+							}
+							&-data{
+								display: flex;
+								justify-content: center;
+								align-items: center;
+							}
+						}
+						&-otr{
+							display: flex;
+							flex-direction: column;
+							justify-content: space-between;
+							
+							&-title{
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								text-align: center;								
+							}
+							&-data{
+								display: flex;
+								justify-content: center;
+								align-items: center;
+							}
+						}
 					}
 				}
 			}

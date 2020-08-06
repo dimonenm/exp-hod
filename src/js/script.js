@@ -1,9 +1,17 @@
 //объявление переменных начало
 
+//поиск элементов модуля новой экспертизы
 const btnCreateNewExpertise = document.querySelector('.btnCreateNewExpertise'); // кнопка создания новой экспертизы и возвращения к таблице
+const inputRow2SecondCell7 = document.querySelector('.row2-second-cell7 input'); // ячейка окна новой экспертизы общее кол-во объектов
+const inputRow2SecondCell8 = document.querySelector('.row2-second-cell8 input'); // ячейка окна новой экспертизы кол-во пол объектов
+const inputRow2SecondCell9 = document.querySelector('.row2-second-cell9 input'); // ячейка окна новой экспертизы кол-во отр объектов
+const btnCancelExp = document.querySelector('.btnCancelExp'); // кнопка Cancel окна новой экспертизы
+const btnResetExp = document.querySelector('.btnResetExp'); // кнопка Reset окна новой экспертизы
+const btnAddExp = document.querySelector('.btnAddExp'); // кнопка Add окна новой экспертизы
+
+//поиск элементов панели поиска
 const btnSearch = document.querySelector('.btnSearch'); // кнопка поиска экспертиз
 const containerMainSideSearchContainer = document.querySelector('.container-main-side-search-container');
-//поиск элементов панели поиска
 const sideSearchForm = document.querySelector('.sideSearchForm');
 const sideSearchBtnDateOfReceipt = document.querySelector('.sideSearchBtnDateOfReceipt');
 const sideSearchDropdownDateOfReceipt = document.querySelector('.sideSearchDropdownDateOfReceipt');
@@ -33,12 +41,18 @@ const sideSearchBtnTaken = document.querySelector('.sideSearchBtnTaken');
 const sideSearchDropdownTaken = document.querySelector('.sideSearchDropdownTaken');
 const sideSearchBtnSearch = document.querySelector('.sideSearchBtnSearch');
 
-const inputRow2SecondCell7 = document.querySelector('.row2-second-cell7 input'); // ячейка окна новой экспертизы общее кол-во объектов
-const inputRow2SecondCell8 = document.querySelector('.row2-second-cell8 input'); // ячейка окна новой экспертизы кол-во пол объектов
-const inputRow2SecondCell9 = document.querySelector('.row2-second-cell9 input'); // ячейка окна новой экспертизы кол-во отр объектов
-const btnCancelExp = document.querySelector('.btnCancelExp'); // кнопка Cancel окна новой экспертизы
-const btnResetExp = document.querySelector('.btnResetExp'); // кнопка Reset окна новой экспертизы
-const btnAddExp = document.querySelector('.btnAddExp'); // кнопка Add окна новой экспертизы
+//поиск элементов панели статуса(футер)
+const statusTotalExp = document.querySelector('.statusTotalExp');
+const statusPolExp = document.querySelector('.statusPolExp');
+const statusOtrExp = document.querySelector('.statusOtrExp');
+const statusNpvExp = document.querySelector('.statusNpvExp');
+const statusTotalOb = document.querySelector('.statusTotalOb');
+const statusPolOb = document.querySelector('.statusPolOb');
+const statusOtrOb = document.querySelector('.statusOtrOb');
+const statusNotTakenExp = document.querySelector('.statusNotTakenExp');
+const statusTakenExp = document.querySelector('.statusTakenExp');
+
+
 
 let dbOfExpertises;// переменная для получения базы данных
 const findList = {};
@@ -104,6 +118,7 @@ const renderDb = (dbOfExpertises) => {
 
 	const allRows = document.querySelectorAll('.container-main-workspase-table-inner-row-data');
 	selectRow(allRows);
+	renderStatusFromDb(dbOfExpertises);
 }
 
 function showTitleInWorkspaseTable() {
@@ -259,7 +274,7 @@ function addExpsInWorkspaseTable(tableInner, db) {
 		let date3 = new Date();
 		let date4 = ((date3 - date2) / 1000 / 60 / 60 / 24);
 		let date5 = ((date3 - date1) * 100) / (date2 - date1);
-		if (element.execution && element.execution !== '0'){cell12.classList.add('cell12-done');}
+		if (element.execution && element.execution !== '0') { cell12.classList.add('cell12-done'); }
 		else if (date5 >= 0 && date5 < 5) { cell12.classList.add('cell12-linear-gradient0'); }
 		else if (date5 >= 5 && date5 < 10) { cell12.classList.add('cell12-linear-gradient05'); }
 		else if (date5 >= 10 && date5 < 15) { cell12.classList.add('cell12-linear-gradient10'); }
@@ -282,10 +297,10 @@ function addExpsInWorkspaseTable(tableInner, db) {
 		else if (date5 >= 95 && date5 < 100) { cell12.classList.add('cell12-linear-gradient95'); }
 		else if (date5 >= 100) { cell12.classList.add('cell12-expired'); }
 
-		if (element.execution && element.execution !== '0'){cell12.textContent = `Готова`;}
-		else if(date5 >= 0 && date5 < 100){cell12.textContent = `Осталось дней: \n ${date4.toFixed() * -1}`;}
-		else if(date5 >= 100){cell12.textContent = `Срок вышел!`;}
-		
+		if (element.execution && element.execution !== '0') { cell12.textContent = `Готова`; }
+		else if (date5 >= 0 && date5 < 100) { cell12.textContent = `Осталось дней: \n ${date4.toFixed() * -1}`; }
+		else if (date5 >= 100) { cell12.textContent = `Срок вышел!`; }
+
 		rowData.appendChild(cell12);
 
 		const cell13 = document.createElement('div');
@@ -325,6 +340,39 @@ function addExpsInWorkspaseTable(tableInner, db) {
 		tableInner.appendChild(rowData);
 	});
 	return tableInner;
+}
+
+function renderStatusFromDb(db) {
+	let totalExp = db.length;
+	let polExp = 0;
+	let otrExp = 0;
+	let npvExp = 0;
+	let totalOb = 0;
+	let polOb = 0;
+	let otrOb = 0;
+	let notTakenExp = 0;
+	let TakenExp = 0;
+
+	for (let item of db) {
+		if (item.getResult() === 'Положительный') polExp++;
+		if (item.getResult() === 'Отрицательный') otrExp++;
+		if (item.getResult() === 'НПВ') npvExp++;
+		if (item.getCountObjectsTotal() !== '') totalOb = totalOb + Number(item.getCountObjectsTotal());
+		if (item.getCountObjectsPositive() !== '') polOb = polOb + Number(item.getCountObjectsPositive());
+		if (item.getCountObjectsNegative() !== '') otrOb = otrOb + Number(item.getCountObjectsNegative());
+		if (item.getNotTaken() === 'true') notTakenExp++;
+		if (item.getReceived() === 'true') TakenExp++;
+	}
+
+	statusTotalExp.textContent = totalExp;
+	statusPolExp.textContent = polExp;
+	statusOtrExp.textContent = otrExp;
+	statusNpvExp.textContent = npvExp;
+	statusTotalOb.textContent = totalOb;
+	statusPolOb.textContent = polOb;
+	statusOtrOb.textContent = otrOb;
+	statusNotTakenExp.textContent = notTakenExp;
+	statusTakenExp.textContent = TakenExp;
 }
 
 function forBtnCreateNewExpertise() {
@@ -748,17 +796,17 @@ function forBtnSearchOn() {
 		};
 		if (findList.status) {
 			if (dbOfFindExpertises.length) {
-				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
-					if ((+item.getProlongation() - (new Date())) <= (findList.status * 24 * 60 * 60 * 1000) &&
-						item.getExecution() !== '0') {
+				if (item.getExecution() !== '0' || item.getExecution() !== '') {
+					if ((+item.getProlongation() - (new Date())) <= (findList.status * 24 * 60 * 60 * 1000)) {
 						return true;
 					}
-				})
+				}
 			} else {
 				dbOfFindExpertises = dbOfExpertises.filter(item => {
-					if ((+item.getProlongation() - (new Date())) <= (findList.status * 24 * 60 * 60 * 1000) &&
-						item.getExecution() !== '0') {
-						return true;
+					if (item.getExecution() === '0' || item.getExecution() === '') {
+						if ((+item.getProlongation() - (new Date())) <= (findList.status * 24 * 60 * 60 * 1000)) {
+							return true;
+						}
 					}
 				})
 			}
@@ -834,12 +882,6 @@ function forBtnSearchOn() {
 		};
 
 		renderDb(dbOfFindExpertises);
-		// if(dbOfFindExpertises.length){
-		// 	renderDb(dbOfFindExpertises);
-		// }else{
-		// 	renderDb(dbOfExpertises);
-		// }
-		
 	})
 
 	//отрисовывание таблицы
@@ -954,7 +996,7 @@ function forBtnResetNewExp() {
 	resetForm(form);
 }
 
-function forUpdateExpertise(data) {
+function forBtnUpdateExpertise(data) {
 
 	const form = document.querySelector('.container-main-workspase-expertise-form');
 	form.reset();
@@ -1138,7 +1180,7 @@ function selectRow(allRows) {
 			const id = event.currentTarget.getAttribute('id');
 			dbOfExpertises.forEach(element => {
 				if (element.getId() === id) {
-					forUpdateExpertise(element);
+					forBtnUpdateExpertise(element);
 				};
 			});
 		});

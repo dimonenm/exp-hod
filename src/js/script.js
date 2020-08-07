@@ -40,6 +40,7 @@ const sideSearchDropdownRes = document.querySelector('.sideSearchDropdownRes');
 const sideSearchBtnTaken = document.querySelector('.sideSearchBtnTaken');
 const sideSearchDropdownTaken = document.querySelector('.sideSearchDropdownTaken');
 const sideSearchBtnSearch = document.querySelector('.sideSearchBtnSearch');
+const sideSearchBtnPrint = document.querySelector('.sideSearchBtnPrint');
 
 //поиск элементов панели статуса(футер)
 const statusTotalExp = document.querySelector('.statusTotalExp');
@@ -321,8 +322,9 @@ function addExpsInWorkspaseTable(tableInner, db) {
 			cell14.style.color = 'green';
 			cell14.innerHTML = '<i class="fas fa-check"></i>';
 		} else {
-			cell14.style.color = 'red';
+			cell14.style.color = 'blue';
 			cell14.innerHTML = '<i class="fas fa-times"></i>';
+			// cell14.innerHTML = '<i class="fas fa-times"></i>';
 		}
 		rowData.appendChild(cell14);
 
@@ -814,30 +816,34 @@ function forBtnSearchOn() {
 		if (findList.exec.start !== '0' || findList.exec.stop !== '0') {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
-					if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
-						findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
-						+findList.exec.start <= +item.getExecution() && +findList.exec.stop >= +item.getExecution()) {
-						return true;
-					} else if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
-						findList.exec.stop === '0' && +findList.exec.start <= +item.getExecution()) {
-						return true;
-					} else if (findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
-						findList.exec.start === '0' && +findList.exec.stop >= +item.getExecution()) {
-						return true;
+					if (+item.getExecution() > 0) {
+						if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
+							findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
+							+findList.exec.start <= +item.getExecution() && +findList.exec.stop >= +item.getExecution()) {
+							return true;
+						} else if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
+							findList.exec.stop === '0' && +findList.exec.start <= +item.getExecution()) {
+							return true;
+						} else if (findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
+							findList.exec.start === '0' && +findList.exec.stop >= +item.getExecution()) {
+							return true;
+						}
 					}
 				})
 			} else {
 				dbOfFindExpertises = dbOfExpertises.filter(item => {
-					if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
-						findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
-						+findList.exec.start <= +item.getExecution() && +findList.exec.stop >= +item.getExecution()) {
-						return true;
-					} else if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
-						findList.exec.stop === '0' && +findList.exec.start <= +item.getExecution()) {
-						return true;
-					} else if (findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
-						findList.exec.start === '0' && +findList.exec.stop >= +item.getExecution()) {
-						return true;
+					if (+item.getExecution() > 0) {
+						if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
+							findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
+							+findList.exec.start <= +item.getExecution() && +findList.exec.stop >= +item.getExecution()) {
+							return true;
+						} else if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
+							findList.exec.stop === '0' && +findList.exec.start <= +item.getExecution()) {
+							return true;
+						} else if (findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
+							findList.exec.start === '0' && +findList.exec.stop >= +item.getExecution()) {
+							return true;
+						}
 					}
 				})
 			}
@@ -883,9 +889,6 @@ function forBtnSearchOn() {
 
 		renderDb(dbOfFindExpertises);
 	})
-
-	//отрисовывание таблицы
-	// renderDb(dbOfExpertises);
 
 	//изменение обработчиков кнопок меню
 	btnSearch.removeEventListener('click', forBtnSearchOn);
@@ -1213,6 +1216,31 @@ sideSearchBtnStatus.addEventListener('click', () => sideSearchDropdownStatus.cla
 sideSearchBtnExec.addEventListener('click', () => sideSearchDropdownExec.classList.toggle('hide'));
 sideSearchBtnRes.addEventListener('click', () => sideSearchDropdownRes.classList.toggle('hide'));
 sideSearchBtnTaken.addEventListener('click', () => sideSearchDropdownTaken.classList.toggle('hide'));
+// sideSearchBtnPrint.addEventListener('click', () => window.print());
+sideSearchBtnPrint.addEventListener('click', () => {
+	let w = window.open();
+	// console.log(document.querySelector('head').innerHTML);
+	// w.document.head.innerHTML = '<meta charset="UTF-8">/n';
+	// w.document.head.innerHTML = '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+	// w.document.head.innerHTML = '<link rel="stylesheet" href="src/css/style.css">';
+	// w.document.head.innerHTML = '<link rel="stylesheet" href="src/css/all.css">';
+	w.document.head.innerHTML = `<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="src/css/style.css"><link rel="stylesheet" href="src/css/all.css">`;
+	
+	
+	w.document.body.innerHTML = document.querySelector('.container-main-workspase-table').innerHTML;
+	// w.print()
+	// let printContents = document.querySelector('.container-main-workspase-table').innerHTML;
+	// let originalContents = document.body.innerHTML;
+
+	// document.body.innerHTML = printContents;
+
+	// window.print();
+
+	// document.body.innerHTML = originalContents;
+
+});
+
 
 //объявление обработчиков событий конец
 //----------------------------------------------------------------------

@@ -355,7 +355,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 101%;
+  height: 100%;
 }
 
 .container-header {
@@ -369,6 +369,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   min-height: 40px;
+  min-width: 1874px;
   background-color: #04628d;
   color: #fff;
   font-family: "Times New Roman", Times, serif;

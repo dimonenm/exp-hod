@@ -1218,26 +1218,32 @@ sideSearchBtnRes.addEventListener('click', () => sideSearchDropdownRes.classList
 sideSearchBtnTaken.addEventListener('click', () => sideSearchDropdownTaken.classList.toggle('hide'));
 // sideSearchBtnPrint.addEventListener('click', () => window.print());
 sideSearchBtnPrint.addEventListener('click', () => {
+
 	let w = window.open();
-	// console.log(document.querySelector('head').innerHTML);
-	// w.document.head.innerHTML = '<meta charset="UTF-8">/n';
-	// w.document.head.innerHTML = '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
-	// w.document.head.innerHTML = '<link rel="stylesheet" href="src/css/style.css">';
-	// w.document.head.innerHTML = '<link rel="stylesheet" href="src/css/all.css">';
-	w.document.head.innerHTML = `<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="src/css/style.css"><link rel="stylesheet" href="src/css/all.css">`;
-	
-	
-	w.document.body.innerHTML = document.querySelector('.container-main-workspase-table').innerHTML;
-	// w.print()
-	// let printContents = document.querySelector('.container-main-workspase-table').innerHTML;
-	// let originalContents = document.body.innerHTML;
+	const head = `<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<link rel="apple-touch-icon" sizes="180x180" href="src/img/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="src/img/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="src/img/favicon-16x16.png">
+	<link rel="manifest" href="src/img/site.webmanifest">
 
-	// document.body.innerHTML = printContents;
+	<link rel="stylesheet" href="src/css/style.css">
+	<link rel="stylesheet" href="src/css/all.css">
+	<title>Doc for print</title>
+	</head>`;
 
-	// window.print();
-
-	// document.body.innerHTML = originalContents;
+	let print = new Promise(function(resolve, reject) {
+		w.document.open();
+		w.document.write(head);
+		w.document.write(document.querySelector('.container-main-workspase-table').innerHTML);	
+		w.document.close();
+		setTimeout(() => resolve(),5);
+		// resolve();
+	});
+	print.then(() => w.print());
 
 });
 

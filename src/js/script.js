@@ -1,7 +1,7 @@
 //объявление переменных начало
 
+//поиск элементов модуля новой экспертизы
 const btnCreateNewExpertise = document.querySelector('.btnCreateNewExpertise'); // кнопка создания новой экспертизы и возвращения к таблице
-
 const inputRow2SecondCell7 = document.querySelector('.row2-second-cell7 input'); // ячейка окна новой экспертизы общее кол-во объектов
 const inputRow2SecondCell8 = document.querySelector('.row2-second-cell8 input'); // ячейка окна новой экспертизы кол-во пол объектов
 const inputRow2SecondCell9 = document.querySelector('.row2-second-cell9 input'); // ячейка окна новой экспертизы кол-во отр объектов
@@ -9,7 +9,54 @@ const btnCancelExp = document.querySelector('.btnCancelExp'); // кнопка Ca
 const btnResetExp = document.querySelector('.btnResetExp'); // кнопка Reset окна новой экспертизы
 const btnAddExp = document.querySelector('.btnAddExp'); // кнопка Add окна новой экспертизы
 
+//поиск элементов панели поиска
+const btnSearch = document.querySelector('.btnSearch'); // кнопка поиска экспертиз
+const containerMainSideSearchContainer = document.querySelector('.container-main-side-search-container');
+const sideSearchForm = document.querySelector('.sideSearchForm');
+const sideSearchBtnDateOfReceipt = document.querySelector('.sideSearchBtnDateOfReceipt');
+const sideSearchDropdownDateOfReceipt = document.querySelector('.sideSearchDropdownDateOfReceipt');
+const sideSearchBtnOrgan = document.querySelector('.sideSearchBtnOrgan');
+const sideSearchDropdownOrgan = document.querySelector('.sideSearchDropdownOrgan');
+const sideSearchBtnUnit = document.querySelector('.sideSearchBtnUnit');
+const sideSearchDropdownUnit = document.querySelector('.sideSearchDropdownUnit');
+const sideSearchBtnMaterial = document.querySelector('.sideSearchBtnMaterial');
+const sideSearchDropdownMaterial = document.querySelector('.sideSearchDropdownMaterial');
+const sideSearchBtnNumber = document.querySelector('.sideSearchBtnNumber');
+const sideSearchDropdownNumber = document.querySelector('.sideSearchDropdownNumber');
+const sideSearchBtnArticle = document.querySelector('.sideSearchBtnArticle');
+const sideSearchDropdownArticle = document.querySelector('.sideSearchDropdownArticle');
+const sideSearchBtnFact = document.querySelector('.sideSearchBtnFact');
+const sideSearchDropdownFact = document.querySelector('.sideSearchDropdownFact');
+const sideSearchBtnType = document.querySelector('.sideSearchBtnType');
+const sideSearchDropdownType = document.querySelector('.sideSearchDropdownType');
+const sideSearchBtnExp = document.querySelector('.sideSearchBtnExp');
+const sideSearchDropdownExp = document.querySelector('.sideSearchDropdownExp');
+const sideSearchBtnStatus = document.querySelector('.sideSearchBtnStatus');
+const sideSearchDropdownStatus = document.querySelector('.sideSearchDropdownStatus');
+const sideSearchBtnExec = document.querySelector('.sideSearchBtnExec');
+const sideSearchDropdownExec = document.querySelector('.sideSearchDropdownExec');
+const sideSearchBtnRes = document.querySelector('.sideSearchBtnRes');
+const sideSearchDropdownRes = document.querySelector('.sideSearchDropdownRes');
+const sideSearchBtnTaken = document.querySelector('.sideSearchBtnTaken');
+const sideSearchDropdownTaken = document.querySelector('.sideSearchDropdownTaken');
+const sideSearchBtnSearch = document.querySelector('.sideSearchBtnSearch');
+const sideSearchBtnPrint = document.querySelector('.sideSearchBtnPrint');
+
+//поиск элементов панели статуса(футер)
+const statusTotalExp = document.querySelector('.statusTotalExp');
+const statusPolExp = document.querySelector('.statusPolExp');
+const statusOtrExp = document.querySelector('.statusOtrExp');
+const statusNpvExp = document.querySelector('.statusNpvExp');
+const statusTotalOb = document.querySelector('.statusTotalOb');
+const statusPolOb = document.querySelector('.statusPolOb');
+const statusOtrOb = document.querySelector('.statusOtrOb');
+const statusNotTakenExp = document.querySelector('.statusNotTakenExp');
+const statusTakenExp = document.querySelector('.statusTakenExp');
+
+
+
 let dbOfExpertises;// переменная для получения базы данных
+const findList = {};
 
 //объявление переменных конец
 //----------------------------------------------------------------------
@@ -43,21 +90,6 @@ const getDb = () => {
 //метод сохранения экспертизы в базе данных и рендеринг БД в таблице
 const setExpInDb = () => {
 
-	// const request = new XMLHttpRequest();
-	// request.open('POST', 'saveDb.php', true);
-	// request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-	// request.addEventListener('readystatechange', () => {
-	// 	if (request.readyState !== 4) return;
-	// 	if (request.status === 200) {
-	// 		console.log(request.response);
-	// 		const status = request.response;//
-	// 		(status === 'ok') ? () => console.log(status) : () => console.log(status);
-	// 	} else {
-	// 		console.error(request.status);
-	// 	}
-	// });
-	// request.send('db=' + JSON.stringify(dbOfExpertises));
-
 	fetch('saveDb.php', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -87,6 +119,7 @@ const renderDb = (dbOfExpertises) => {
 
 	const allRows = document.querySelectorAll('.container-main-workspase-table-inner-row-data');
 	selectRow(allRows);
+	renderStatusFromDb(dbOfExpertises);
 }
 
 function showTitleInWorkspaseTable() {
@@ -240,29 +273,35 @@ function addExpsInWorkspaseTable(tableInner, db) {
 		let date1 = Number(element.dateOfReceipt);
 		let date2 = Number(element.prolongation);
 		let date3 = new Date();
-		let date4 = ((date3 - date1) * 100) / (date2 - date1);
-		if (date4 < 5) { cell12.classList.add('cell12-linear-gradient0'); }
-		else if (date4 >= 5 && date4 < 10) { cell12.classList.add('cell12-linear-gradient05'); }
-		else if (date4 >= 10 && date4 < 15) { cell12.classList.add('cell12-linear-gradient10'); }
-		else if (date4 >= 15 && date4 < 20) { cell12.classList.add('cell12-linear-gradient15'); }
-		else if (date4 >= 20 && date4 < 25) { cell12.classList.add('cell12-linear-gradient20'); }
-		else if (date4 >= 25 && date4 < 30) { cell12.classList.add('cell12-linear-gradient25'); }
-		else if (date4 >= 30 && date4 < 35) { cell12.classList.add('cell12-linear-gradient30'); }
-		else if (date4 >= 35 && date4 < 40) { cell12.classList.add('cell12-linear-gradient35'); }
-		else if (date4 >= 40 && date4 < 45) { cell12.classList.add('cell12-linear-gradient40'); }
-		else if (date4 >= 45 && date4 < 50) { cell12.classList.add('cell12-linear-gradient45'); }
-		else if (date4 >= 50 && date4 < 55) { cell12.classList.add('cell12-linear-gradient50'); }
-		else if (date4 >= 55 && date4 < 60) { cell12.classList.add('cell12-linear-gradient55'); }
-		else if (date4 >= 60 && date4 < 65) { cell12.classList.add('cell12-linear-gradient60'); }
-		else if (date4 >= 65 && date4 < 70) { cell12.classList.add('cell12-linear-gradient65'); }
-		else if (date4 >= 70 && date4 < 75) { cell12.classList.add('cell12-linear-gradient70'); }
-		else if (date4 >= 75 && date4 < 80) { cell12.classList.add('cell12-linear-gradient75'); }
-		else if (date4 >= 80 && date4 < 85) { cell12.classList.add('cell12-linear-gradient80'); }
-		else if (date4 >= 85 && date4 < 90) { cell12.classList.add('cell12-linear-gradient85'); }
-		else if (date4 >= 90 && date4 < 95) { cell12.classList.add('cell12-linear-gradient90'); }
-		else if (date4 >= 95 && date4 < 100) { cell12.classList.add('cell12-linear-gradient95'); }
-		else if (date4 >= 100) { cell12.classList.add('cell12-linear-gradient100'); }
-		cell12.textContent = date4.toFixed();
+		let date4 = ((date3 - date2) / 1000 / 60 / 60 / 24);
+		let date5 = ((date3 - date1) * 100) / (date2 - date1);
+		if (element.execution && element.execution !== '0') { cell12.classList.add('cell12-done'); }
+		else if (date5 >= 0 && date5 < 5) { cell12.classList.add('cell12-linear-gradient0'); }
+		else if (date5 >= 5 && date5 < 10) { cell12.classList.add('cell12-linear-gradient05'); }
+		else if (date5 >= 10 && date5 < 15) { cell12.classList.add('cell12-linear-gradient10'); }
+		else if (date5 >= 15 && date5 < 20) { cell12.classList.add('cell12-linear-gradient15'); }
+		else if (date5 >= 20 && date5 < 25) { cell12.classList.add('cell12-linear-gradient20'); }
+		else if (date5 >= 25 && date5 < 30) { cell12.classList.add('cell12-linear-gradient25'); }
+		else if (date5 >= 30 && date5 < 35) { cell12.classList.add('cell12-linear-gradient30'); }
+		else if (date5 >= 35 && date5 < 40) { cell12.classList.add('cell12-linear-gradient35'); }
+		else if (date5 >= 40 && date5 < 45) { cell12.classList.add('cell12-linear-gradient40'); }
+		else if (date5 >= 45 && date5 < 50) { cell12.classList.add('cell12-linear-gradient45'); }
+		else if (date5 >= 50 && date5 < 55) { cell12.classList.add('cell12-linear-gradient50'); }
+		else if (date5 >= 55 && date5 < 60) { cell12.classList.add('cell12-linear-gradient55'); }
+		else if (date5 >= 60 && date5 < 65) { cell12.classList.add('cell12-linear-gradient60'); }
+		else if (date5 >= 65 && date5 < 70) { cell12.classList.add('cell12-linear-gradient65'); }
+		else if (date5 >= 70 && date5 < 75) { cell12.classList.add('cell12-linear-gradient70'); }
+		else if (date5 >= 75 && date5 < 80) { cell12.classList.add('cell12-linear-gradient75'); }
+		else if (date5 >= 80 && date5 < 85) { cell12.classList.add('cell12-linear-gradient80'); }
+		else if (date5 >= 85 && date5 < 90) { cell12.classList.add('cell12-linear-gradient85'); }
+		else if (date5 >= 90 && date5 < 95) { cell12.classList.add('cell12-linear-gradient90'); }
+		else if (date5 >= 95 && date5 < 100) { cell12.classList.add('cell12-linear-gradient95'); }
+		else if (date5 >= 100) { cell12.classList.add('cell12-expired'); }
+
+		if (element.execution && element.execution !== '0') { cell12.textContent = `Готова`; }
+		else if (date5 >= 0 && date5 < 100) { cell12.textContent = `Осталось дней: \n ${date4.toFixed() * -1}`; }
+		else if (date5 >= 100) { cell12.textContent = `Срок вышел!`; }
+
 		rowData.appendChild(cell12);
 
 		const cell13 = document.createElement('div');
@@ -283,8 +322,9 @@ function addExpsInWorkspaseTable(tableInner, db) {
 			cell14.style.color = 'green';
 			cell14.innerHTML = '<i class="fas fa-check"></i>';
 		} else {
-			cell14.style.color = 'red';
+			cell14.style.color = 'blue';
 			cell14.innerHTML = '<i class="fas fa-times"></i>';
+			// cell14.innerHTML = '<i class="fas fa-times"></i>';
 		}
 		rowData.appendChild(cell14);
 
@@ -304,11 +344,46 @@ function addExpsInWorkspaseTable(tableInner, db) {
 	return tableInner;
 }
 
+function renderStatusFromDb(db) {
+	let totalExp = db.length;
+	let polExp = 0;
+	let otrExp = 0;
+	let npvExp = 0;
+	let totalOb = 0;
+	let polOb = 0;
+	let otrOb = 0;
+	let notTakenExp = 0;
+	let TakenExp = 0;
+
+	for (let item of db) {
+		if (item.getResult() === 'Положительный') polExp++;
+		if (item.getResult() === 'Отрицательный') otrExp++;
+		if (item.getResult() === 'НПВ') npvExp++;
+		if (item.getCountObjectsTotal() !== '') totalOb = totalOb + Number(item.getCountObjectsTotal());
+		if (item.getCountObjectsPositive() !== '') polOb = polOb + Number(item.getCountObjectsPositive());
+		if (item.getCountObjectsNegative() !== '') otrOb = otrOb + Number(item.getCountObjectsNegative());
+		if (item.getNotTaken() === 'true') notTakenExp++;
+		if (item.getReceived() === 'true') TakenExp++;
+	}
+
+	statusTotalExp.textContent = totalExp;
+	statusPolExp.textContent = polExp;
+	statusOtrExp.textContent = otrExp;
+	statusNpvExp.textContent = npvExp;
+	statusTotalOb.textContent = totalOb;
+	statusPolOb.textContent = polOb;
+	statusOtrOb.textContent = otrOb;
+	statusNotTakenExp.textContent = notTakenExp;
+	statusTakenExp.textContent = TakenExp;
+}
+
 function forBtnCreateNewExpertise() {
 	//изменение стиля кнопки меню
 	btnCreateNewExpertise.style.boxShadow = `1px 1px 1px rgba(255, 255, 255, 0.5), 
 	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
 	inset -1px -1px 1px rgba(255, 255, 255, 0.5)`;
+
+	forBtnSearchOff()
 
 	//нахождение и очищение формы
 	const form = document.querySelector('.container-main-workspase-expertise-form');
@@ -400,11 +475,12 @@ function forDropdownListInRow1SecondCell4Input() {
 
 	row1SecondCell4Input.addEventListener('focus', () => {
 		if (!row1SecondCell4Input.value) {
-			dropdown.classList.add('dropdown-show');
 			if (row1SecondCell3Select.value === 'ГСУ СК') {
+				dropdown.classList.add('dropdown-show');
 				dropdownListPolice.classList.remove('dropdown-show');
 				dropdownListSo.classList.add('dropdown-show');
 			} else if (row1SecondCell3Select.value === 'УМВД') {
+				dropdown.classList.add('dropdown-show');
 				dropdownListSo.classList.remove('dropdown-show');
 				dropdownListPolice.classList.add('dropdown-show');
 			};
@@ -415,11 +491,12 @@ function forDropdownListInRow1SecondCell4Input() {
 		const inputData = row1SecondCell4Input.value.toLowerCase();
 
 		if (!row1SecondCell4Input.value) {
-			dropdown.classList.add('dropdown-show');
 			if (row1SecondCell3Select.value === 'ГСУ СК') {
+				dropdown.classList.add('dropdown-show');
 				dropdownListPolice.classList.remove('dropdown-show');
 				dropdownListSo.classList.add('dropdown-show');
 			} else if (row1SecondCell3Select.value === 'УМВД') {
+				dropdown.classList.add('dropdown-show');
 				dropdownListSo.classList.remove('dropdown-show');
 				dropdownListPolice.classList.add('dropdown-show');
 			};
@@ -465,6 +542,376 @@ function forDropdownListInRow1SecondCell4Input() {
 	});
 }
 
+function forBtnSearchOn() {
+	// изменение стиля кнопок меню
+	btnSearch.style.boxShadow = `1px 1px 1px rgba(255, 255, 255, 0.5), 
+	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
+	inset -1px -1px 1px rgba(255, 255, 255, 0.5)`;
+	btnCreateNewExpertise.style.boxShadow = `1px 1px 1px rgba(0, 0, 0, 0.5), 
+	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
+	inset -1px -1px 1px rgba(0, 0, 0, 0.5)`;
+
+	// включение таблицы
+	const workspaseExpertise = document.querySelector('.container-main-workspase-expertise');
+	const workspaseTable = document.querySelector('.container-main-workspase-table');
+	const workspaseStatus = document.querySelector('.container-main-workspase-status');
+	workspaseExpertise.style.display = 'none';
+	workspaseTable.style.display = 'block';
+	workspaseStatus.style.display = 'flex';
+
+	// включение панели для поиска
+	containerMainSideSearchContainer.classList.remove('hide');
+
+	//обработчики элементов панели поиска
+	sideSearchBtnSearch.addEventListener('click', () => {
+		let dbOfFindExpertises = [];
+
+		findList.dateOfReceipt = {
+			start: `${+sideSearchDropdownDateOfReceipt.children[0].children[1].valueAsDate}`,
+			stop: `${+sideSearchDropdownDateOfReceipt.children[1].children[1].valueAsDate}`
+		};
+		findList.organ = {
+			gsu: `${sideSearchDropdownOrgan.children[0].children[1].checked}`,
+			mvd: `${sideSearchDropdownOrgan.children[1].children[1].checked}`,
+			fsb: `${sideSearchDropdownOrgan.children[2].children[1].checked}`,
+			sud: `${sideSearchDropdownOrgan.children[3].children[1].checked}`
+		};
+		findList.unit = `${sideSearchDropdownUnit.childNodes[1].childNodes[1].value}`;
+		findList.material = {
+			dul: `${sideSearchDropdownMaterial.children[0].children[1].checked}`,
+			ud: `${sideSearchDropdownMaterial.children[1].children[1].checked}`,
+			kusp: `${sideSearchDropdownMaterial.children[2].children[1].checked}`
+		};
+		findList.number = `${sideSearchDropdownNumber.children[0].children[0].value}`;
+		findList.article = `${sideSearchDropdownArticle.children[0].children[0].value}`;
+		findList.fact = {
+			ob: `${sideSearchDropdownFact.children[0].children[1].checked}`,
+			bp: `${sideSearchDropdownFact.children[1].children[1].checked}`,
+			nt: `${sideSearchDropdownFact.children[2].children[1].checked}`
+		};
+		findList.type = {
+			dna: `${sideSearchDropdownType.children[0].children[1].checked}`,
+			dna_and_hair: `${sideSearchDropdownType.children[1].children[1].checked}`,
+			hair: `${sideSearchDropdownType.children[2].children[1].checked}`
+		};
+		findList.exp = {
+			hod: `${sideSearchDropdownExp.children[0].children[1].checked}`,
+			hom: `${sideSearchDropdownExp.children[1].children[1].checked}`,
+			kir: `${sideSearchDropdownExp.children[2].children[1].checked}`,
+			sor: `${sideSearchDropdownExp.children[3].children[1].checked}`,
+			bar: `${sideSearchDropdownExp.children[4].children[1].checked}`
+		};
+		findList.status = `${sideSearchDropdownStatus.children[0].children[0].value}`;
+		findList.exec = {
+			start: `${+sideSearchDropdownExec.children[0].children[1].valueAsDate}`,
+			stop: `${+sideSearchDropdownExec.children[1].children[1].valueAsDate}`
+		};
+		findList.res = {
+			pol: `${sideSearchDropdownRes.children[0].children[1].checked}`,
+			otr: `${sideSearchDropdownRes.children[1].children[1].checked}`,
+			npv: `${sideSearchDropdownRes.children[2].children[1].checked}`
+		};
+		findList.taken = {
+			pol: `${sideSearchDropdownTaken.children[0].children[1].checked}`,
+			otr: `${sideSearchDropdownTaken.children[1].children[1].checked}`
+		};
+
+		if (findList.dateOfReceipt.start !== '0' || findList.dateOfReceipt.stop !== '0') {
+			let dbOfFindExpertisesTemp = dbOfExpertises.filter(item => {
+				if (findList.dateOfReceipt.start !== '0' && findList.dateOfReceipt.start > 1388534400000 &&
+					findList.dateOfReceipt.stop !== '0' && findList.dateOfReceipt.stop <= +(new Date()) &&
+					+findList.dateOfReceipt.start <= +item.getDateOfReceipt() && +findList.dateOfReceipt.stop >= +item.getDateOfReceipt()) {
+					return true;
+				} else if (findList.dateOfReceipt.start !== '0' && findList.dateOfReceipt.start > 1388534400000 &&
+					findList.dateOfReceipt.stop === '0' && +findList.dateOfReceipt.start <= +item.getDateOfReceipt()) {
+					return true;
+				} else if (findList.dateOfReceipt.stop !== '0' && findList.dateOfReceipt.stop <= +(new Date()) &&
+					findList.dateOfReceipt.start === '0' && +findList.dateOfReceipt.stop >= +item.getDateOfReceipt()) {
+					return true;
+				}
+			});
+			dbOfFindExpertises = dbOfFindExpertisesTemp;
+		}
+		if (findList.organ.gsu !== 'false' || findList.organ.mvd !== 'false' || findList.organ.fsb !== 'false' ||
+			findList.organ.sud !== 'false') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.organ.gsu !== 'false' && 'ГСУ СК' === item.getOrganAppointedExpertise())
+						return true;
+					if (findList.organ.mvd !== 'false' && 'УМВД' === item.getOrganAppointedExpertise())
+						return true;
+					if (findList.organ.fsb !== 'false' && 'ФСБ' === item.getOrganAppointedExpertise())
+						return true;
+					if (findList.organ.sud !== 'false' && 'Суд' === item.getOrganAppointedExpertise())
+						return true;
+				});
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.organ.gsu !== 'false' && 'ГСУ СК' === item.getOrganAppointedExpertise())
+						return true;
+					if (findList.organ.mvd !== 'false' && 'УМВД' === item.getOrganAppointedExpertise())
+						return true;
+					if (findList.organ.fsb !== 'false' && 'ФСБ' === item.getOrganAppointedExpertise())
+						return true;
+					if (findList.organ.sud !== 'false' && 'Суд' === item.getOrganAppointedExpertise())
+						return true;
+				});
+			};
+		}
+		if (findList.unit) {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (item.getUnitOforgan().toLocaleLowerCase().includes(findList.unit)) {
+						return true;
+					}
+				})
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (item.getUnitOforgan().toLocaleLowerCase().includes(findList.unit)) {
+						return true;
+					}
+				})
+			}
+		};
+		if (findList.material.dul !== 'false' || findList.material.ud !== 'false' || findList.material.kusp !== 'false') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.material.dul !== 'false' && 'ДУЛ' === item.getByTheMaterials())
+						return true;
+					if (findList.material.ud !== 'false' && 'УД' === item.getByTheMaterials())
+						return true;
+					if (findList.material.kusp !== 'false' && 'КУСП' === item.getByTheMaterials())
+						return true;
+				});
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.material.dul !== 'false' && 'ДУЛ' === item.getByTheMaterials())
+						return true;
+					if (findList.material.ud !== 'false' && 'УД' === item.getByTheMaterials())
+						return true;
+					if (findList.material.kusp !== 'false' && 'КУСП' === item.getByTheMaterials())
+						return true;
+				});
+			};
+		}
+		if (findList.number) {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (item.getNumber().toLocaleLowerCase().includes(findList.number)) {
+						return true;
+					}
+				})
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (item.getNumber().toLocaleLowerCase().includes(findList.number)) {
+						return true;
+					}
+				})
+			}
+		};
+		if (findList.article) {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (item.getArticle().toLocaleLowerCase().includes(findList.article)) {
+						return true;
+					}
+				})
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (item.getArticle().toLocaleLowerCase().includes(findList.article)) {
+						return true;
+					}
+				})
+			}
+		};
+		if (findList.fact.ob !== 'false' || findList.fact.bp !== 'false' || findList.fact.nt !== 'false') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.fact.ob !== 'false' && 'Общее' === item.getByFact())
+						return true;
+					if (findList.fact.bp !== 'false' && 'Б/п' === item.getByFact())
+						return true;
+					if (findList.fact.nt !== 'false' && 'Н/т' === item.getByFact())
+						return true;
+				});
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.fact.ob !== 'false' && 'Общее' === item.getByFact())
+						return true;
+					if (findList.fact.bp !== 'false' && 'Б/п' === item.getByFact())
+						return true;
+					if (findList.fact.nt !== 'false' && 'Н/т' === item.getByFact())
+						return true;
+				});
+			};
+		};
+		if (findList.type.dna !== 'false' || findList.type.dna_and_hair !== 'false' || findList.type.hair !== 'false') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.type.dna !== 'false' && 'ДНК' === item.getTypeOfResearch())
+						return true;
+					if (findList.type.dna_and_hair !== 'false' && 'ДНК и волосы' === item.getTypeOfResearch())
+						return true;
+					if (findList.type.hair !== 'false' && 'Волосы' === item.getTypeOfResearch())
+						return true;
+				});
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.type.dna !== 'false' && 'ДНК' === item.getTypeOfResearch())
+						return true;
+					if (findList.type.dna_and_hair !== 'false' && 'ДНК и волосы' === item.getTypeOfResearch())
+						return true;
+					if (findList.type.hair !== 'false' && 'Волосы' === item.getTypeOfResearch())
+						return true;
+				});
+			};
+		};
+		if (findList.exp.hod !== 'false' || findList.exp.hom !== 'false' || findList.exp.kir !== 'false' ||
+			findList.exp.sor !== 'false' || findList.exp.bar !== 'false') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.exp.hod !== 'false' && 'Ходырев Н.' === item.getExpertName())
+						return true;
+					if (findList.exp.hom !== 'false' && 'Хоменко А.' === item.getExpertName())
+						return true;
+					if (findList.exp.kir !== 'false' && 'Кирсанова Н.' === item.getExpertName())
+						return true;
+					if (findList.exp.sor !== 'false' && 'Сорокина Е.' === item.getExpertName())
+						return true;
+					if (findList.exp.bar !== 'false' && 'Баркова М.' === item.getExpertName())
+						return true;
+				});
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.exp.hod !== 'false' && 'Ходырев Н.' === item.getExpertName())
+						return true;
+					if (findList.exp.hom !== 'false' && 'Хоменко А.' === item.getExpertName())
+						return true;
+					if (findList.exp.kir !== 'false' && 'Кирсанова Н.' === item.getExpertName())
+						return true;
+					if (findList.exp.sor !== 'false' && 'Сорокина Е.' === item.getExpertName())
+						return true;
+					if (findList.exp.bar !== 'false' && 'Баркова М.' === item.getExpertName())
+						return true;
+				});
+			};
+		};
+		if (findList.status) {
+			if (dbOfFindExpertises.length) {
+				if (item.getExecution() !== '0' || item.getExecution() !== '') {
+					if ((+item.getProlongation() - (new Date())) <= (findList.status * 24 * 60 * 60 * 1000)) {
+						return true;
+					}
+				}
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (item.getExecution() === '0' || item.getExecution() === '') {
+						if ((+item.getProlongation() - (new Date())) <= (findList.status * 24 * 60 * 60 * 1000)) {
+							return true;
+						}
+					}
+				})
+			}
+		};
+		if (findList.exec.start !== '0' || findList.exec.stop !== '0') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (+item.getExecution() > 0) {
+						if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
+							findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
+							+findList.exec.start <= +item.getExecution() && +findList.exec.stop >= +item.getExecution()) {
+							return true;
+						} else if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
+							findList.exec.stop === '0' && +findList.exec.start <= +item.getExecution()) {
+							return true;
+						} else if (findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
+							findList.exec.start === '0' && +findList.exec.stop >= +item.getExecution()) {
+							return true;
+						}
+					}
+				})
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (+item.getExecution() > 0) {
+						if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
+							findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
+							+findList.exec.start <= +item.getExecution() && +findList.exec.stop >= +item.getExecution()) {
+							return true;
+						} else if (findList.exec.start !== '0' && findList.exec.start > 1388534400000 &&
+							findList.exec.stop === '0' && +findList.exec.start <= +item.getExecution()) {
+							return true;
+						} else if (findList.exec.stop !== '0' && findList.exec.stop <= +(new Date()) &&
+							findList.exec.start === '0' && +findList.exec.stop >= +item.getExecution()) {
+							return true;
+						}
+					}
+				})
+			}
+		};
+		if (findList.res.pol !== 'false' || findList.res.otr !== 'false' || findList.res.npv !== 'false') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.res.pol !== 'false' && 'Положительный' === item.getResult())
+						return true;
+					if (findList.res.otr !== 'false' && 'Отрицательный' === item.getResult())
+						return true;
+					if (findList.res.npv !== 'false' && 'НПВ' === item.getResult())
+						return true;
+				});
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.res.pol !== 'false' && 'Положительный' === item.getResult())
+						return true;
+					if (findList.res.otr !== 'false' && 'Отрицательный' === item.getResult())
+						return true;
+					if (findList.res.npv !== 'false' && 'НПВ' === item.getResult())
+						return true;
+				});
+			};
+		};
+		if (findList.taken.pol !== 'false' || findList.taken.otr !== 'false') {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.taken.pol !== 'false' && 'true' === item.getReceived())
+						return true;
+					if (findList.taken.otr !== 'false' && 'false' === item.getReceived())
+						return true;
+				});
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.taken.pol !== 'false' && 'true' === item.getReceived())
+						return true;
+					if (findList.taken.otr !== 'false' && 'false' === item.getReceived())
+						return true;
+				});
+			};
+		};
+
+		renderDb(dbOfFindExpertises);
+	})
+
+	//изменение обработчиков кнопок меню
+	btnSearch.removeEventListener('click', forBtnSearchOn);
+	btnSearch.addEventListener('click', forBtnSearchOff);
+	btnCreateNewExpertise.removeEventListener('click', forBtnReturnToTable);
+	btnCreateNewExpertise.addEventListener('click', forBtnCreateNewExpertise);
+}
+
+function forBtnSearchOff() {
+	btnSearch.style.boxShadow = `1px 1px 1px rgba(0, 0, 0, 0.5), 
+	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
+	inset -1px -1px 1px rgba(0, 0, 0, 0.5)`;
+
+	sideSearchForm.reset();
+
+	containerMainSideSearchContainer.classList.add('hide');
+
+	renderDb(dbOfExpertises);
+
+	btnSearch.removeEventListener('click', forBtnSearchOff);
+	btnSearch.addEventListener('click', forBtnSearchOn);
+}
+
 function forBtnReturnToTable() {
 	btnCreateNewExpertise.style.boxShadow = `1px 1px 1px rgba(0, 0, 0, 0.5), 
 	inset 1px 1px 1px rgba(255, 255, 255, 0.2),
@@ -476,6 +923,8 @@ function forBtnReturnToTable() {
 	workspaseExpertise.style.display = 'none';
 	workspaseTable.style.display = 'block';
 	workspaseStatus.style.display = 'flex';
+
+	sideSearchForm.reset();
 
 	const btnAddExp = document.querySelector('.btnAddExp');
 	const btnResetExp = document.querySelector('.btnResetExp');
@@ -550,7 +999,7 @@ function forBtnResetNewExp() {
 	resetForm(form);
 }
 
-function forUpdateExpertise(data) {
+function forBtnUpdateExpertise(data) {
 
 	const form = document.querySelector('.container-main-workspase-expertise-form');
 	form.reset();
@@ -726,6 +1175,7 @@ function forBtnDeleteLastExp() {
 //объявление обработчиков событий начало
 
 btnCreateNewExpertise.addEventListener('click', forBtnCreateNewExpertise);
+btnSearch.addEventListener('click', forBtnSearchOn);
 
 function selectRow(allRows) {
 	allRows.forEach(element => {
@@ -733,7 +1183,7 @@ function selectRow(allRows) {
 			const id = event.currentTarget.getAttribute('id');
 			dbOfExpertises.forEach(element => {
 				if (element.getId() === id) {
-					forUpdateExpertise(element);
+					forBtnUpdateExpertise(element);
 				};
 			});
 		});
@@ -752,6 +1202,50 @@ btnCancelExp.addEventListener('click', forBtnReturnToTable);
 btnResetExp.addEventListener('click', forBtnResetNewExp);
 btnAddExp.addEventListener('click', forBtnAddNewExp);
 
+//обработчики элементов панели поиска
+sideSearchBtnDateOfReceipt.addEventListener('click', () => sideSearchDropdownDateOfReceipt.classList.toggle('hide'));
+sideSearchBtnOrgan.addEventListener('click', () => sideSearchDropdownOrgan.classList.toggle('hide'));
+sideSearchBtnUnit.addEventListener('click', () => sideSearchDropdownUnit.classList.toggle('hide'));
+sideSearchBtnMaterial.addEventListener('click', () => sideSearchDropdownMaterial.classList.toggle('hide'));
+sideSearchBtnNumber.addEventListener('click', () => sideSearchDropdownNumber.classList.toggle('hide'));
+sideSearchBtnArticle.addEventListener('click', () => sideSearchDropdownArticle.classList.toggle('hide'));
+sideSearchBtnFact.addEventListener('click', () => sideSearchDropdownFact.classList.toggle('hide'));
+sideSearchBtnType.addEventListener('click', () => sideSearchDropdownType.classList.toggle('hide'));
+sideSearchBtnExp.addEventListener('click', () => sideSearchDropdownExp.classList.toggle('hide'));
+sideSearchBtnStatus.addEventListener('click', () => sideSearchDropdownStatus.classList.toggle('hide'));
+sideSearchBtnExec.addEventListener('click', () => sideSearchDropdownExec.classList.toggle('hide'));
+sideSearchBtnRes.addEventListener('click', () => sideSearchDropdownRes.classList.toggle('hide'));
+sideSearchBtnTaken.addEventListener('click', () => sideSearchDropdownTaken.classList.toggle('hide'));
+// sideSearchBtnPrint.addEventListener('click', () => window.print());
+sideSearchBtnPrint.addEventListener('click', () => {
+
+	let w = window.open();
+	const head = `<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<link rel="apple-touch-icon" sizes="180x180" href="src/img/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="src/img/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="src/img/favicon-16x16.png">
+	<link rel="manifest" href="src/img/site.webmanifest">
+
+	<link rel="stylesheet" href="src/css/style.css">
+	<link rel="stylesheet" href="src/css/all.css">
+	<title>Doc for print</title>
+	</head>`;
+
+	let print = new Promise(function(resolve, reject) {
+		w.document.open();
+		w.document.write(head);
+		w.document.write(document.querySelector('.container-main-workspase-table').innerHTML);	
+		w.document.close();
+		setTimeout(() => resolve(),5);
+		// resolve();
+	});
+	print.then(() => w.print());
+
+});
 
 
 //объявление обработчиков событий конец
@@ -762,44 +1256,3 @@ init();
 
 //запуск приложения конец
 //----------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let dbOfExpertisesJson = JSON.stringify(dbOfExpertises);
-
-// let url = 'saveDB.php';
-
-// const getData = (url, dbOfExpertisesJson) => {
-//   const request = new XMLHttpRequest();
-//   request.open('POST', url, true);
-//   request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-//   request.addEventListener('readystatechange', () => {
-//     if (request.readyState !== 4) return;
-
-//     if (request.status === 200) {
-//       console.log(request.response);
-//     } else {
-//       console.error(request.status);
-//     }
-//   });
-
-
-
-// request.send('db=' + dbOfExpertisesJson);
-// }
-
-// getData(url, dbOfExpertisesJson);

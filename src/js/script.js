@@ -479,7 +479,7 @@ function forDropdownListInRow1SecondCell4Input() {
 				dropdown.classList.add('dropdown-show');
 				dropdownListPolice.classList.remove('dropdown-show');
 				dropdownListSo.classList.add('dropdown-show');
-			} else if (row1SecondCell3Select.value === 'УМВД') {
+			} else if (row1SecondCell3Select.value === 'МВД') {
 				dropdown.classList.add('dropdown-show');
 				dropdownListSo.classList.remove('dropdown-show');
 				dropdownListPolice.classList.add('dropdown-show');
@@ -495,7 +495,7 @@ function forDropdownListInRow1SecondCell4Input() {
 				dropdown.classList.add('dropdown-show');
 				dropdownListPolice.classList.remove('dropdown-show');
 				dropdownListSo.classList.add('dropdown-show');
-			} else if (row1SecondCell3Select.value === 'УМВД') {
+			} else if (row1SecondCell3Select.value === 'МВД') {
 				dropdown.classList.add('dropdown-show');
 				dropdownListSo.classList.remove('dropdown-show');
 				dropdownListPolice.classList.add('dropdown-show');
@@ -508,7 +508,7 @@ function forDropdownListInRow1SecondCell4Input() {
 				if (row1SecondCell3Select.value === 'ГСУ СК') {
 					dropdownListPolice.classList.remove('dropdown-show');
 					dropdownListSo.classList.add('dropdown-show');
-				} else if (row1SecondCell3Select.value === 'УМВД') {
+				} else if (row1SecondCell3Select.value === 'МВД') {
 					dropdownListSo.classList.remove('dropdown-show');
 					dropdownListPolice.classList.add('dropdown-show');
 				};
@@ -520,13 +520,13 @@ function forDropdownListInRow1SecondCell4Input() {
 					item.style.display = 'none';
 				}
 			}
-		} else if (row1SecondCell3Select.value === 'УМВД') {
+		} else if (row1SecondCell3Select.value === 'МВД') {
 			if (!dropdown.classList.contains('dropdown-show')) {
 				dropdown.classList.add('dropdown-show');
 				if (row1SecondCell3Select.value === 'ГСУ СК') {
 					dropdownListPolice.classList.remove('dropdown-show');
 					dropdownListSo.classList.add('dropdown-show');
-				} else if (row1SecondCell3Select.value === 'УМВД') {
+				} else if (row1SecondCell3Select.value === 'МВД') {
 					dropdownListSo.classList.remove('dropdown-show');
 					dropdownListPolice.classList.add('dropdown-show');
 				};
@@ -638,7 +638,7 @@ function forBtnSearchOn() {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
 					if (findList.organ.gsu !== 'false' && 'ГСУ СК' === item.getOrganAppointedExpertise())
 						return true;
-					if (findList.organ.mvd !== 'false' && 'УМВД' === item.getOrganAppointedExpertise())
+					if (findList.organ.mvd !== 'false' && 'МВД' === item.getOrganAppointedExpertise())
 						return true;
 					if (findList.organ.fsb !== 'false' && 'ФСБ' === item.getOrganAppointedExpertise())
 						return true;
@@ -649,7 +649,7 @@ function forBtnSearchOn() {
 				dbOfFindExpertises = dbOfExpertises.filter(item => {
 					if (findList.organ.gsu !== 'false' && 'ГСУ СК' === item.getOrganAppointedExpertise())
 						return true;
-					if (findList.organ.mvd !== 'false' && 'УМВД' === item.getOrganAppointedExpertise())
+					if (findList.organ.mvd !== 'false' && 'МВД' === item.getOrganAppointedExpertise())
 						return true;
 					if (findList.organ.fsb !== 'false' && 'ФСБ' === item.getOrganAppointedExpertise())
 						return true;

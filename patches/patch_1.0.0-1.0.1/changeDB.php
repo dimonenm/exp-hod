@@ -2,6 +2,6 @@
 set_time_limit(0);
 
 $json = file_get_contents('php://input');
-$data = json_decode($json);
+file_put_contents('../../src/db/dbExpertises2.json', $json); // создается новая база
 
-echo '- ok';
+echo 'ok';

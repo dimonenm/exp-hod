@@ -1,8 +1,9 @@
+const btn = document.querySelector('.patch');
 const first = document.querySelector('.first');
 
 
 
-first.addEventListener('click', () => {
+btn.addEventListener('click', () => {
   let dbOfExpertises;
 
   const getDb = () => {
@@ -16,11 +17,13 @@ first.addEventListener('click', () => {
             item.execution, item.notification, item.result, item.countObjectsTotal,
             item.countObjectsPositive, item.countObjectsNegative, item.notTaken, item.received);
         });
+        first.value = "33";
         dbOfExpertises.forEach(item => {
           if (item.organAppointedExpertise === 'УМВД') {
             item.organAppointedExpertise = 'МВД';
           }
         });
+        first.value = "33";
       }).then(() => {
         fetch('changeDB.php', {
           method: 'POST',
@@ -28,9 +31,14 @@ first.addEventListener('click', () => {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(dbOfExpertises)
-        }).then(res => res.text()).then(res => first.innerText = `1 УМВД в МВД ` + res);
+        }).then(res => res.text()).then(res => {
+          first.value = "100";
+          console.log(res);
+        });
       });
 
   };
+
   getDb();
+
 });

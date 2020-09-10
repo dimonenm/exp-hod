@@ -3,13 +3,13 @@
 //поиск элементов модуля новой экспертизы
 //----------------------------------------------
 // кнопка создания новой экспертизы и возвращения к таблице
-const btnCreateNewExpertise = document.querySelector('.btnCreateNewExpertise'); 
+const btnCreateNewExpertise = document.querySelector('.btnCreateNewExpertise');
 // ячейка окна новой экспертизы общее кол-во объектов
-const inputRow2SecondCell7 = document.querySelector('.row2-second-cell7 input'); 
+const inputRow2SecondCell7 = document.querySelector('.row2-second-cell7 input');
 // ячейка окна новой экспертизы кол-во пол объектов
-const inputRow2SecondCell8 = document.querySelector('.row2-second-cell8 input'); 
+const inputRow2SecondCell8 = document.querySelector('.row2-second-cell8 input');
 // ячейка окна новой экспертизы кол-во отр объектов
-const inputRow2SecondCell9 = document.querySelector('.row2-second-cell9 input'); 
+const inputRow2SecondCell9 = document.querySelector('.row2-second-cell9 input');
 
 const btnCancelExp = document.querySelector('.btnCancelExp'); // кнопка Cancel окна новой экспертизы
 const btnResetExp = document.querySelector('.btnResetExp'); // кнопка Reset окна новой экспертизы
@@ -61,7 +61,7 @@ const statusTakenExp = document.querySelector('.statusTakenExp');
 
 
 
-let dbOfExpertises;// переменная для получения базы данных
+let dbOfExpertises; // переменная для получения базы данных
 const findList = {};
 
 //объявление переменных конец
@@ -76,16 +76,18 @@ const getDb = () => {
 	const request = new XMLHttpRequest();
 	request.open('GET', 'src/db/dbExpertises.json', true);
 	request.addEventListener('readystatechange', () => {
-		if (request.readyState !== 4) { return; }
+		if (request.readyState !== 4) {
+			return;
+		}
 		if (request.status === 200) {
-			dbOfExpertises = JSON.parse(request.response);//помещение данных из файла в переменную
+			dbOfExpertises = JSON.parse(request.response); //помещение данных из файла в переменную
 			dbOfExpertises = dbOfExpertises.map(el => {
 				return new Expertise(el.id, el.dateOfReceipt, el.organAppointedExpertise, el.unitOforgan, el.officialPerson,
 					el.nameOfficialPerson, el.byTheMaterials, el.number, el.article, el.byFact, el.typeOfResearch,
 					el.expertName, el.prolongation, el.execution, el.notification, el.result, el.countObjectsTotal,
 					el.countObjectsPositive, el.countObjectsNegative, el.notTaken, el.received);
 			});
-			renderDb(dbOfExpertises);//отрисовывание базы данных
+			renderDb(dbOfExpertises); //отрисовывание базы данных
 		} else {
 			console.error(request.status);
 		}
@@ -98,7 +100,9 @@ const setExpInDb = () => {
 
 	fetch('saveDb.php', {
 		method: 'POST',
-		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded'
+		},
 		body: 'db=' + JSON.stringify(dbOfExpertises)
 	}).then((res) => {
 		renderDb(dbOfExpertises);
@@ -281,32 +285,59 @@ function addExpsInWorkspaseTable(tableInner, db) {
 		let date3 = new Date();
 		let date4 = ((date3 - date2) / 1000 / 60 / 60 / 24);
 		let date5 = ((date3 - date1) * 100) / (date2 - date1);
-		if (element.execution && element.execution !== '0') { cell12.classList.add('cell12-done'); }
-		else if (date5 >= 0 && date5 < 5) { cell12.classList.add('cell12-linear-gradient0'); }
-		else if (date5 >= 5 && date5 < 10) { cell12.classList.add('cell12-linear-gradient05'); }
-		else if (date5 >= 10 && date5 < 15) { cell12.classList.add('cell12-linear-gradient10'); }
-		else if (date5 >= 15 && date5 < 20) { cell12.classList.add('cell12-linear-gradient15'); }
-		else if (date5 >= 20 && date5 < 25) { cell12.classList.add('cell12-linear-gradient20'); }
-		else if (date5 >= 25 && date5 < 30) { cell12.classList.add('cell12-linear-gradient25'); }
-		else if (date5 >= 30 && date5 < 35) { cell12.classList.add('cell12-linear-gradient30'); }
-		else if (date5 >= 35 && date5 < 40) { cell12.classList.add('cell12-linear-gradient35'); }
-		else if (date5 >= 40 && date5 < 45) { cell12.classList.add('cell12-linear-gradient40'); }
-		else if (date5 >= 45 && date5 < 50) { cell12.classList.add('cell12-linear-gradient45'); }
-		else if (date5 >= 50 && date5 < 55) { cell12.classList.add('cell12-linear-gradient50'); }
-		else if (date5 >= 55 && date5 < 60) { cell12.classList.add('cell12-linear-gradient55'); }
-		else if (date5 >= 60 && date5 < 65) { cell12.classList.add('cell12-linear-gradient60'); }
-		else if (date5 >= 65 && date5 < 70) { cell12.classList.add('cell12-linear-gradient65'); }
-		else if (date5 >= 70 && date5 < 75) { cell12.classList.add('cell12-linear-gradient70'); }
-		else if (date5 >= 75 && date5 < 80) { cell12.classList.add('cell12-linear-gradient75'); }
-		else if (date5 >= 80 && date5 < 85) { cell12.classList.add('cell12-linear-gradient80'); }
-		else if (date5 >= 85 && date5 < 90) { cell12.classList.add('cell12-linear-gradient85'); }
-		else if (date5 >= 90 && date5 < 95) { cell12.classList.add('cell12-linear-gradient90'); }
-		else if (date5 >= 95 && date5 < 100) { cell12.classList.add('cell12-linear-gradient95'); }
-		else if (date5 >= 100) { cell12.classList.add('cell12-expired'); }
+		if (element.execution && element.execution !== '0') {
+			cell12.classList.add('cell12-done');
+		} else if (date5 >= 0 && date5 < 5) {
+			cell12.classList.add('cell12-linear-gradient0');
+		} else if (date5 >= 5 && date5 < 10) {
+			cell12.classList.add('cell12-linear-gradient05');
+		} else if (date5 >= 10 && date5 < 15) {
+			cell12.classList.add('cell12-linear-gradient10');
+		} else if (date5 >= 15 && date5 < 20) {
+			cell12.classList.add('cell12-linear-gradient15');
+		} else if (date5 >= 20 && date5 < 25) {
+			cell12.classList.add('cell12-linear-gradient20');
+		} else if (date5 >= 25 && date5 < 30) {
+			cell12.classList.add('cell12-linear-gradient25');
+		} else if (date5 >= 30 && date5 < 35) {
+			cell12.classList.add('cell12-linear-gradient30');
+		} else if (date5 >= 35 && date5 < 40) {
+			cell12.classList.add('cell12-linear-gradient35');
+		} else if (date5 >= 40 && date5 < 45) {
+			cell12.classList.add('cell12-linear-gradient40');
+		} else if (date5 >= 45 && date5 < 50) {
+			cell12.classList.add('cell12-linear-gradient45');
+		} else if (date5 >= 50 && date5 < 55) {
+			cell12.classList.add('cell12-linear-gradient50');
+		} else if (date5 >= 55 && date5 < 60) {
+			cell12.classList.add('cell12-linear-gradient55');
+		} else if (date5 >= 60 && date5 < 65) {
+			cell12.classList.add('cell12-linear-gradient60');
+		} else if (date5 >= 65 && date5 < 70) {
+			cell12.classList.add('cell12-linear-gradient65');
+		} else if (date5 >= 70 && date5 < 75) {
+			cell12.classList.add('cell12-linear-gradient70');
+		} else if (date5 >= 75 && date5 < 80) {
+			cell12.classList.add('cell12-linear-gradient75');
+		} else if (date5 >= 80 && date5 < 85) {
+			cell12.classList.add('cell12-linear-gradient80');
+		} else if (date5 >= 85 && date5 < 90) {
+			cell12.classList.add('cell12-linear-gradient85');
+		} else if (date5 >= 90 && date5 < 95) {
+			cell12.classList.add('cell12-linear-gradient90');
+		} else if (date5 >= 95 && date5 < 100) {
+			cell12.classList.add('cell12-linear-gradient95');
+		} else if (date5 >= 100) {
+			cell12.classList.add('cell12-expired');
+		}
 
-		if (element.execution && element.execution !== '0') { cell12.textContent = `Готова`; }
-		else if (date5 >= 0 && date5 < 100) { cell12.textContent = `Осталось дней: \n ${date4.toFixed() * -1}`; }
-		else if (date5 >= 100) { cell12.textContent = `Срок вышел!`; }
+		if (element.execution && element.execution !== '0') {
+			cell12.textContent = `Готова`;
+		} else if (date5 >= 0 && date5 < 100) {
+			cell12.textContent = `Осталось дней: \n ${date4.toFixed() * -1}`;
+		} else if (date5 >= 100) {
+			cell12.textContent = `Срок вышел!`;
+		}
 
 		rowData.appendChild(cell12);
 
@@ -362,14 +393,30 @@ function renderStatusFromDb(db) {
 	let TakenExp = 0;
 
 	for (let item of db) {
-		if (item.getResult() === 'Положительный') {polExp++;}
-		if (item.getResult() === 'Отрицательный') {otrExp++;}
-		if (item.getResult() === 'НПВ') {npvExp++;}
-		if (item.getCountObjectsTotal() !== '') {totalOb = totalOb + Number(item.getCountObjectsTotal());}
-		if (item.getCountObjectsPositive() !== '') {polOb = polOb + Number(item.getCountObjectsPositive());}
-		if (item.getCountObjectsNegative() !== '') {otrOb = otrOb + Number(item.getCountObjectsNegative());}
-		if (item.getNotTaken() === 'true') {notTakenExp++;}
-		if (item.getReceived() === 'true') {TakenExp++;}
+		if (item.getResult() === 'Положительный') {
+			polExp++;
+		}
+		if (item.getResult() === 'Отрицательный') {
+			otrExp++;
+		}
+		if (item.getResult() === 'НПВ') {
+			npvExp++;
+		}
+		if (item.getCountObjectsTotal() !== '') {
+			totalOb = totalOb + Number(item.getCountObjectsTotal());
+		}
+		if (item.getCountObjectsPositive() !== '') {
+			polOb = polOb + Number(item.getCountObjectsPositive());
+		}
+		if (item.getCountObjectsNegative() !== '') {
+			otrOb = otrOb + Number(item.getCountObjectsNegative());
+		}
+		if (item.getNotTaken() === 'true') {
+			notTakenExp++;
+		}
+		if (item.getReceived() === 'true') {
+			TakenExp++;
+		}
 	}
 
 	statusTotalExp.textContent = totalExp;
@@ -584,9 +631,12 @@ function forBtnSearchOn() {
 		};
 		findList.unit = `${sideSearchDropdownUnit.childNodes[1].childNodes[1].value}`;
 		findList.material = {
-			dul: `${sideSearchDropdownMaterial.children[0].children[1].checked}`,
-			ud: `${sideSearchDropdownMaterial.children[1].children[1].checked}`,
-			kusp: `${sideSearchDropdownMaterial.children[2].children[1].checked}`
+			ud: `${sideSearchDropdownMaterial.children[0].children[1].checked}`,
+			kusp: `${sideSearchDropdownMaterial.children[1].children[1].checked}`,
+			krsp: `${sideSearchDropdownMaterial.children[2].children[1].checked}`,
+			mp: `${sideSearchDropdownMaterial.children[3].children[1].checked}`,
+			rd: `${sideSearchDropdownMaterial.children[4].children[1].checked}`,
+			dul: `${sideSearchDropdownMaterial.children[5].children[1].checked}`
 		};
 		findList.number = `${sideSearchDropdownNumber.children[0].children[0].value}`;
 		findList.article = `${sideSearchDropdownArticle.children[0].children[0].value}`;
@@ -615,7 +665,8 @@ function forBtnSearchOn() {
 		findList.res = {
 			pol: `${sideSearchDropdownRes.children[0].children[1].checked}`,
 			otr: `${sideSearchDropdownRes.children[1].children[1].checked}`,
-			npv: `${sideSearchDropdownRes.children[2].children[1].checked}`
+			npv: `${sideSearchDropdownRes.children[2].children[1].checked}`,
+			bez: `${sideSearchDropdownRes.children[3].children[1].checked}`
 		};
 		findList.taken = {
 			pol: `${sideSearchDropdownTaken.children[0].children[1].checked}`,
@@ -643,17 +694,33 @@ function forBtnSearchOn() {
 			findList.organ.sud !== 'false') {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
-					if (findList.organ.gsu !== 'false' && 'ГСУ СК' === item.getOrganAppointedExpertise()) { return true; }
-					if (findList.organ.mvd !== 'false' && 'МВД' === item.getOrganAppointedExpertise()) { return true; }
-					if (findList.organ.fsb !== 'false' && 'ФСБ' === item.getOrganAppointedExpertise()) { return true; }
-					if (findList.organ.sud !== 'false' && 'Суд' === item.getOrganAppointedExpertise()) { return true; }
+					if (findList.organ.gsu !== 'false' && 'ГСУ СК' === item.getOrganAppointedExpertise()) {
+						return true;
+					}
+					if (findList.organ.mvd !== 'false' && 'МВД' === item.getOrganAppointedExpertise()) {
+						return true;
+					}
+					if (findList.organ.fsb !== 'false' && 'ФСБ' === item.getOrganAppointedExpertise()) {
+						return true;
+					}
+					if (findList.organ.sud !== 'false' && 'Суд' === item.getOrganAppointedExpertise()) {
+						return true;
+					}
 				});
 			} else {
 				dbOfFindExpertises = dbOfExpertises.filter(item => {
-					if (findList.organ.gsu !== 'false' && 'ГСУ СК' === item.getOrganAppointedExpertise()) { return true; }
-					if (findList.organ.mvd !== 'false' && 'МВД' === item.getOrganAppointedExpertise()) { return true; }
-					if (findList.organ.fsb !== 'false' && 'ФСБ' === item.getOrganAppointedExpertise()) { return true; }
-					if (findList.organ.sud !== 'false' && 'Суд' === item.getOrganAppointedExpertise()) { return true; }
+					if (findList.organ.gsu !== 'false' && 'ГСУ СК' === item.getOrganAppointedExpertise()) {
+						return true;
+					}
+					if (findList.organ.mvd !== 'false' && 'МВД' === item.getOrganAppointedExpertise()) {
+						return true;
+					}
+					if (findList.organ.fsb !== 'false' && 'ФСБ' === item.getOrganAppointedExpertise()) {
+						return true;
+					}
+					if (findList.organ.sud !== 'false' && 'Суд' === item.getOrganAppointedExpertise()) {
+						return true;
+					}
 				});
 			}
 		}
@@ -661,35 +728,36 @@ function forBtnSearchOn() {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
 					if (item.getUnitOforgan().toLocaleLowerCase().includes(findList.unit)) {
-						{ return true; }
+						return true;
 					}
 				});
 			} else {
 				dbOfFindExpertises = dbOfExpertises.filter(item => {
 					if (item.getUnitOforgan().toLocaleLowerCase().includes(findList.unit)) {
-						{ return true; }
+						return true;
 					}
 				});
 			}
 		}
-		if (findList.material.dul !== 'false' || findList.material.ud !== 'false' || findList.material.kusp !== 'false') {
+		if (findList.material.ud !== 'false' || findList.material.kusp !== 'false' || findList.material.krsp !== 'false'
+			|| findList.material.mp !== 'false' || findList.material.rd !== 'false' || findList.material.dul !== 'false') {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
-					if (findList.material.dul !== 'false' && 'ДУЛ' === item.getByTheMaterials())
-						{return true;}
-					if (findList.material.ud !== 'false' && 'УД' === item.getByTheMaterials())
-						{return true;}
-					if (findList.material.kusp !== 'false' && 'КУСП' === item.getByTheMaterials())
-						{return true;}
+					if (findList.material.ud !== 'false' && 'УД' === item.getByTheMaterials()) return true;
+					if (findList.material.kusp !== 'false' && 'КУСП' === item.getByTheMaterials()) return true;
+					if (findList.material.krsp !== 'false' && 'КРСП' === item.getByTheMaterials()) return true;
+					if (findList.material.mp !== 'false' && 'МП' === item.getByTheMaterials()) return true;
+					if (findList.material.rd !== 'false' && 'РД' === item.getByTheMaterials()) return true;
+					if (findList.material.dul !== 'false' && 'ДУЛ' === item.getByTheMaterials()) return true;
 				});
 			} else {
 				dbOfFindExpertises = dbOfExpertises.filter(item => {
-					if (findList.material.dul !== 'false' && 'ДУЛ' === item.getByTheMaterials())
-						{return true;}
-					if (findList.material.ud !== 'false' && 'УД' === item.getByTheMaterials())
-						{return true;}
-					if (findList.material.kusp !== 'false' && 'КУСП' === item.getByTheMaterials())
-						{return true;}
+					if (findList.material.ud !== 'false' && 'УД' === item.getByTheMaterials()) return true;
+					if (findList.material.kusp !== 'false' && 'КУСП' === item.getByTheMaterials()) return true;
+					if (findList.material.krsp !== 'false' && 'КРСП' === item.getByTheMaterials()) return true;
+					if (findList.material.mp !== 'false' && 'МП' === item.getByTheMaterials()) return true;
+					if (findList.material.rd !== 'false' && 'РД' === item.getByTheMaterials()) return true;
+					if (findList.material.dul !== 'false' && 'ДУЛ' === item.getByTheMaterials()) return true;
 				});
 			}
 		}
@@ -726,30 +794,54 @@ function forBtnSearchOn() {
 		if (findList.fact.ob !== 'false' || findList.fact.bp !== 'false' || findList.fact.nt !== 'false') {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
-					if (findList.fact.ob !== 'false' && 'Общее' === item.getByFact()) { return true; }
-					if (findList.fact.bp !== 'false' && 'Б/п' === item.getByFact()) { return true; }
-					if (findList.fact.nt !== 'false' && 'Н/т' === item.getByFact()) { return true; }
+					if (findList.fact.ob !== 'false' && 'Общее' === item.getByFact()) {
+						return true;
+					}
+					if (findList.fact.bp !== 'false' && 'Б/п' === item.getByFact()) {
+						return true;
+					}
+					if (findList.fact.nt !== 'false' && 'Н/т' === item.getByFact()) {
+						return true;
+					}
 				});
 			} else {
 				dbOfFindExpertises = dbOfExpertises.filter(item => {
-					if (findList.fact.ob !== 'false' && 'Общее' === item.getByFact()) { return true; }
-					if (findList.fact.bp !== 'false' && 'Б/п' === item.getByFact()) { return true; }
-					if (findList.fact.nt !== 'false' && 'Н/т' === item.getByFact()) { return true; }
+					if (findList.fact.ob !== 'false' && 'Общее' === item.getByFact()) {
+						return true;
+					}
+					if (findList.fact.bp !== 'false' && 'Б/п' === item.getByFact()) {
+						return true;
+					}
+					if (findList.fact.nt !== 'false' && 'Н/т' === item.getByFact()) {
+						return true;
+					}
 				});
 			}
 		}
 		if (findList.type.dna !== 'false' || findList.type.dna_and_hair !== 'false' || findList.type.hair !== 'false') {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
-					if (findList.type.dna !== 'false' && 'ДНК' === item.getTypeOfResearch()) { return true; }
-					if (findList.type.dna_and_hair !== 'false' && 'ДНК и волосы' === item.getTypeOfResearch()) { return true; }
-					if (findList.type.hair !== 'false' && 'Волосы' === item.getTypeOfResearch()) { return true; }
+					if (findList.type.dna !== 'false' && 'ДНК' === item.getTypeOfResearch()) {
+						return true;
+					}
+					if (findList.type.dna_and_hair !== 'false' && 'ДНК и волосы' === item.getTypeOfResearch()) {
+						return true;
+					}
+					if (findList.type.hair !== 'false' && 'Волосы' === item.getTypeOfResearch()) {
+						return true;
+					}
 				});
 			} else {
 				dbOfFindExpertises = dbOfExpertises.filter(item => {
-					if (findList.type.dna !== 'false' && 'ДНК' === item.getTypeOfResearch()) { return true; }
-					if (findList.type.dna_and_hair !== 'false' && 'ДНК и волосы' === item.getTypeOfResearch()) { return true; }
-					if (findList.type.hair !== 'false' && 'Волосы' === item.getTypeOfResearch()) { return true; }
+					if (findList.type.dna !== 'false' && 'ДНК' === item.getTypeOfResearch()) {
+						return true;
+					}
+					if (findList.type.dna_and_hair !== 'false' && 'ДНК и волосы' === item.getTypeOfResearch()) {
+						return true;
+					}
+					if (findList.type.hair !== 'false' && 'Волосы' === item.getTypeOfResearch()) {
+						return true;
+					}
 				});
 			}
 		}
@@ -757,19 +849,39 @@ function forBtnSearchOn() {
 			findList.exp.sor !== 'false' || findList.exp.bar !== 'false') {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
-					if (findList.exp.hod !== 'false' && 'Ходырев Н.' === item.getExpertName()) { return true; }
-					if (findList.exp.hom !== 'false' && 'Хоменко А.' === item.getExpertName()) { return true; }
-					if (findList.exp.kir !== 'false' && 'Кирсанова Н.' === item.getExpertName()) { return true; }
-					if (findList.exp.sor !== 'false' && 'Сорокина Е.' === item.getExpertName()) { return true; }
-					if (findList.exp.bar !== 'false' && 'Баркова М.' === item.getExpertName()) { return true; }
+					if (findList.exp.hod !== 'false' && 'Ходырев Н.' === item.getExpertName()) {
+						return true;
+					}
+					if (findList.exp.hom !== 'false' && 'Хоменко А.' === item.getExpertName()) {
+						return true;
+					}
+					if (findList.exp.kir !== 'false' && 'Кирсанова Н.' === item.getExpertName()) {
+						return true;
+					}
+					if (findList.exp.sor !== 'false' && 'Сорокина Е.' === item.getExpertName()) {
+						return true;
+					}
+					if (findList.exp.bar !== 'false' && 'Баркова М.' === item.getExpertName()) {
+						return true;
+					}
 				});
 			} else {
 				dbOfFindExpertises = dbOfExpertises.filter(item => {
-					if (findList.exp.hod !== 'false' && 'Ходырев Н.' === item.getExpertName()) { return true; }
-					if (findList.exp.hom !== 'false' && 'Хоменко А.' === item.getExpertName()) { return true; }
-					if (findList.exp.kir !== 'false' && 'Кирсанова Н.' === item.getExpertName()) { return true; }
-					if (findList.exp.sor !== 'false' && 'Сорокина Е.' === item.getExpertName()) { return true; }
-					if (findList.exp.bar !== 'false' && 'Баркова М.' === item.getExpertName()) { return true; }
+					if (findList.exp.hod !== 'false' && 'Ходырев Н.' === item.getExpertName()) {
+						return true;
+					}
+					if (findList.exp.hom !== 'false' && 'Хоменко А.' === item.getExpertName()) {
+						return true;
+					}
+					if (findList.exp.kir !== 'false' && 'Кирсанова Н.' === item.getExpertName()) {
+						return true;
+					}
+					if (findList.exp.sor !== 'false' && 'Сорокина Е.' === item.getExpertName()) {
+						return true;
+					}
+					if (findList.exp.bar !== 'false' && 'Баркова М.' === item.getExpertName()) {
+						return true;
+					}
 				});
 			}
 		}
@@ -825,31 +937,41 @@ function forBtnSearchOn() {
 				});
 			}
 		}
-		if (findList.res.pol !== 'false' || findList.res.otr !== 'false' || findList.res.npv !== 'false') {
+		if (findList.res.pol !== 'false' || findList.res.otr !== 'false' || findList.res.npv !== 'false' || findList.res.bez !== 'false') {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
-					if (findList.res.pol !== 'false' && 'Положительный' === item.getResult()) { return true; }
-					if (findList.res.otr !== 'false' && 'Отрицательный' === item.getResult()) { return true; }
-					if (findList.res.npv !== 'false' && 'НПВ' === item.getResult()) { return true; }
+					if (findList.res.pol !== 'false' && 'Положительный' === item.getResult()) return true;
+					if (findList.res.otr !== 'false' && 'Отрицательный' === item.getResult()) return true;
+					if (findList.res.npv !== 'false' && 'НПВ' === item.getResult()) return true;
+					if (findList.res.bez !== 'false' && 'Без исполнения' === item.getResult()) return true;
 				});
 			} else {
 				dbOfFindExpertises = dbOfExpertises.filter(item => {
-					if (findList.res.pol !== 'false' && 'Положительный' === item.getResult()) { return true; }
-					if (findList.res.otr !== 'false' && 'Отрицательный' === item.getResult()) { return true; }
-					if (findList.res.npv !== 'false' && 'НПВ' === item.getResult()) { return true; }
+					if (findList.res.pol !== 'false' && 'Положительный' === item.getResult()) return true;
+					if (findList.res.otr !== 'false' && 'Отрицательный' === item.getResult()) return true;
+					if (findList.res.npv !== 'false' && 'НПВ' === item.getResult()) return true;
+					if (findList.res.bez !== 'false' && 'Без исполнения' === item.getResult()) return true;
 				});
 			}
 		}
 		if (findList.taken.pol !== 'false' || findList.taken.otr !== 'false') {
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
-					if (findList.taken.pol !== 'false' && 'true' === item.getReceived()) { return true; }
-					if (findList.taken.otr !== 'false' && 'false' === item.getReceived()) { return true; }
+					if (findList.taken.pol !== 'false' && 'true' === item.getReceived()) {
+						return true;
+					}
+					if (findList.taken.otr !== 'false' && 'false' === item.getReceived()) {
+						return true;
+					}
 				});
 			} else {
 				dbOfFindExpertises = dbOfExpertises.filter(item => {
-					if (findList.taken.pol !== 'false' && 'true' === item.getReceived()) { return true; }
-					if (findList.taken.otr !== 'false' && 'false' === item.getReceived()) { return true; }
+					if (findList.taken.pol !== 'false' && 'true' === item.getReceived()) {
+						return true;
+					}
+					if (findList.taken.otr !== 'false' && 'false' === item.getReceived()) {
+						return true;
+					}
 				});
 			}
 		}
@@ -919,7 +1041,7 @@ function resetForm(form) {
 
 	const row1SecondCell2 = document.querySelector('.row1-second-cell2 input'); // нахождение второй ячейки "дата"
 	row1SecondCell2.valueAsDate = new Date();
-	const row2SecondCell3 = document.querySelector('.row2-second-cell3 input');// нахождение ячейки "продление"
+	const row2SecondCell3 = document.querySelector('.row2-second-cell3 input'); // нахождение ячейки "продление"
 	let dateTemp = new Date();
 	dateTemp = +dateTemp + (15 * 24 * 60 * 60 * 1000);
 	row2SecondCell3.valueAsDate = new Date(dateTemp);
@@ -985,7 +1107,7 @@ function forBtnUpdateExpertise(data) {
 	const row1SecondCell2 = document.querySelector('.row1-second-cell2 input');
 	const row1SecondCell3 = document.querySelector('.row1-second-cell3 select');
 	const row1SecondCell4 = document.querySelector('.row1-second-cell4 input');
-	const row1SecondCell5 = document.querySelector('.row1-second-cell5 input');
+	const row1SecondCell5 = document.querySelector('.row1-second-cell5 select');
 	const row1SecondCell6 = document.querySelector('.row1-second-cell6 input');
 	const row1SecondCell7 = document.querySelector('.row1-second-cell7 select');
 	const row1SecondCell8 = document.querySelector('.row1-second-cell8 input');
@@ -1017,26 +1139,39 @@ function forBtnUpdateExpertise(data) {
 	row2SecondCell2.value = data.getExpertName();
 	row2SecondCell3.valueAsDate = new Date(+data.getProlongation());
 	// row2SecondCell4.valueAsDate = new Date(+data.getExecution());
-	if (+data.getExecution()) { row2SecondCell4.valueAsDate = new Date(+data.getExecution()); }
-	if (+data.getNotification()) { row2SecondCell5.valueAsDate = new Date(+data.getNotification()); }
+	if (+data.getExecution()) {
+		row2SecondCell4.valueAsDate = new Date(+data.getExecution());
+	}
+	if (+data.getNotification()) {
+		row2SecondCell5.valueAsDate = new Date(+data.getNotification());
+	}
 	row2SecondCell6.value = data.getResult();
 	row2SecondCell7.value = +data.getCountObjectsTotal();
 	row2SecondCell8.value = +data.getCountObjectsPositive();
 	row2SecondCell9.value = +data.getCountObjectsNegative();
 
-	if (data.getNotTaken() === 'true') { row3SecondCell1.checked = true; }
+	if (data.getNotTaken() === 'true') {
+		row3SecondCell1.checked = true;
+	}
 	if (data.getReceived() === 'true') {
 		row3SecondCell2.checked = true;
 		row3SecondCell1.checked = false;
 	}
 
 	row3SecondCell1.addEventListener('change', () => {
-		if (row3SecondCell1.checked === false) { row3SecondCell2.checked = true; }
-		else if (row3SecondCell1.checked === true) { row3SecondCell2.checked = false; }
+		if (row3SecondCell1.checked === false) {
+			row3SecondCell2.checked = true;
+		} else if (row3SecondCell1.checked === true) {
+			row3SecondCell2.checked = false;
+		}
 	});
 	row3SecondCell2.addEventListener('change', () => {
-		if (row3SecondCell2.checked === false) { row3SecondCell1.checked = true; }
-		if (row3SecondCell2.checked === true) { row3SecondCell1.checked = false; }
+		if (row3SecondCell2.checked === false) {
+			row3SecondCell1.checked = true;
+		}
+		if (row3SecondCell2.checked === true) {
+			row3SecondCell1.checked = false;
+		}
 	});
 
 	forDropdownListInRow1SecondCell4Input();
@@ -1133,8 +1268,10 @@ function forBtnDeleteLastExp() {
 
 		btnResetExp.removeEventListener('click', forBtnDeleteLastExp);
 		btnResetExp.addEventListener('click', forBtnResetNewExp);
-	}
+  }
+  console.log(dbOfExpertises);
 	forDeleteLastExpInner(dbOfExpertises);
+  console.log(dbOfExpertises);
 }
 
 //объявление методов конец
@@ -1202,12 +1339,12 @@ sideSearchBtnPrint.addEventListener('click', () => {
 	<title>Doc for print</title>
 	</head>`;
 
-	let print = new Promise(function(resolve, reject) {
+	let print = new Promise(function (resolve, reject) {
 		w.document.open();
 		w.document.write(head);
-		w.document.write(document.querySelector('.container-main-workspase-table').innerHTML);	
+		w.document.write(document.querySelector('.container-main-workspase-table').innerHTML);
 		w.document.close();
-		setTimeout(() => resolve(),5);
+		setTimeout(() => resolve(), 5);
 		// resolve();
 	});
 	print.then(() => w.print());

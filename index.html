@@ -2,646 +2,647 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="expires" content="0">
-	<link rel="apple-touch-icon" sizes="180x180" href="src/img/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="src/img/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="src/img/favicon-16x16.png">
-	<link rel="manifest" href="src/img/site.webmanifest">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <link rel="apple-touch-icon" sizes="180x180" href="src/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="src/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="src/img/favicon-16x16.png">
+  <link rel="manifest" href="src/img/site.webmanifest">
 
-	<link rel="stylesheet" href="src/css/style.css">
-	<link rel="stylesheet" href="src/css/all.css">
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="src/css/all.css">
 
-	<script src="src/js/classExpertise.js"></script>
-	<script src="src/js/script.js" defer></script>
-	<title>EXP-HOD-02</title>
+  <script src="src/js/classExpertise.js"></script>
+  <script src="src/js/script.js" defer></script>
+  <title>EXP-HOD-02</title>
 </head>
 
 <body>
-	<div class="container">
-		<div class="container-header">
-			<div class="container-header-title">
-				ЭКЦ МВД по Республике Крым
-			</div>
-		</div>
-		<div class="container-main">
-			<div class="container-main-side">
-				<div class="container-main-side-nav">
-					<div class="container-main-side-nav-buttons">
-						<div class="container-main-side-nav-buttons-button btnCreateNewExpertise"><i
-								class="fas fa-file-archive"></i></div>
-						<div class="container-main-side-nav-buttons-button btnSearch"><i class="fas fa-map-pin"></i>
-						</div>
-						<div class="container-main-side-nav-buttons-button"><i class="fas fa-male"></i></div>
-					</div>
-				</div>
-				<div class="container-main-side-search-container hide">
-					<form action="" class="sideSearchForm">
-						<div class="container-main-side-search-container-panel">
-							<div class="container-main-side-search-container-panel-button sideSearchBtnDateOfReceipt">
-								<div class="container-main-side-search-container-panel-button-name">По дате регистр-и
-								</div>
-								<div class="container-main-side-search-container-panel-button-img">
-									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
-										height="11px" />
-								</div>
-							</div>
-							<div
-								class="container-main-side-search-container-panel-dropdown sideSearchDropdownDateOfReceipt hide">
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">с</div>
-									<input type="date"
-										class="container-main-side-search-container-panel-dropdown-row-inputDate"
-										name="sideSearchDateOfReceiptStart">
-								</div>
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">по</div>
-									<input type="date"
-										class="container-main-side-search-container-panel-dropdown-row-inputDate"
-										name="sideSearchDateOfReceiptStop">
-								</div>
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel">
-							<div class="container-main-side-search-container-panel-button sideSearchBtnOrgan">
-								<div class="container-main-side-search-container-panel-button-name">По органу</div>
-								<div class="container-main-side-search-container-panel-button-img">
-									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
-										height="11px" />
-								</div>
-							</div>
-							<div
-								class="container-main-side-search-container-panel-dropdown sideSearchDropdownOrgan hide">
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">ГСУ</div>
-									<input type="checkbox" name="sideSearchOrganChSo">
-								</div>
+  <div class="container">
+    <div class="container-header">
+      <div class="container-header-title">
+        ЭКЦ МВД по Республике Крым
+      </div>
+    </div>
+    <div class="container-main">
+      <div class="container-main-side">
+        <div class="container-main-side-nav">
+          <div class="container-main-side-nav-buttons">
+            <div class="container-main-side-nav-buttons-button btnCreateNewExpertise"><i
+                class="fas fa-file-archive"></i></div>
+            <div class="container-main-side-nav-buttons-button btnSearch"><i class="fas fa-map-pin"></i>
+            </div>
+            <div class="container-main-side-nav-buttons-button"><i class="fas fa-male"></i></div>
+          </div>
+        </div>
+        <div class="container-main-side-search-container hide">
+          <form action="" class="sideSearchForm">
+            <div class="container-main-side-search-container-panel">
+              <div class="container-main-side-search-container-panel-button sideSearchBtnDateOfReceipt">
+                <div class="container-main-side-search-container-panel-button-name">По дате регистр-и
+                </div>
+                <div class="container-main-side-search-container-panel-button-img">
+                  <img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+                </div>
+              </div>
+              <div class="container-main-side-search-container-panel-dropdown sideSearchDropdownDateOfReceipt hide">
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">с</div>
+                  <input type="date" class="container-main-side-search-container-panel-dropdown-row-inputDate"
+                    name="sideSearchDateOfReceiptStart">
+                </div>
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">по</div>
+                  <input type="date" class="container-main-side-search-container-panel-dropdown-row-inputDate"
+                    name="sideSearchDateOfReceiptStop">
+                </div>
+              </div>
+            </div>
+            <div class="container-main-side-search-container-panel">
+              <div class="container-main-side-search-container-panel-button sideSearchBtnOrgan">
+                <div class="container-main-side-search-container-panel-button-name">По органу</div>
+                <div class="container-main-side-search-container-panel-button-img">
+                  <img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+                </div>
+              </div>
+              <div class="container-main-side-search-container-panel-dropdown sideSearchDropdownOrgan hide">
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">ГСУ</div>
+                  <input type="checkbox" name="sideSearchOrganChSo">
+                </div>
 
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">МВД</div>
-									<input type="checkbox" name="sideSearchOrganChPolice">
-								</div>
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">МВД</div>
+                  <input type="checkbox" name="sideSearchOrganChPolice">
+                </div>
 
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">ФСБ</div>
-									<input type="checkbox" name="sideSearchOrganChFSB">
-								</div>
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">ФСБ</div>
+                  <input type="checkbox" name="sideSearchOrganChFSB">
+                </div>
 
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">Суд</div>
-									<input type="checkbox" name="sideSearchOrganChJudgment">
-								</div>
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel">
-							<div class="container-main-side-search-container-panel-button sideSearchBtnUnit">
-								<div class="container-main-side-search-container-panel-button-name">По подраздел-ю</div>
-								<div class="container-main-side-search-container-panel-button-img">
-									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
-										height="11px" />
-								</div>
-							</div>
-							<div
-								class="container-main-side-search-container-panel-dropdown sideSearchDropdownUnit hide">
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<input type="text"
-										class="container-main-side-search-container-panel-dropdown-row-inputText"
-										name="sideSearchUnitOfOrgan">
-								</div>
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel">
-							<div class="container-main-side-search-container-panel-button sideSearchBtnMaterial">
-								<div class="container-main-side-search-container-panel-button-name">По материалу</div>
-								<div class="container-main-side-search-container-panel-button-img">
-									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
-										height="11px" />
-								</div>
-							</div>
-							<div
-								class="container-main-side-search-container-panel-dropdown sideSearchDropdownMaterial hide">
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">Дул</div>
-									<input type="checkbox" name="sideSearchMaterialChDul">
-								</div>
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Суд</div>
+                  <input type="checkbox" name="sideSearchOrganChJudgment">
+                </div>
+              </div>
+            </div>
+            <div class="container-main-side-search-container-panel">
+              <div class="container-main-side-search-container-panel-button sideSearchBtnUnit">
+                <div class="container-main-side-search-container-panel-button-name">По подраздел-ю</div>
+                <div class="container-main-side-search-container-panel-button-img">
+                  <img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+                </div>
+              </div>
+              <div class="container-main-side-search-container-panel-dropdown sideSearchDropdownUnit hide">
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <input type="text" class="container-main-side-search-container-panel-dropdown-row-inputText"
+                    name="sideSearchUnitOfOrgan">
+                </div>
+              </div>
+            </div>
+            <div class="container-main-side-search-container-panel">
+              <div class="container-main-side-search-container-panel-button sideSearchBtnMaterial">
+                <div class="container-main-side-search-container-panel-button-name">По материалу</div>
+                <div class="container-main-side-search-container-panel-button-img">
+                  <img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+                </div>
+              </div>
+              <div class="container-main-side-search-container-panel-dropdown sideSearchDropdownMaterial hide">
 
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">Уд</div>
-									<input type="checkbox" name="sideSearchMaterialChUd">
-								</div>
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Уд</div>
+                  <input type="checkbox" name="sideSearchMaterialChUd">
+                </div>
 
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">КУСП
-									</div>
-									<input type="checkbox" name="sideSearchMaterialChKusp">
-								</div>
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel">
-							<div class="container-main-side-search-container-panel-button sideSearchBtnNumber">
-								<div class="container-main-side-search-container-panel-button-name">По номеру</div>
-								<div class="container-main-side-search-container-panel-button-img">
-									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
-										height="11px" />
-								</div>
-							</div>
-							<div
-								class="container-main-side-search-container-panel-dropdown sideSearchDropdownNumber hide">
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<input type="number"
-										class="container-main-side-search-container-panel-dropdown-row-inputText"
-										name="sideSearchNumber">
-								</div>
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel">
-							<div class="container-main-side-search-container-panel-button sideSearchBtnArticle">
-								<div class="container-main-side-search-container-panel-button-name">По статье</div>
-								<div class="container-main-side-search-container-panel-button-img">
-									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
-										height="11px" />
-								</div>
-							</div>
-							<div
-								class="container-main-side-search-container-panel-dropdown sideSearchDropdownArticle hide">
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<input type="number"
-										class="container-main-side-search-container-panel-dropdown-row-inputText"
-										name="sideSearchArticle">
-								</div>
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel">
-							<div class="container-main-side-search-container-panel-button sideSearchBtnFact">
-								<div class="container-main-side-search-container-panel-button-name">По факту</div>
-								<div class="container-main-side-search-container-panel-button-img">
-									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
-										height="11px" />
-								</div>
-							</div>
-							<div
-								class="container-main-side-search-container-panel-dropdown sideSearchDropdownFact hide">
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">Общее
-									</div>
-									<input type="checkbox" name="sideSearchFactChOb">
-								</div>
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">КУСП</div>
+                  <input type="checkbox" name="sideSearchMaterialChKusp">
+                </div>
 
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">Б/п</div>
-									<input type="checkbox" name="sideSearchFactChBp">
-								</div>
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">КРСП</div>
+                  <input type="checkbox" name="sideSearchMaterialChKrsp">
+                </div>
 
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">Н/т</div>
-									<input type="checkbox" name="sideSearchFactChNt">
-								</div>
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel">
-							<div class="container-main-side-search-container-panel-button sideSearchBtnType">
-								<div class="container-main-side-search-container-panel-button-name">По типу иссл-ния
-								</div>
-								<div class="container-main-side-search-container-panel-button-img">
-									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
-										height="11px" />
-								</div>
-							</div>
-							<div
-								class="container-main-side-search-container-panel-dropdown sideSearchDropdownType hide">
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">ДНК</div>
-									<input type="checkbox" name="sideSearchTypeChDna">
-								</div>
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">МП</div>
+                  <input type="checkbox" name="sideSearchMaterialChMp">
+                </div>
 
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">ДНК и
-										волосы</div>
-									<input type="checkbox" name="sideSearchTypeChDnaAndHair">
-								</div>
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">РД</div>
+                  <input type="checkbox" name="sideSearchMaterialChRd">
+                </div>
 
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">Волосы
-									</div>
-									<input type="checkbox" name="sideSearchTypeChHair">
-								</div>
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel">
-							<div class="container-main-side-search-container-panel-button sideSearchBtnExp">
-								<div class="container-main-side-search-container-panel-button-name">По эксперту</div>
-								<div class="container-main-side-search-container-panel-button-img">
-									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
-										height="11px" />
-								</div>
-							</div>
-							<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownExp hide">
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">Ходырев
-										Н.</div>
-									<input type="checkbox" name="sideSearchExpChHod">
-								</div>
-
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">Хоменко
-										А.</div>
-									<input type="checkbox" name="sideSearchExpChHom">
-								</div>
-
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">Кирсанова
-										Н.</div>
-									<input type="checkbox" name="sideSearchExpChKir">
-								</div>
-
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">Сорокина
-										Е.</div>
-									<input type="checkbox" name="sideSearchExpChSor">
-								</div>
-
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">Баркова
-										М.</div>
-									<input type="checkbox" name="sideSearchExpChBar">
-								</div>
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel">
-							<div class="container-main-side-search-container-panel-button sideSearchBtnStatus">
-								<div class="container-main-side-search-container-panel-button-name">По состоянию</div>
-								<div class="container-main-side-search-container-panel-button-img">
-									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
-										height="11px" />
-								</div>
-							</div>
-							<div
-								class="container-main-side-search-container-panel-dropdown sideSearchDropdownStatus hide">
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<input type="text"
-										class="container-main-side-search-container-panel-dropdown-row-inputText"
-										name="sideSearchStatus">
-								</div>
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel">
-							<div class="container-main-side-search-container-panel-button sideSearchBtnExec">
-								<div class="container-main-side-search-container-panel-button-name">По дате выпол-я
-								</div>
-								<div class="container-main-side-search-container-panel-button-img">
-									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
-										height="11px" />
-								</div>
-							</div>
-							<div
-								class="container-main-side-search-container-panel-dropdown sideSearchDropdownExec hide">
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">с</div>
-									<input type="date"
-										class="container-main-side-search-container-panel-dropdown-row-inputDate"
-										name="sideSearchDateOfExecutionStart">
-								</div>
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">по</div>
-									<input type="date"
-										class="container-main-side-search-container-panel-dropdown-row-inputDate"
-										name="sideSearchDateOfExecutionStop">
-								</div>
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel">
-							<div class="container-main-side-search-container-panel-button sideSearchBtnRes">
-								<div class="container-main-side-search-container-panel-button-name">По результату</div>
-								<div class="container-main-side-search-container-panel-button-img">
-									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
-										height="11px" />
-								</div>
-							</div>
-							<div class="container-main-side-search-container-panel-dropdown sideSearchDropdownRes hide">
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">
-										Положительный</div>
-									<input type="checkbox" name="sideSearchResChPol">
-								</div>
-
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">
-										Отрицательный</div>
-									<input type="checkbox" name="sideSearchResChOtr">
-								</div>
-
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">НПВ</div>
-									<input type="checkbox" name="sideSearchResChNpv">
-								</div>
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel">
-							<div class="container-main-side-search-container-panel-button sideSearchBtnTaken">
-								<div class="container-main-side-search-container-panel-button-name">Забран</div>
-								<div class="container-main-side-search-container-panel-button-img">
-									<img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px"
-										height="11px" />
-								</div>
-							</div>
-							<div
-								class="container-main-side-search-container-panel-dropdown sideSearchDropdownTaken hide">
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">Да</div>
-									<input type="checkbox" name="sideSearchTakenChPol">
-								</div>
-
-								<div class="container-main-side-search-container-panel-dropdown-row">
-									<div class="container-main-side-search-container-panel-dropdown-row-label">Нет</div>
-									<input type="checkbox" name="sideSearchTakenChOtr">
-								</div>
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel">
-							<div class="container-main-side-search-container-panel-button sideSearchBtnSearch">
-								<div class="container-main-side-search-container-panel-button-name">Поиск</div>
-							</div>
-						</div>
-						<div class="container-main-side-search-container-panel">
-							<div class="container-main-side-search-container-panel-button sideSearchBtnPrint">
-								<div class="container-main-side-search-container-panel-button-name">Печать</div>
-							</div>
-						</div>
-					</form>
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Дул</div>
+                  <input type="checkbox" name="sideSearchMaterialChDul">
+                </div>
 
 
-				</div>
-			</div>
 
-			<div class="container-main-workspase">
-				<div class="container-main-workspase-expertise">
-					<form action="" method="POST" class="container-main-workspase-expertise-form" name="newExp">
-						<div class="container-main-workspase-expertise-form-row">
-							<div class="container-main-workspase-expertise-form-row-first">
-								<div class="row1-first-cell1">№</div>
-								<div class="row1-first-cell2">Дата</div>
-								<div class="row1-first-cell3">Орган</div>
-								<div class="row1-first-cell4">Подразделение</div>
-								<div class="row1-first-cell5">Должн. лицо</div>
-								<div class="row1-first-cell6">Ф.И.О.</div>
-								<div class="row1-first-cell7">П. мат</div>
-								<div class="row1-first-cell8">№ материала</div>
-								<div class="row1-first-cell9">Статья</div>
-								<div class="row1-first-cell10">По факту</div>
-							</div>
-							<div class="container-main-workspase-expertise-form-row-second">
-								<div class="row1-second-cell1">
-									<input type="text" name="id">
-								</div>
-								<div class="row1-second-cell2">
-									<input class="row1-second-cell2-input" type="date" name="dateOfReceipt">
-								</div>
-								<div class="row1-second-cell3">
-									<select class="row1-second-cell3-select" name="organAppointedExpertise">
-										<option>ГСУ СК</option>
-										<option>МВД</option>
-										<option>ФСБ</option>
-										<option>Суд</option>
-									</select>
-								</div>
-								<div class="row1-second-cell4">
-									<input type="text" class="row1-second-cell4-input" name="unitOforgan">
-									<div class="dropdown">
-										<div class="dropdown-list-police">
-											<ul>
-												<li>ОМВД России по г. Евпатории</li>
-												<li>ОМВД России по г. Феодосии</li>
-												<li>ОМВД России по г. Судаку</li>
-												<li>ОМВД России по г. Алуште</li>
-												<li>ОМВД России по г. Армянску</li>
-												<li>ОМВД России по Бахчисарайскому району</li>
-												<li>ОМВД России по Белогорскому району</li>
-												<li>МО МВД России «Джанкойский»</li>
-												<li>ОМВД России по Кировскому району</li>
-												<li>ОМВД России по Красногвардейскому району</li>
-												<li>МОМВД России «Красноперекопский»</li>
-												<li>ОМВД России по Ленинскому району</li>
-												<li>ОМВД России по Нижнегорскому району</li>
-												<li>ОМВД России по Первомайскому району</li>
-												<li>ОМВД России по Раздольненскому району</li>
-												<li>МОМВД России «Сакский»</li>
-												<li>ОМВД России по Симферопольскому району</li>
-												<li>ОМВД России по Советскому району</li>
-												<li>ОМВД России по Черноморскому району</li>
-												<li>УМВД России по г. Ялте ОП №1 "Алупкинский"</li>
-												<li>УМВД России по г. Ялте ОП №2 "Ливадийский"</li>
-												<li>УМВД России по г. Ялте ОП №3 "Массандровский"</li>
-												<li>УМВД России по г. Симферополю ОП №1 "Железнодорожный"</li>
-												<li>УМВД России по г. Симферополю ОП №2 "Киевский"</li>
-												<li>УМВД России по г. Симферополю ОП №3 "Центральный"</li>
-												<li>УМВД России по г. Севастополю</li>
-												<li>УМВД России по г. Керчи</li>
-												<li>ЛОП</li>
-												<li>СЧСУ МВД</li>
-												<li>СЧСУ</li>
-											</ul>
-										</div>
-										<div class="dropdown-list-so">
-											<ul>
-												<li>ГСУ СК РФ по РК и г. Севастополю</li>
-												<li>СО по г. Евпатории</li>
-												<li>СО по г. Феодосия</li>
-												<li>СО по г. Судак</li>
-												<li>СО по г. Алушта</li>
-												<li>СО по г. Ялта</li>
-												<li>СО по г. Армянску</li>
-												<li>СО по Бахчисарайскому району</li>
-												<li>СО по Белогорскому району</li>
-												<li>СО по г. Джанкой</li>
-												<li>Кировский МСО</li>
-												<li>Красногвардейский МСО</li>
-												<li>СО по г. Красноперекопск</li>
-												<li>СО по Ленинскому району</li>
-												<li>СО по Нижнегорскому району</li>
-												<li>СО по Первомайскому району</li>
-												<li>СО по Раздольненскому району</li>
-												<li>СО по г. Саки</li>
-												<li>СО по Симферопольскому району</li>
-												<li>СО по Советскому району</li>
-												<li>СО по Черноморскому району</li>
-												<li>СО по г. Керчи</li>
-												<li>СО по Железнодорожному району г. Симферополь</li>
-												<li>СО по Киевскому району г. Симферополь</li>
-												<li>СО по Центральному району г. Симферополь</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div class="row1-second-cell5">
-									<input type="text" name="officialPerson">
-								</div>
-								<div class="row1-second-cell6">
-									<input type="text" name="nameOfficialPerson">
-								</div>
-								<div class="row1-second-cell7">
-									<select name="byTheMaterials">
-										<option>ДУЛ</option>
-										<option>УД</option>
-										<option>КУСП</option>
-									</select>
-								</div>
-								<div class="row1-second-cell8">
-									<input type="text" name="number">
-								</div>
-								<div class="row1-second-cell9">
-									<input type="text" name="article">
-								</div>
-								<div class="row1-second-cell10">
-									<select name="byFact">
-										<option>Общее</option>
-										<option>Б/п</option>
-										<option>Н/т</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="container-main-workspase-expertise-form-row">
-							<div class="container-main-workspase-expertise-form-row-first">
-								<div class="row2-first-cell1">Вид иссл-ния</div>
-								<div class="row2-first-cell2">Ф.И.О. эксп-та</div>
-								<div class="row2-first-cell3">Продление</div>
-								<div class="row2-first-cell4">Исполнение</div>
-								<div class="row2-first-cell5">Уведомление</div>
-								<div class="row2-first-cell6">Результат</div>
-								<div class="row2-first-cell7">Общее</div>
-								<div class="row2-first-cell8">Пол-е</div>
-								<div class="row2-first-cell9">Отр-е</div>
-							</div>
-							<div class="container-main-workspase-expertise-form-row-second">
-								<div class="row2-second-cell1">
-									<select name="typeOfResearch">
-										<option>ДНК</option>
-										<option>ДНК и волосы</option>
-										<option>Волосы</option>
-									</select>
-								</div>
-								<div class="row2-second-cell2">
-									<select name="expertName">
-										<option>Ходырев Н.</option>
-										<option>Хоменко А.</option>
-										<option>Кирсанова Н.</option>
-										<option>Сорокина Е.</option>
-										<option>Баркова М.</option>
-									</select>
-								</div>
-								<div class="row2-second-cell3">
-									<input type="date" name="prolongation">
-								</div>
-								<div class="row2-second-cell4">
-									<input type="date" name="execution">
-								</div>
-								<div class="row2-second-cell5">
-									<input type="date" name="notification">
-								</div>
-								<div class="row2-second-cell6">
-									<select name="result">
-										<option>Не определен</option>
-										<option>Положительный</option>
-										<option>Отрицательный</option>
-										<option>НПВ</option>
-									</select>
-								</div>
-								<div class="row2-second-cell7">
-									<input type="number" name="countObjectsTotal">
-								</div>
-								<div class="row2-second-cell8">
-									<input type="number" name="countObjectsPositive">
-								</div>
-								<div class="row2-second-cell9">
-									<input type="number" name="countObjectsNegative">
-								</div>
-							</div>
-						</div>
-						<div class="container-main-workspase-expertise-form-row">
-							<div class="container-main-workspase-expertise-form-row-wraper">
-								<div class="container-main-workspase-expertise-form-row-wraper-inner-first">
-									<div class="container-main-workspase-expertise-form-row-first">
-										<div class="row3-first-cell1">Не забран</div>
-										<div class="row3-first-cell2">Получен</div>
-									</div>
-									<div class="container-main-workspase-expertise-form-row-second">
-										<div class="row3-second-cell1">
-											<input type="checkbox" name="notTaken" checked>
-										</div>
-										<div class="row3-second-cell2">
-											<input type="checkbox" name="received">
-										</div>
-									</div>
-								</div>
-								<div class="container-main-workspase-expertise-form-row-wraper-inner-second">
-									<div
-										class="container-main-workspase-expertise-form-row-wraper-inner-second-btn btnAddExp">
-										<button type="button"><i class="fas fa-plus-circle"></i></button>
-									</div>
-									<div
-										class="container-main-workspase-expertise-form-row-wraper-inner-second-btn btnResetExp">
-										<button type="button"><i class="fas fa-redo"></i></button>
 
-									</div>
-									<div
-										class="container-main-workspase-expertise-form-row-wraper-inner-second-btn btnCancelExp">
-										<button type="button"><i class="fas fa-times-circle"></i></button>
+              </div>
+            </div>
+            <div class="container-main-side-search-container-panel">
+              <div class="container-main-side-search-container-panel-button sideSearchBtnNumber">
+                <div class="container-main-side-search-container-panel-button-name">По номеру</div>
+                <div class="container-main-side-search-container-panel-button-img">
+                  <img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+                </div>
+              </div>
+              <div class="container-main-side-search-container-panel-dropdown sideSearchDropdownNumber hide">
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <input type="number" class="container-main-side-search-container-panel-dropdown-row-inputText"
+                    name="sideSearchNumber">
+                </div>
+              </div>
+            </div>
+            <div class="container-main-side-search-container-panel">
+              <div class="container-main-side-search-container-panel-button sideSearchBtnArticle">
+                <div class="container-main-side-search-container-panel-button-name">По статье</div>
+                <div class="container-main-side-search-container-panel-button-img">
+                  <img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+                </div>
+              </div>
+              <div class="container-main-side-search-container-panel-dropdown sideSearchDropdownArticle hide">
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <input type="number" class="container-main-side-search-container-panel-dropdown-row-inputText"
+                    name="sideSearchArticle">
+                </div>
+              </div>
+            </div>
+            <div class="container-main-side-search-container-panel">
+              <div class="container-main-side-search-container-panel-button sideSearchBtnFact">
+                <div class="container-main-side-search-container-panel-button-name">По факту</div>
+                <div class="container-main-side-search-container-panel-button-img">
+                  <img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+                </div>
+              </div>
+              <div class="container-main-side-search-container-panel-dropdown sideSearchDropdownFact hide">
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Общее
+                  </div>
+                  <input type="checkbox" name="sideSearchFactChOb">
+                </div>
 
-									</div>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="container-main-workspase-table"></div>
-				<div class="container-main-workspase-status">
-					<div class="container-main-workspase-status-wrapper">
-						<div class="container-main-workspase-status-wrapper-title">Общее кол-во экспертиз</div>
-						<div class="container-main-workspase-status-wrapper-data statusTotalExp">нет данных</div>
-					</div>
-					<div class="container-main-workspase-status-wrapper">
-						<div class="container-main-workspase-status-wrapper-title">Кол-во положительных эксп.</div>
-						<div class="container-main-workspase-status-wrapper-data statusPolExp">нет данных</div>
-					</div>
-					<div class="container-main-workspase-status-wrapper">
-						<div class="container-main-workspase-status-wrapper-title">Кол-во отрицательных эксп.</div>
-						<div class="container-main-workspase-status-wrapper-data statusOtrExp">нет данных</div>
-					</div>
-					<div class="container-main-workspase-status-wrapper">
-						<div class="container-main-workspase-status-wrapper-title">Количество НПВ эксп.</div>
-						<div class="container-main-workspase-status-wrapper-data statusNpvExp">нет данных</div>
-					</div>
-					<div class="container-main-workspase-status-wrapper">
-						<div class="container-main-workspase-status-wrapper-title">Количество объектов</div>
-						<div class="container-main-workspase-status-wrapper-data">
-							<div class="container-main-workspase-status-wrapper-data-ob">
-								<div class="container-main-workspase-status-wrapper-data-ob-title">всего</div>
-								<div class="container-main-workspase-status-wrapper-data-ob-data statusTotalOb">?</div>
-							</div>
-							<div class="container-main-workspase-status-wrapper-data-pol">
-								<div class="container-main-workspase-status-wrapper-data-pol-title">пол.</div>
-								<div class="container-main-workspase-status-wrapper-data-pol-data statusPolOb">?</div>
-							</div>
-							<div class="container-main-workspase-status-wrapper-data-otr">
-								<div class="container-main-workspase-status-wrapper-data-otr-title">отр.</div>
-								<div class="container-main-workspase-status-wrapper-data-otr-data statusOtrOb">?</div>
-							</div>
-						</div>
-					</div>
-					<div class="container-main-workspase-status-wrapper">
-						<div class="container-main-workspase-status-wrapper-title">Кол-во незабранных эксп.</div>
-						<div class="container-main-workspase-status-wrapper-data statusNotTakenExp">нет данных</div>
-					</div>
-					<div class="container-main-workspase-status-wrapper">
-						<div class="container-main-workspase-status-wrapper-title">Кол-во полученных эксп.</div>
-						<div class="container-main-workspase-status-wrapper-data statusTakenExp">нет данных</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Б/п</div>
+                  <input type="checkbox" name="sideSearchFactChBp">
+                </div>
+
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Н/т</div>
+                  <input type="checkbox" name="sideSearchFactChNt">
+                </div>
+              </div>
+            </div>
+            <div class="container-main-side-search-container-panel">
+              <div class="container-main-side-search-container-panel-button sideSearchBtnType">
+                <div class="container-main-side-search-container-panel-button-name">По типу иссл-ния
+                </div>
+                <div class="container-main-side-search-container-panel-button-img">
+                  <img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+                </div>
+              </div>
+              <div class="container-main-side-search-container-panel-dropdown sideSearchDropdownType hide">
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">ДНК</div>
+                  <input type="checkbox" name="sideSearchTypeChDna">
+                </div>
+
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">ДНК и
+                    волосы</div>
+                  <input type="checkbox" name="sideSearchTypeChDnaAndHair">
+                </div>
+
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Волосы
+                  </div>
+                  <input type="checkbox" name="sideSearchTypeChHair">
+                </div>
+              </div>
+            </div>
+            <div class="container-main-side-search-container-panel">
+              <div class="container-main-side-search-container-panel-button sideSearchBtnExp">
+                <div class="container-main-side-search-container-panel-button-name">По эксперту</div>
+                <div class="container-main-side-search-container-panel-button-img">
+                  <img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+                </div>
+              </div>
+              <div class="container-main-side-search-container-panel-dropdown sideSearchDropdownExp hide">
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Ходырев
+                    Н.</div>
+                  <input type="checkbox" name="sideSearchExpChHod">
+                </div>
+
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Хоменко
+                    А.</div>
+                  <input type="checkbox" name="sideSearchExpChHom">
+                </div>
+
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Кирсанова
+                    Н.</div>
+                  <input type="checkbox" name="sideSearchExpChKir">
+                </div>
+
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Сорокина
+                    Е.</div>
+                  <input type="checkbox" name="sideSearchExpChSor">
+                </div>
+
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Баркова
+                    М.</div>
+                  <input type="checkbox" name="sideSearchExpChBar">
+                </div>
+              </div>
+            </div>
+            <div class="container-main-side-search-container-panel">
+              <div class="container-main-side-search-container-panel-button sideSearchBtnStatus">
+                <div class="container-main-side-search-container-panel-button-name">По состоянию</div>
+                <div class="container-main-side-search-container-panel-button-img">
+                  <img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+                </div>
+              </div>
+              <div class="container-main-side-search-container-panel-dropdown sideSearchDropdownStatus hide">
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <input type="text" class="container-main-side-search-container-panel-dropdown-row-inputText"
+                    name="sideSearchStatus">
+                </div>
+              </div>
+            </div>
+            <div class="container-main-side-search-container-panel">
+              <div class="container-main-side-search-container-panel-button sideSearchBtnExec">
+                <div class="container-main-side-search-container-panel-button-name">По дате выпол-я
+                </div>
+                <div class="container-main-side-search-container-panel-button-img">
+                  <img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+                </div>
+              </div>
+              <div class="container-main-side-search-container-panel-dropdown sideSearchDropdownExec hide">
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">с</div>
+                  <input type="date" class="container-main-side-search-container-panel-dropdown-row-inputDate"
+                    name="sideSearchDateOfExecutionStart">
+                </div>
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">по</div>
+                  <input type="date" class="container-main-side-search-container-panel-dropdown-row-inputDate"
+                    name="sideSearchDateOfExecutionStop">
+                </div>
+              </div>
+            </div>
+            <div class="container-main-side-search-container-panel">
+              <div class="container-main-side-search-container-panel-button sideSearchBtnRes">
+                <div class="container-main-side-search-container-panel-button-name">По результату</div>
+                <div class="container-main-side-search-container-panel-button-img">
+                  <img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+                </div>
+              </div>
+              <div class="container-main-side-search-container-panel-dropdown sideSearchDropdownRes hide">
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">
+                    Положительный</div>
+                  <input type="checkbox" name="sideSearchResChPol">
+                </div>
+
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">
+                    Отрицательный</div>
+                  <input type="checkbox" name="sideSearchResChOtr">
+                </div>
+
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">НПВ</div>
+                  <input type="checkbox" name="sideSearchResChNpv">
+                </div>
+
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Без исполнения</div>
+                  <input type="checkbox" name="sideSearchResChNpv">
+                </div>
+              </div>
+            </div>
+            <div class="container-main-side-search-container-panel">
+              <div class="container-main-side-search-container-panel-button sideSearchBtnTaken">
+                <div class="container-main-side-search-container-panel-button-name">Забран</div>
+                <div class="container-main-side-search-container-panel-button-img">
+                  <img src="src/img/icons8-chevron-up-96.png" alt="arrow" width="15px" height="11px" />
+                </div>
+              </div>
+              <div class="container-main-side-search-container-panel-dropdown sideSearchDropdownTaken hide">
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Да</div>
+                  <input type="checkbox" name="sideSearchTakenChPol">
+                </div>
+
+                <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Нет</div>
+                  <input type="checkbox" name="sideSearchTakenChOtr">
+                </div>
+              </div>
+            </div>
+            <div class="container-main-side-search-container-panel">
+              <div class="container-main-side-search-container-panel-button sideSearchBtnSearch">
+                <div class="container-main-side-search-container-panel-button-name">Поиск</div>
+              </div>
+            </div>
+            <div class="container-main-side-search-container-panel">
+              <div class="container-main-side-search-container-panel-button sideSearchBtnPrint">
+                <div class="container-main-side-search-container-panel-button-name">Печать</div>
+              </div>
+            </div>
+          </form>
+
+
+        </div>
+      </div>
+
+      <div class="container-main-workspase">
+        <div class="container-main-workspase-expertise">
+          <form action="" method="POST" class="container-main-workspase-expertise-form" name="newExp">
+            <div class="container-main-workspase-expertise-form-row">
+              <div class="container-main-workspase-expertise-form-row-first">
+                <div class="row1-first-cell1">№</div>
+                <div class="row1-first-cell2">Дата</div>
+                <div class="row1-first-cell3">Орган</div>
+                <div class="row1-first-cell4">Подразделение</div>
+                <div class="row1-first-cell5">Должн. лицо</div>
+                <div class="row1-first-cell6">Ф.И.О.</div>
+                <div class="row1-first-cell7">П. мат</div>
+                <div class="row1-first-cell8">№ материала</div>
+                <div class="row1-first-cell9">Статья</div>
+                <div class="row1-first-cell10">По факту</div>
+              </div>
+              <div class="container-main-workspase-expertise-form-row-second">
+                <div class="row1-second-cell1">
+                  <input type="text" name="id">
+                </div>
+                <div class="row1-second-cell2">
+                  <input class="row1-second-cell2-input" type="date" name="dateOfReceipt">
+                </div>
+                <div class="row1-second-cell3">
+                  <select class="row1-second-cell3-select" name="organAppointedExpertise">
+                    <option>ГСУ СК</option>
+                    <option>МВД</option>
+                    <option>ФСБ</option>
+                    <option>Суд</option>
+                  </select>
+                </div>
+                <div class="row1-second-cell4">
+                  <input type="text" class="row1-second-cell4-input" name="unitOforgan">
+                  <div class="dropdown">
+                    <div class="dropdown-list-police">
+                      <ul>
+                        <li>ОМВД России по г. Евпатории</li>
+                        <li>ОМВД России по г. Феодосии</li>
+                        <li>ОМВД России по г. Судаку</li>
+                        <li>ОМВД России по г. Алуште</li>
+                        <li>ОМВД России по г. Армянску</li>
+                        <li>ОМВД России по Бахчисарайскому району</li>
+                        <li>ОМВД России по Белогорскому району</li>
+                        <li>МО МВД России «Джанкойский»</li>
+                        <li>ОМВД России по Кировскому району</li>
+                        <li>ОМВД России по Красногвардейскому району</li>
+                        <li>МОМВД России «Красноперекопский»</li>
+                        <li>ОМВД России по Ленинскому району</li>
+                        <li>ОМВД России по Нижнегорскому району</li>
+                        <li>ОМВД России по Первомайскому району</li>
+                        <li>ОМВД России по Раздольненскому району</li>
+                        <li>МОМВД России «Сакский»</li>
+                        <li>ОМВД России по Симферопольскому району</li>
+                        <li>ОМВД России по Советскому району</li>
+                        <li>ОМВД России по Черноморскому району</li>
+                        <li>УМВД России по г. Ялте ОП №1 "Алупкинский"</li>
+                        <li>УМВД России по г. Ялте ОП №2 "Ливадийский"</li>
+                        <li>УМВД России по г. Ялте ОП №3 "Массандровский"</li>
+                        <li>УМВД России по г. Симферополю ОП №1 "Железнодорожный"</li>
+                        <li>УМВД России по г. Симферополю ОП №2 "Киевский"</li>
+                        <li>УМВД России по г. Симферополю ОП №3 "Центральный"</li>
+                        <li>УМВД России по г. Севастополю</li>
+                        <li>УМВД России по г. Керчи</li>
+                        <li>ЛОП</li>
+                        <li>СЧСУ МВД</li>
+                        <li>СЧСУ</li>
+                      </ul>
+                    </div>
+                    <div class="dropdown-list-so">
+                      <ul>
+                        <li>ГСУ СК РФ по РК и г. Севастополю</li>
+                        <li>СО по г. Евпатории</li>
+                        <li>СО по г. Феодосия</li>
+                        <li>СО по г. Судак</li>
+                        <li>СО по г. Алушта</li>
+                        <li>СО по г. Ялта</li>
+                        <li>СО по г. Армянску</li>
+                        <li>СО по Бахчисарайскому району</li>
+                        <li>СО по Белогорскому району</li>
+                        <li>СО по г. Джанкой</li>
+                        <li>Кировский МСО</li>
+                        <li>Красногвардейский МСО</li>
+                        <li>СО по г. Красноперекопск</li>
+                        <li>СО по Ленинскому району</li>
+                        <li>СО по Нижнегорскому району</li>
+                        <li>СО по Первомайскому району</li>
+                        <li>СО по Раздольненскому району</li>
+                        <li>СО по г. Саки</li>
+                        <li>СО по Симферопольскому району</li>
+                        <li>СО по Советскому району</li>
+                        <li>СО по Черноморскому району</li>
+                        <li>СО по г. Керчи</li>
+                        <li>СО по Железнодорожному району г. Симферополь</li>
+                        <li>СО по Киевскому району г. Симферополь</li>
+                        <li>СО по Центральному району г. Симферополь</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="row1-second-cell5">
+                  <!-- <input type="text" name="officialPerson"> -->
+                  <select class="row1-second-cell5-select" name="officialPerson">
+                    <option>следователь</option>
+                    <option>ст. следователь</option>
+                    <option>о/у</option>
+                    <option>зам. нач.</option>
+                    <option>начальник</option>
+                    <option>дознаватель</option>
+                  </select>
+                </div>
+                <div class="row1-second-cell6">
+                  <input type="text" name="nameOfficialPerson">
+                </div>
+                <div class="row1-second-cell7">
+                  <select name="byTheMaterials">
+                    <option>УД</option>
+                    <option>КУСП</option>
+                    <option>КРСП</option>
+                    <option>МП</option>
+                    <option>РД</option>
+                    <option>ДУЛ</option>
+                  </select>
+                </div>
+                <div class="row1-second-cell8">
+                  <input type="text" name="number">
+                </div>
+                <div class="row1-second-cell9">
+                  <input type="text" name="article">
+                </div>
+                <div class="row1-second-cell10">
+                  <select name="byFact">
+                    <option>Общее</option>
+                    <option>Б/п</option>
+                    <option>Н/т</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="container-main-workspase-expertise-form-row">
+              <div class="container-main-workspase-expertise-form-row-first">
+                <div class="row2-first-cell1">Вид иссл-ния</div>
+                <div class="row2-first-cell2">Ф.И.О. эксп-та</div>
+                <div class="row2-first-cell3">Продление</div>
+                <div class="row2-first-cell4">Исполнение</div>
+                <div class="row2-first-cell5">Уведомление</div>
+                <div class="row2-first-cell6">Результат</div>
+                <div class="row2-first-cell7">Общее</div>
+                <div class="row2-first-cell8">Пол-е</div>
+                <div class="row2-first-cell9">Отр-е</div>
+              </div>
+              <div class="container-main-workspase-expertise-form-row-second">
+                <div class="row2-second-cell1">
+                  <select name="typeOfResearch">
+                    <option>ДНК</option>
+                    <option>ДНК и волосы</option>
+                    <option>Волосы</option>
+                  </select>
+                </div>
+                <div class="row2-second-cell2">
+                  <select name="expertName">
+                    <option>Ходырев Н.</option>
+                    <option>Хоменко А.</option>
+                    <option>Кирсанова Н.</option>
+                    <option>Сорокина Е.</option>
+                    <option>Баркова М.</option>
+                  </select>
+                </div>
+                <div class="row2-second-cell3">
+                  <input type="date" name="prolongation">
+                </div>
+                <div class="row2-second-cell4">
+                  <input type="date" name="execution">
+                </div>
+                <div class="row2-second-cell5">
+                  <input type="date" name="notification">
+                </div>
+                <div class="row2-second-cell6">
+                  <select name="result">
+                    <option>Не определен</option>
+                    <option>Положительный</option>
+                    <option>Отрицательный</option>
+                    <option>НПВ</option>
+                    <option>Без исполнения</option>
+                  </select>
+                </div>
+                <div class="row2-second-cell7">
+                  <input type="number" name="countObjectsTotal">
+                </div>
+                <div class="row2-second-cell8">
+                  <input type="number" name="countObjectsPositive">
+                </div>
+                <div class="row2-second-cell9">
+                  <input type="number" name="countObjectsNegative">
+                </div>
+              </div>
+            </div>
+            <div class="container-main-workspase-expertise-form-row">
+              <div class="container-main-workspase-expertise-form-row-wraper">
+                <div class="container-main-workspase-expertise-form-row-wraper-inner-first">
+                  <div class="container-main-workspase-expertise-form-row-first">
+                    <div class="row3-first-cell1">Не забран</div>
+                    <div class="row3-first-cell2">Получен</div>
+                  </div>
+                  <div class="container-main-workspase-expertise-form-row-second">
+                    <div class="row3-second-cell1">
+                      <input type="checkbox" name="notTaken" checked>
+                    </div>
+                    <div class="row3-second-cell2">
+                      <input type="checkbox" name="received">
+                    </div>
+                  </div>
+                </div>
+                <div class="container-main-workspase-expertise-form-row-wraper-inner-second">
+                  <div class="container-main-workspase-expertise-form-row-wraper-inner-second-btn btnAddExp">
+                    <button type="button"><i class="fas fa-plus-circle"></i></button>
+                  </div>
+                  <div class="container-main-workspase-expertise-form-row-wraper-inner-second-btn btnResetExp">
+                    <button type="button"><i class="fas fa-redo"></i></button>
+
+                  </div>
+                  <div class="container-main-workspase-expertise-form-row-wraper-inner-second-btn btnCancelExp">
+                    <button type="button"><i class="fas fa-times-circle"></i></button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="container-main-workspase-table"></div>
+        <div class="container-main-workspase-status">
+          <div class="container-main-workspase-status-wrapper">
+            <div class="container-main-workspase-status-wrapper-title">Общее кол-во экспертиз</div>
+            <div class="container-main-workspase-status-wrapper-data statusTotalExp">нет данных</div>
+          </div>
+          <div class="container-main-workspase-status-wrapper">
+            <div class="container-main-workspase-status-wrapper-title">Кол-во положительных эксп.</div>
+            <div class="container-main-workspase-status-wrapper-data statusPolExp">нет данных</div>
+          </div>
+          <div class="container-main-workspase-status-wrapper">
+            <div class="container-main-workspase-status-wrapper-title">Кол-во отрицательных эксп.</div>
+            <div class="container-main-workspase-status-wrapper-data statusOtrExp">нет данных</div>
+          </div>
+          <div class="container-main-workspase-status-wrapper">
+            <div class="container-main-workspase-status-wrapper-title">Количество НПВ эксп.</div>
+            <div class="container-main-workspase-status-wrapper-data statusNpvExp">нет данных</div>
+          </div>
+          <div class="container-main-workspase-status-wrapper">
+            <div class="container-main-workspase-status-wrapper-title">Количество объектов</div>
+            <div class="container-main-workspase-status-wrapper-data">
+              <div class="container-main-workspase-status-wrapper-data-ob">
+                <div class="container-main-workspase-status-wrapper-data-ob-title">всего</div>
+                <div class="container-main-workspase-status-wrapper-data-ob-data statusTotalOb">?</div>
+              </div>
+              <div class="container-main-workspase-status-wrapper-data-pol">
+                <div class="container-main-workspase-status-wrapper-data-pol-title">пол.</div>
+                <div class="container-main-workspase-status-wrapper-data-pol-data statusPolOb">?</div>
+              </div>
+              <div class="container-main-workspase-status-wrapper-data-otr">
+                <div class="container-main-workspase-status-wrapper-data-otr-title">отр.</div>
+                <div class="container-main-workspase-status-wrapper-data-otr-data statusOtrOb">?</div>
+              </div>
+            </div>
+          </div>
+          <div class="container-main-workspase-status-wrapper">
+            <div class="container-main-workspase-status-wrapper-title">Кол-во незабранных эксп.</div>
+            <div class="container-main-workspase-status-wrapper-data statusNotTakenExp">нет данных</div>
+          </div>
+          <div class="container-main-workspase-status-wrapper">
+            <div class="container-main-workspase-status-wrapper-title">Кол-во полученных эксп.</div>
+            <div class="container-main-workspase-status-wrapper-data statusTakenExp">нет данных</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

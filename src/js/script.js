@@ -53,6 +53,8 @@ const statusTotalExp = document.querySelector('.statusTotalExp');
 const statusPolExp = document.querySelector('.statusPolExp');
 const statusOtrExp = document.querySelector('.statusOtrExp');
 const statusNpvExp = document.querySelector('.statusNpvExp');
+const statusNotExecMvd = document.querySelector('.statusNotExecMvd');
+const statusNotExecGsu = document.querySelector('.statusNotExecGsu');
 const statusTotalOb = document.querySelector('.statusTotalOb');
 const statusPolOb = document.querySelector('.statusPolOb');
 const statusOtrOb = document.querySelector('.statusOtrOb');
@@ -385,7 +387,9 @@ function renderStatusFromDb(db) {
 	let totalExp = db.length;
 	let polExp = 0;
 	let otrExp = 0;
-	let npvExp = 0;
+	let notExecMvdExp = 0;
+	let notExecGsuExp = 0;
+	// let npvExp = 0;
 	let totalOb = 0;
 	let polOb = 0;
 	let otrOb = 0;
@@ -399,9 +403,13 @@ function renderStatusFromDb(db) {
 		if (item.getResult() === 'Отрицательный') {
 			otrExp++;
 		}
-		if (item.getResult() === 'НПВ') {
-			npvExp++;
-		}
+		if (item.getOrganAppointedExpertise() === 'УМВД' || item.getOrganAppointedExpertise() === 'МВД'
+			&& item.getResult() === "Не определен") {
+			notExecMvdExp++;
+    }
+		if (item.getOrganAppointedExpertise() === 'ГСУ СК' && item.getResult() === "Не определен") {
+			notExecGsuExp++;
+    }
 		if (item.getCountObjectsTotal() !== '') {
 			totalOb = totalOb + Number(item.getCountObjectsTotal());
 		}
@@ -421,8 +429,10 @@ function renderStatusFromDb(db) {
 
 	statusTotalExp.textContent = totalExp;
 	statusPolExp.textContent = polExp;
-	statusOtrExp.textContent = otrExp;
-	statusNpvExp.textContent = npvExp;
+  statusOtrExp.textContent = otrExp;  
+  statusNotExecMvd.textContent = notExecMvdExp;
+  statusNotExecGsu.textContent = notExecGsuExp;
+	// statusNpvExp.textContent = npvExp;
 	statusTotalOb.textContent = totalOb;
 	statusPolOb.textContent = polOb;
 	statusOtrOb.textContent = otrOb;

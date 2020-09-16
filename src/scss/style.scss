@@ -126,6 +126,7 @@ body {
 							color: #ffffff;
 							text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 						}
+
 						&-img {
 							display: flex;
 							margin-right: 7px;
@@ -141,6 +142,7 @@ body {
 						display: flex;
 						flex-direction: column;
 						background: #ccc;
+
 						&-row {
 							display: flex;
 							justify-content: space-between;
@@ -275,6 +277,7 @@ body {
 								width: 300px;
 							}
 						}
+
 						&-second {
 							display: flex;
 
@@ -317,9 +320,11 @@ body {
 									font-size: inherit;
 									font-weight: inherit;
 								}
+
 								input:focus {
 									background-color: rgb(150, 255, 130);
 								}
+
 								select {
 									height: 27px;
 
@@ -335,10 +340,12 @@ body {
 										font-weight: inherit;
 									}
 								}
+
 								select:focus {
 									background-color: rgb(150, 255, 130);
 								}
 							}
+
 							.row1-second-cell1 {
 								input {
 									width: 63px;
@@ -346,6 +353,7 @@ body {
 									text-align: center;
 								}
 							}
+
 							.row1-second-cell2,
 							.row1-second-cell5,
 							.row1-second-cell6,
@@ -361,12 +369,14 @@ body {
 
 									text-align: center;
 								}
+
 								select {
 									width: 152px;
 
 									text-align: center;
 								}
 							}
+
 							.row1-second-cell3,
 							.row1-second-cell7,
 							.row1-second-cell9,
@@ -379,10 +389,12 @@ body {
 
 									text-align: center;
 								}
+
 								select {
 									width: 92px;
 								}
 							}
+
 							.row3-second-cell1,
 							.row3-second-cell2 {
 								input {
@@ -390,6 +402,7 @@ body {
 
 									text-align: center;
 								}
+
 								width: 95px;
 
 								border: 1px solid #000;
@@ -411,6 +424,7 @@ body {
 									font-size: inherit;
 									font-weight: inherit;
 								}
+
 								.dropdown {
 									display: none;
 									position: absolute;
@@ -460,6 +474,7 @@ body {
 										}
 									}
 								}
+
 								.dropdown-show {
 									display: block;
 								}
@@ -472,6 +487,7 @@ body {
 							&-inner-first {
 								flex-direction: column;
 							}
+
 							&-inner-second {
 								display: flex;
 								flex-direction: row;
@@ -514,6 +530,7 @@ body {
 										text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
 									}
 								}
+
 								.btnAddExp,
 								.btnResetExp,
 								.btnCancelExp {
@@ -521,16 +538,19 @@ body {
 										border: 1px solid black;
 									}
 								}
+
 								.btnAddExp {
 									button {
 										color: #1c9248;
 									}
 								}
+
 								.btnResetExp {
 									button {
 										color: #00507a;
 									}
 								}
+
 								.btnCancelExp {
 									button {
 										color: #b30f0f;
@@ -553,6 +573,7 @@ body {
 
 				&-title {
 					display: flex;
+
 					&-row {
 						display: flex;
 
@@ -595,6 +616,7 @@ body {
 
 							text-align: center;
 						}
+
 						.cell4 {
 							flex-basis: 200px;
 							min-width: 200px;
@@ -639,6 +661,7 @@ body {
 
 							border: 1px solid black;
 						}
+
 						.cell1 {
 							flex-basis: 40px;
 							max-width: 40px;
@@ -669,73 +692,96 @@ body {
 							flex-basis: 150px;
 							max-width: 150px;
 						}
+
 						.cell12-linear-gradient0 {
 							background: linear-gradient(90deg, green 0, white 0);
 						}
+
 						.cell12-linear-gradient05 {
 							background: linear-gradient(90deg, green 0.05, white 0.05);
 						}
+
 						.cell12-linear-gradient10 {
 							background: linear-gradient(90deg, green 0.1, white 0.1);
 						}
+
 						.cell12-linear-gradient15 {
 							background: linear-gradient(90deg, green 0.15, white 0.15);
 						}
+
 						.cell12-linear-gradient20 {
 							background: linear-gradient(90deg, green 0.2, white 0.2);
 						}
+
 						.cell12-linear-gradient25 {
 							background: linear-gradient(90deg, green 0.25, white 0.25);
 						}
+
 						.cell12-linear-gradient30 {
 							background: linear-gradient(90deg, green 0.3, white 0.3);
 						}
+
 						.cell12-linear-gradient35 {
 							background: linear-gradient(90deg, green 0.35, white 0.35);
 						}
+
 						.cell12-linear-gradient40 {
 							background: linear-gradient(90deg, green 0.4, white 0.4);
 						}
+
 						.cell12-linear-gradient45 {
 							background: linear-gradient(90deg, green 0.45, white 0.45);
 						}
+
 						.cell12-linear-gradient50 {
 							background: linear-gradient(90deg, green 0.5, white 0.5);
 						}
+
 						.cell12-linear-gradient55 {
 							background: linear-gradient(90deg, green 0.55, white 0.55);
 						}
+
 						.cell12-linear-gradient60 {
 							background: linear-gradient(90deg, green 0.6, white 0.6);
 						}
+
 						.cell12-linear-gradient65 {
 							background: linear-gradient(90deg, green 0.65, white 0.65);
 						}
+
 						.cell12-linear-gradient70 {
 							background: linear-gradient(90deg, green 0.7, white 0.7);
 						}
+
 						.cell12-linear-gradient75 {
 							background: linear-gradient(90deg, green 0.75, white 0.75);
 						}
+
 						.cell12-linear-gradient80 {
 							background: linear-gradient(90deg, red 0.8, white 0.8);
 						}
+
 						.cell12-linear-gradient85 {
 							background: linear-gradient(90deg, red 0.85, white 0.85);
 						}
+
 						.cell12-linear-gradient90 {
 							background: linear-gradient(90deg, red 0.9, white 0.9);
 						}
+
 						.cell12-linear-gradient95 {
 							background: linear-gradient(90deg, red 0.95, white 0.95);
 						}
+
 						.cell12-linear-gradient100 {
 							background: linear-gradient(90deg, red 1, white 1);
 						}
-						.cell12-done{
+
+						.cell12-done {
 							background-color: green;
 						}
-						.cell12-expired{
+
+						.cell12-expired {
 							background-color: red;
 						}
 					}
@@ -755,7 +801,7 @@ body {
 
 				background-color: #00507a;
 
-				&-wrapper{
+				&-wrapper {
 					display: flex;
 					flex-direction: column;
 					justify-content: center;
@@ -763,17 +809,18 @@ body {
 					flex-basis: 240px;
 					// background-color: #fff;
 
-					&-title{
+					&-title {
 						display: flex;
 						justify-content: center;
 						align-items: center;
 						flex-basis: 40px;
-						
+
 						text-align: center;
-						
+
 						// background-color: #cccfff;
 					}
-					&-data{
+
+					&-data {
 						display: flex;
 						justify-content: space-around;
 						align-items: center;
@@ -784,52 +831,76 @@ body {
 
 						// background-color: #dddccc;
 
-						&-ob{
+						&-ob {
 							display: flex;
 							flex-direction: column;
 							justify-content: space-between;
-							
-							&-title{
+
+							&-title {
 								display: flex;
 								justify-content: center;
 								align-items: center;
-								text-align: center;								
+								text-align: center;
 							}
-							&-data{
+
+							&-data {
 								display: flex;
 								justify-content: center;
 								align-items: center;
 							}
 						}
-						&-pol{
+
+						&-pol {
 							display: flex;
 							flex-direction: column;
 							justify-content: space-between;
-							
-							&-title{
+
+							&-title {
 								display: flex;
 								justify-content: center;
 								align-items: center;
-								text-align: center;								
+								text-align: center;
 							}
-							&-data{
+
+							&-data {
 								display: flex;
 								justify-content: center;
 								align-items: center;
 							}
 						}
-						&-otr{
+
+						&-otr {
 							display: flex;
 							flex-direction: column;
 							justify-content: space-between;
-							
-							&-title{
+
+							&-title {
 								display: flex;
 								justify-content: center;
 								align-items: center;
-								text-align: center;								
+								text-align: center;
 							}
-							&-data{
+
+							&-data {
+								display: flex;
+								justify-content: center;
+								align-items: center;
+							}
+						}
+
+						&-notexec {
+							display: flex;
+							flex-direction: column;
+							justify-content: space-between;
+
+							&-title {
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								text-align: center;
+							}
+
+							&-data {
 								display: flex;
 								justify-content: center;
 								align-items: center;

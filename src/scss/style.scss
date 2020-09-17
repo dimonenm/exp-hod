@@ -351,6 +351,8 @@ body {
 									width: 63px;
 
 									text-align: center;
+
+									background-color: yellow;
 								}
 							}
 
@@ -504,7 +506,22 @@ body {
 									display: flex;
 									flex-basis: 45px;
 
+									position: relative;
+
 									height: 45px;
+
+									&-tooltip{
+										display: none;
+										position: absolute;
+										top: 45px;
+										left: 0;
+										background-color: #000;
+										opacity: 0.6;
+										color: #fff;
+										padding: 10px;
+										border-radius: 5px;
+										z-index: 1;
+									}
 								}
 
 								.btnAddExp,
@@ -641,7 +658,7 @@ body {
 					&-row-data {
 						display: flex;
 
-						height: 38px;
+						height: 43px; // высота строк в таблице
 
 						margin: 0 2px 0 2px;
 
@@ -906,6 +923,26 @@ body {
 								align-items: center;
 							}
 						}
+
+						&-notaken {
+							display: flex;
+							flex-direction: column;
+							justify-content: space-between;
+
+							&-title {
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								text-align: center;
+							}
+
+							&-data {
+								display: flex;
+								justify-content: center;
+								align-items: center;
+							}
+						}
+						
 					}
 				}
 			}

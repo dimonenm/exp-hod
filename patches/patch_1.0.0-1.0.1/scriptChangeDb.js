@@ -1,5 +1,6 @@
 const btn = document.querySelector('.patch');
 const first = document.querySelector('.first');
+const second = document.querySelector('.second');
 
 
 
@@ -23,7 +24,7 @@ btn.addEventListener('click', () => {
             item.organAppointedExpertise = 'МВД';
           }
         });
-        first.value = "33";
+        first.value = "66";
       }).then(() => {
         fetch('changeDB.php', {
           method: 'POST',
@@ -33,12 +34,20 @@ btn.addEventListener('click', () => {
           body: JSON.stringify(dbOfExpertises)
         }).then(res => res.text()).then(res => {
           first.value = "100";
-          console.log(res);
+          console.log('Change db - ' + res);
         });
       });
-
   };
 
+  const copyFiles = () => {
+    second.value = '20';
+    fetch('copyFiles.php').then(res => res.text()).then(res => {
+      second.value = "100";
+      console.log('Copy files - ' + res);
+    });
+  }
+
   getDb();
+  copyFiles()
 
 });

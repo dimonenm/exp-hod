@@ -676,10 +676,11 @@ function forBtnSearchOn() {
 		};
 		findList.exp = {
 			hod: `${sideSearchDropdownExp.children[0].children[1].checked}`,
-			hom: `${sideSearchDropdownExp.children[1].children[1].checked}`,
-			kir: `${sideSearchDropdownExp.children[2].children[1].checked}`,
-			sor: `${sideSearchDropdownExp.children[3].children[1].checked}`,
-			bar: `${sideSearchDropdownExp.children[4].children[1].checked}`
+			kach: `${sideSearchDropdownExp.children[1].children[1].checked}`,
+			hom: `${sideSearchDropdownExp.children[2].children[1].checked}`,
+			kir: `${sideSearchDropdownExp.children[3].children[1].checked}`,
+			sor: `${sideSearchDropdownExp.children[4].children[1].checked}`,
+			bar: `${sideSearchDropdownExp.children[5].children[1].checked}`
 		};
 		findList.status = `${sideSearchDropdownStatus.children[0].children[0].value}`;
 		findList.exec = {
@@ -869,43 +870,26 @@ function forBtnSearchOn() {
 				});
 			}
 		}
-		if (findList.exp.hod !== 'false' || findList.exp.hom !== 'false' || findList.exp.kir !== 'false' ||
+		if (findList.exp.hod !== 'false' || findList.exp.kach !== 'false' || findList.exp.hom !== 'false' || findList.exp.kir !== 'false' ||
 			findList.exp.sor !== 'false' || findList.exp.bar !== 'false') {
+
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
-					if (findList.exp.hod !== 'false' && 'Ходырев Н.' === item.getExpertName()) {
-						return true;
-					}
-					if (findList.exp.hom !== 'false' && 'Хоменко А.' === item.getExpertName()) {
-						return true;
-					}
-					if (findList.exp.kir !== 'false' && 'Кирсанова Н.' === item.getExpertName()) {
-						return true;
-					}
-					if (findList.exp.sor !== 'false' && 'Сорокина Е.' === item.getExpertName()) {
-						return true;
-					}
-					if (findList.exp.bar !== 'false' && 'Баркова М.' === item.getExpertName()) {
-						return true;
-					}
+					if (findList.exp.hod !== 'false' && 'Ходырев Н.' === item.getExpertName()) return true;
+					if (findList.exp.kach !== 'false' && 'Качечка Е.' === item.getExpertName()) return true;
+					if (findList.exp.hom !== 'false' && 'Хоменко А.' === item.getExpertName()) return true;
+					if (findList.exp.kir !== 'false' && 'Кирсанова Н.' === item.getExpertName()) return true;
+					if (findList.exp.sor !== 'false' && 'Сорокина Е.' === item.getExpertName()) return true;
+					if (findList.exp.bar !== 'false' && 'Баркова М.' === item.getExpertName()) return true;
 				});
 			} else {
 				dbOfFindExpertises = dbOfExpertises.filter(item => {
-					if (findList.exp.hod !== 'false' && 'Ходырев Н.' === item.getExpertName()) {
-						return true;
-					}
-					if (findList.exp.hom !== 'false' && 'Хоменко А.' === item.getExpertName()) {
-						return true;
-					}
-					if (findList.exp.kir !== 'false' && 'Кирсанова Н.' === item.getExpertName()) {
-						return true;
-					}
-					if (findList.exp.sor !== 'false' && 'Сорокина Е.' === item.getExpertName()) {
-						return true;
-					}
-					if (findList.exp.bar !== 'false' && 'Баркова М.' === item.getExpertName()) {
-						return true;
-					}
+					if (findList.exp.hod !== 'false' && 'Ходырев Н.' === item.getExpertName()) return true;
+					if (findList.exp.kach !== 'false' && 'Качечка Е.' === item.getExpertName()) return true;
+					if (findList.exp.hom !== 'false' && 'Хоменко А.' === item.getExpertName()) return true;
+					if (findList.exp.kir !== 'false' && 'Кирсанова Н.' === item.getExpertName()) return true;
+					if (findList.exp.sor !== 'false' && 'Сорокина Е.' === item.getExpertName()) return true;
+					if (findList.exp.bar !== 'false' && 'Баркова М.' === item.getExpertName()) return true;
 				});
 			}
 		}
@@ -1043,13 +1027,13 @@ function forBtnReturnToTable() {
 	const btnResetExp = document.querySelector('.btnResetExp');
 	btnAddExp.removeEventListener('click', forBtnUpdateExp);
 	btnResetExp.removeEventListener('click', forBtnDeleteLastExp);
-  btnAddExp.removeEventListener('mouseenter', tooltipBtnUpdateExpShow);
-  btnResetExp.removeEventListener('mouseenter', forBtnDeleteLastExp);
-    
-  btnAddExp.addEventListener('click', forBtnAddNewExp);
-  btnResetExp.addEventListener('click', forBtnResetNewExp);
-  btnAddExp.addEventListener('mouseenter', tooltipBtnAddExpShow);
-  btnResetExp.addEventListener('mouseenter', tooltipBtnResetExpShow);
+	btnAddExp.removeEventListener('mouseenter', tooltipBtnUpdateExpShow);
+	btnResetExp.removeEventListener('mouseenter', forBtnDeleteLastExp);
+
+	btnAddExp.addEventListener('click', forBtnAddNewExp);
+	btnResetExp.addEventListener('click', forBtnResetNewExp);
+	btnAddExp.addEventListener('mouseenter', tooltipBtnAddExpShow);
+	btnResetExp.addEventListener('mouseenter', tooltipBtnResetExpShow);
 
 	btnAddExp.childNodes[1].innerHTML = '<i class="fas fa-plus-circle"></i>';
 	btnResetExp.childNodes[1].innerHTML = '<i class="fas fa-redo"></i>';
@@ -1059,7 +1043,7 @@ function forBtnReturnToTable() {
 	//изменение обработчиков кнопки меню
 	btnCreateNewExpertise.removeEventListener('click', forBtnReturnToTable);
 	btnCreateNewExpertise.addEventListener('click', forBtnCreateNewExpertise);
-	
+
 }
 
 function resetForm(form) {
@@ -1210,9 +1194,9 @@ function forBtnUpdateExpertise(data) {
 
 	btnAddExp.removeEventListener('click', forBtnAddNewExp);
 	btnAddExp.removeEventListener('click', forBtnAddNewExp);
-  btnResetExp.removeEventListener('mouseenter', tooltipBtnAddExpShow);
-  btnResetExp.removeEventListener('mouseenter', tooltipBtnResetExpShow);
-  
+	btnResetExp.removeEventListener('mouseenter', tooltipBtnAddExpShow);
+	btnResetExp.removeEventListener('mouseenter', tooltipBtnResetExpShow);
+
 
 	btnAddExp.addEventListener('click', forBtnUpdateExp);
 	btnResetExp.addEventListener('click', forBtnDeleteLastExp);
@@ -1312,34 +1296,34 @@ function forBtnDeleteLastExp() {
 }
 
 function tooltipBtnAddExpShow() {
-  tooltipBtnAddExp.style.display = 'flex';
-  tooltipBtnAddExp.innerText = 'Создать';
+	tooltipBtnAddExp.style.display = 'flex';
+	tooltipBtnAddExp.innerText = 'Создать';
 }
 
 function tooltipBtnResetExpShow() {
-  tooltipBtnResetExp.style.display = 'flex';
-  tooltipBtnResetExp.innerText = 'Сбросить';
+	tooltipBtnResetExp.style.display = 'flex';
+	tooltipBtnResetExp.innerText = 'Сбросить';
 }
 
 function tooltipBtnCancelExpShow() {
-  tooltipBtnCancelExp.style.display = 'flex';
-  tooltipBtnCancelExp.innerText = 'Закрыть';
+	tooltipBtnCancelExp.style.display = 'flex';
+	tooltipBtnCancelExp.innerText = 'Закрыть';
 }
 
 function tooltipBtnUpdateExpShow() {
-  tooltipBtnAddExp.style.display = 'flex';
-  tooltipBtnAddExp.innerText = 'Обновить';
+	tooltipBtnAddExp.style.display = 'flex';
+	tooltipBtnAddExp.innerText = 'Обновить';
 }
 
 function tooltipBtnDeleteExpShow() {
-  tooltipBtnResetExp.style.display = 'flex';
-  tooltipBtnResetExp.innerText = 'Удалить';
+	tooltipBtnResetExp.style.display = 'flex';
+	tooltipBtnResetExp.innerText = 'Удалить';
 }
 
 function tooltipBtnExpHide() {
-  tooltipBtnAddExp.style.display = 'none';
-  tooltipBtnResetExp.style.display = 'none';
-  tooltipBtnCancelExp.style.display = 'none';
+	tooltipBtnAddExp.style.display = 'none';
+	tooltipBtnResetExp.style.display = 'none';
+	tooltipBtnCancelExp.style.display = 'none';
 }
 
 //объявление методов конец
@@ -1421,8 +1405,7 @@ sideSearchBtnPrint.addEventListener('click', () => {
 		w.document.write(head);
 		w.document.write(document.querySelector('.container-main-workspase-table').innerHTML);
 		w.document.close();
-		setTimeout(() => resolve(), 5);
-		// resolve();
+		setTimeout(() => resolve(), 500);
 	});
 	print.then(() => w.print());
 

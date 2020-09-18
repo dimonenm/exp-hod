@@ -243,6 +243,11 @@
                 </div>
 
                 <div class="container-main-side-search-container-panel-dropdown-row">
+                  <div class="container-main-side-search-container-panel-dropdown-row-label">Качечка Е.</div>
+                  <input type="checkbox" name="sideSearchExpChKach">
+                </div>
+
+                <div class="container-main-side-search-container-panel-dropdown-row">
                   <div class="container-main-side-search-container-panel-dropdown-row-label">Хоменко
                     А.</div>
                   <input type="checkbox" name="sideSearchExpChHom">
@@ -363,11 +368,8 @@
               </div>
             </div>
           </form>
-
-
         </div>
       </div>
-
       <div class="container-main-workspase">
         <div class="container-main-workspase-expertise">
           <form action="" method="POST" class="container-main-workspase-expertise-form" name="newExp">
@@ -529,6 +531,7 @@
                 <div class="row2-second-cell2">
                   <select name="expertName">
                     <option>Ходырев Н.</option>
+                    <option>Качечка Е.</option>
                     <option>Хоменко А.</option>
                     <option>Кирсанова Н.</option>
                     <option>Сорокина Е.</option>
@@ -546,7 +549,7 @@
                 </div>
                 <div class="row2-second-cell6">
                   <select name="result">
-                    <option>Не определен</option>
+                    <option>Не исполнено</option>
                     <option>Положительный</option>
                     <option>Отрицательный</option>
                     <option>НПВ</option>
@@ -589,15 +592,13 @@
                   </div>
                   <div class="container-main-workspase-expertise-form-row-wraper-inner-second-btn btnResetExp">
                     <button type="button"><i class="fas fa-redo"></i></button>
-                    <div
-                      class="container-main-workspase-expertise-form-row-wraper-inner-second-btn-tooltip
+                    <div class="container-main-workspase-expertise-form-row-wraper-inner-second-btn-tooltip
                       tooltipBtnResetExp">
                       Сбросить</div>
                   </div>
                   <div class="container-main-workspase-expertise-form-row-wraper-inner-second-btn btnCancelExp">
                     <button type="button"><i class="fas fa-times-circle"></i></button>
-                    <div
-                      class="container-main-workspase-expertise-form-row-wraper-inner-second-btn-tooltip
+                    <div class="container-main-workspase-expertise-form-row-wraper-inner-second-btn-tooltip
                       tooltipBtnCancelExp">
                       Закрыть</div>
                   </div>
@@ -656,21 +657,21 @@
           <div class="container-main-workspase-status-wrapper">
             <div class="container-main-workspase-status-wrapper-title">Кол-во незабранных эксп.</div>
             <!-- <div class="container-main-workspase-status-wrapper-data statusNotTakenExp">нет данных</div> -->
-                        <div class="container-main-workspase-status-wrapper-data">
+            <div class="container-main-workspase-status-wrapper-data">
 
-                          <div class="container-main-workspase-status-wrapper-data-notaken">
-                            <div class="container-main-workspase-status-wrapper-data-notaken-title">МВД</div>
-                            <div class="container-main-workspase-status-wrapper-data-notaken-data statusNotTakenMvd">?
-                            </div>
-                          </div>
+              <div class="container-main-workspase-status-wrapper-data-notaken">
+                <div class="container-main-workspase-status-wrapper-data-notaken-title">МВД</div>
+                <div class="container-main-workspase-status-wrapper-data-notaken-data statusNotTakenMvd">?
+                </div>
+              </div>
 
-                          <div class="container-main-workspase-status-wrapper-data-notaken">
-                            <div class="container-main-workspase-status-wrapper-data-notaken-title">ГСУ СК</div>
-                            <div class="container-main-workspase-status-wrapper-data-notaken-data statusNotTakenGsu">?
-                            </div>
-                          </div>
+              <div class="container-main-workspase-status-wrapper-data-notaken">
+                <div class="container-main-workspase-status-wrapper-data-notaken-title">ГСУ СК</div>
+                <div class="container-main-workspase-status-wrapper-data-notaken-data statusNotTakenGsu">?
+                </div>
+              </div>
 
-                        </div>
+            </div>
           </div>
           <div class="container-main-workspase-status-wrapper">
             <div class="container-main-workspase-status-wrapper-title">Кол-во полученных эксп.</div>
@@ -678,6 +679,17 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="modal">
+    <div class="modal-block">
+      <form class="modal-block-submit">
+        <label>
+          <span>Введите пароль:</span>
+          <input name="password" type="text" required>
+        </label>
+        <button class="modal-block-submit-btn">Ввод</button>
+      </form>
     </div>
   </div>
 </body>

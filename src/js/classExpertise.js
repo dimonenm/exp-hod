@@ -2,7 +2,7 @@
 class Expertise {
 	constructor(id, dateOfReceipt, organAppointedExpertise, unitOforgan, officialPerson, nameOfficialPerson, byTheMaterials,
 		number, article, byFact, typeOfResearch, expertName, prolongation, execution, notification, result, countObjectsTotal, countObjectsPositive,
-		countObjectsNegative, notTaken, received) {
+		countObjectsNegative, notTaken, received, expertId) {
 		this.id = id;
 		this.dateOfReceipt = dateOfReceipt;
 		this.organAppointedExpertise = organAppointedExpertise;
@@ -24,6 +24,7 @@ class Expertise {
 		this.countObjectsNegative = countObjectsNegative;
 		this.notTaken = notTaken;
 		this.received = received;
+		this.expertId = expertId;
 	}
 
 	getId() { return this.id; }
@@ -47,6 +48,7 @@ class Expertise {
 	getCountObjectsNegative() { return this.countObjectsNegative; }
 	getNotTaken() { return this.notTaken; }
 	getReceived() { return this.received; }
+	getExpertId() {	return this.expertId; }
 }
 //объявление классов конец
 //----------------------------------------------------------------------

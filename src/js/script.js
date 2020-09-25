@@ -65,7 +65,15 @@ const statusNotTakenMvd = document.querySelector('.statusNotTakenMvd');
 const statusNotTakenGsu = document.querySelector('.statusNotTakenGsu');
 const statusTakenExp = document.querySelector('.statusTakenExp');
 
-
+//поиск элементов модального окна
+const modalBlockSubmitPassword = document.querySelector('.modal-block-submit-password');
+const modalBlockSubmitBtn = document.querySelector('.modal-block-submit-btn');
+const modalBlockSubmitBtnCl = document.querySelector('.modal-block-submit-btnCl');
+const modal = document.querySelector('.modal');
+let passFromInput = '';
+const passwordHod = "qwe";
+const passwordHom = "asd";
+let expId = '0';
 
 let dbOfExpertises; // переменная для получения базы данных
 const findList = {};
@@ -91,7 +99,7 @@ const getDb = () => {
 				return new Expertise(el.id, el.dateOfReceipt, el.organAppointedExpertise, el.unitOforgan, el.officialPerson,
 					el.nameOfficialPerson, el.byTheMaterials, el.number, el.article, el.byFact, el.typeOfResearch,
 					el.expertName, el.prolongation, el.execution, el.notification, el.result, el.countObjectsTotal,
-					el.countObjectsPositive, el.countObjectsNegative, el.notTaken, el.received);
+					el.countObjectsPositive, el.countObjectsNegative, el.notTaken, el.received, el.expertId);
 			});
 			renderDb(dbOfExpertises); //отрисовывание базы данных
 		} else {
@@ -1070,7 +1078,7 @@ function forBtnAddNewExp() {
 
 	const exp = new Expertise(
 		id[1],
-		+currentDate,
+		String(+currentDate),
 		form.elements.organAppointedExpertise.value,
 		form.elements.unitOforgan.value,
 		form.elements.officialPerson.value,
@@ -1081,7 +1089,7 @@ function forBtnAddNewExp() {
 		form.elements.byFact.value,
 		form.elements.typeOfResearch.value,
 		form.elements.expertName.value,
-		+prolongationDate,
+		String(+prolongationDate),
 		form.elements.execution.value,
 		form.elements.notification.value,
 		form.elements.result.value,
@@ -1090,7 +1098,9 @@ function forBtnAddNewExp() {
 		form.elements.countObjectsNegative.value,
 		// String(form.elements.notTaken.checked),
 		String(true),
-		String(form.elements.received.checked));
+        String(form.elements.received.checked),
+        expId);
+    console.log(exp);
 
 	dbOfExpertises.push(exp);
 
@@ -1239,7 +1249,7 @@ function forBtnUpdateExp() {
 		String(form.elements.received.checked));
 
 	dbOfExpertises.forEach(item => {
-		if (item.id === exp.id) {
+		if (item.id === exp.id ) {
 			item.id = item.id;
 			item.dateOfReceipt = exp.dateOfReceipt;
 			item.organAppointedExpertise = exp.organAppointedExpertise;
@@ -1276,8 +1286,11 @@ function forBtnUpdateExp() {
 }
 
 function forBtnDeleteLastExp() {
-	function forDeleteLastExpInner(db) {
-		db.pop();
+    function forDeleteLastExpInner(db) {
+        if (db[db.length - 1].getExpertId() === expId || expId === '1') {
+            db.pop();
+        }
+		
 		const workspaseExpertise = document.querySelector('.container-main-workspase-expertise');
 		const workspaseTable = document.querySelector('.container-main-workspase-table');
 		const workspaseStatus = document.querySelector('.container-main-workspase-status');
@@ -1290,9 +1303,7 @@ function forBtnDeleteLastExp() {
 		btnResetExp.removeEventListener('click', forBtnDeleteLastExp);
 		btnResetExp.addEventListener('click', forBtnResetNewExp);
 	}
-	console.log(dbOfExpertises);
 	forDeleteLastExpInner(dbOfExpertises);
-	console.log(dbOfExpertises);
 }
 
 function tooltipBtnAddExpShow() {
@@ -1381,7 +1392,6 @@ sideSearchBtnStatus.addEventListener('click', () => sideSearchDropdownStatus.cla
 sideSearchBtnExec.addEventListener('click', () => sideSearchDropdownExec.classList.toggle('hide'));
 sideSearchBtnRes.addEventListener('click', () => sideSearchDropdownRes.classList.toggle('hide'));
 sideSearchBtnTaken.addEventListener('click', () => sideSearchDropdownTaken.classList.toggle('hide'));
-// sideSearchBtnPrint.addEventListener('click', () => window.print());
 sideSearchBtnPrint.addEventListener('click', () => {
 
 	let w = window.open();
@@ -1412,6 +1422,24 @@ sideSearchBtnPrint.addEventListener('click', () => {
 });
 
 window.addEventListener('keyup', forKeyUpEscape);
+
+//обработчик модального окна
+modalBlockSubmitBtn.addEventListener('click', (event) => {
+	event.preventDefault();
+	passFromInput = modalBlockSubmitPassword.value;
+	if (passFromInput === passwordHod) {
+        modal.classList.add('hideModal');
+        expId = '1';
+    }
+    if (passFromInput === passwordHom) {
+        modal.classList.add('hideModal');
+        expId = '2';
+    }    
+})
+modalBlockSubmitBtnCl.addEventListener('click', (event) => {
+    event.preventDefault();
+    modalBlockSubmitPassword.value = '';
+})
 
 //объявление обработчиков событий конец
 //----------------------------------------------------------------------

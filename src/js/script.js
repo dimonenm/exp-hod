@@ -1098,9 +1098,9 @@ function forBtnAddNewExp() {
 		form.elements.countObjectsNegative.value,
 		// String(form.elements.notTaken.checked),
 		String(true),
-        String(form.elements.received.checked),
-        expId);
-    console.log(exp);
+		String(form.elements.received.checked),
+		expId);
+	console.log(exp);
 
 	dbOfExpertises.push(exp);
 
@@ -1246,10 +1246,11 @@ function forBtnUpdateExp() {
 		form.elements.countObjectsPositive.value,
 		form.elements.countObjectsNegative.value,
 		String(form.elements.notTaken.checked),
-		String(form.elements.received.checked));
+		String(form.elements.received.checked),
+		expId);
 
 	dbOfExpertises.forEach(item => {
-		if (item.id === exp.id ) {
+		if (item.id === exp.id && (item.getExpertId() === expId || expId === '1')) {
 			item.id = item.id;
 			item.dateOfReceipt = exp.dateOfReceipt;
 			item.organAppointedExpertise = exp.organAppointedExpertise;
@@ -1277,6 +1278,7 @@ function forBtnUpdateExp() {
 			item.countObjectsNegative = exp.countObjectsNegative;
 			item.notTaken = exp.notTaken;
 			item.received = exp.received;
+			item.expertId = exp.expertId;
 		}
 	});
 
@@ -1286,11 +1288,11 @@ function forBtnUpdateExp() {
 }
 
 function forBtnDeleteLastExp() {
-    function forDeleteLastExpInner(db) {
-        if (db[db.length - 1].getExpertId() === expId || expId === '1') {
-            db.pop();
-        }
-		
+	function forDeleteLastExpInner(db) {
+		if (db[db.length - 1].getExpertId() === expId || expId === '1') {
+			db.pop();
+		}
+
 		const workspaseExpertise = document.querySelector('.container-main-workspase-expertise');
 		const workspaseTable = document.querySelector('.container-main-workspase-table');
 		const workspaseStatus = document.querySelector('.container-main-workspase-status');
@@ -1428,17 +1430,17 @@ modalBlockSubmitBtn.addEventListener('click', (event) => {
 	event.preventDefault();
 	passFromInput = modalBlockSubmitPassword.value;
 	if (passFromInput === passwordHod) {
-        modal.classList.add('hideModal');
-        expId = '1';
-    }
-    if (passFromInput === passwordHom) {
-        modal.classList.add('hideModal');
-        expId = '2';
-    }    
+		modal.classList.add('hideModal');
+		expId = '1';
+	}
+	if (passFromInput === passwordHom) {
+		modal.classList.add('hideModal');
+		expId = '2';
+	}
 })
 modalBlockSubmitBtnCl.addEventListener('click', (event) => {
-    event.preventDefault();
-    modalBlockSubmitPassword.value = '';
+	event.preventDefault();
+	modalBlockSubmitPassword.value = '';
 })
 
 //объявление обработчиков событий конец

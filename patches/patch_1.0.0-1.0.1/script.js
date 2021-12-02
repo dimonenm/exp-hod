@@ -859,7 +859,7 @@ function forBtnSearchOn() {
 			}
 		}
 		if (findList.exp.hod !== 'false' || findList.exp.kach !== 'false' || findList.exp.hom !== 'false' || findList.exp.kir !== 'false' ||
-			findList.exp.sor !== 'false' || findList.exp.bar !== 'false') {
+			findList.exp.sor !== 'false' || findList.exp.bar !== 'false' || findList.exp.sher !== 'false' || findList.exp.mesh !== 'false') {
 
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {

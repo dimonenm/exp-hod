@@ -688,9 +688,7 @@ function forBtnSearchOn() {
 			hom: `${sideSearchDropdownExp.children[2].children[1].checked}`,
 			kir: `${sideSearchDropdownExp.children[3].children[1].checked}`,
 			sor: `${sideSearchDropdownExp.children[4].children[1].checked}`,
-			bar: `${sideSearchDropdownExp.children[5].children[1].checked}`,
-			sher: `${sideSearchDropdownExp.children[6].children[1].checked}`,
-			mesh: `${sideSearchDropdownExp.children[7].children[1].checked}`
+			bar: `${sideSearchDropdownExp.children[5].children[1].checked}`
 		};
 		findList.status = `${sideSearchDropdownStatus.children[0].children[0].value}`;
 		findList.exec = {
@@ -881,7 +879,7 @@ function forBtnSearchOn() {
 			}
 		}
 		if (findList.exp.hod !== 'false' || findList.exp.kach !== 'false' || findList.exp.hom !== 'false' || findList.exp.kir !== 'false' ||
-			findList.exp.sor !== 'false' || findList.exp.bar !== 'false' || findList.exp.sher !== 'false' || findList.exp.mesh !== 'false') {
+			findList.exp.sor !== 'false' || findList.exp.bar !== 'false') {
 
 			if (dbOfFindExpertises.length) {
 				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
@@ -891,8 +889,6 @@ function forBtnSearchOn() {
 					if (findList.exp.kir !== 'false' && 'Кирсанова Н.' === item.getExpertName()) return true;
 					if (findList.exp.sor !== 'false' && 'Сорокина Е.' === item.getExpertName()) return true;
 					if (findList.exp.bar !== 'false' && 'Баркова М.' === item.getExpertName()) return true;
-					if (findList.exp.sher !== 'false' && 'Щербакова В.' === item.getExpertName()) return true;
-					if (findList.exp.mesh !== 'false' && 'Мещерякова А.' === item.getExpertName()) return true;
 				});
 			} else {
 				dbOfFindExpertises = dbOfExpertises.filter(item => {
@@ -902,8 +898,6 @@ function forBtnSearchOn() {
 					if (findList.exp.kir !== 'false' && 'Кирсанова Н.' === item.getExpertName()) return true;
 					if (findList.exp.sor !== 'false' && 'Сорокина Е.' === item.getExpertName()) return true;
 					if (findList.exp.bar !== 'false' && 'Баркова М.' === item.getExpertName()) return true;
-					if (findList.exp.sher !== 'false' && 'Щербакова В.' === item.getExpertName()) return true;
-					if (findList.exp.mesh !== 'false' && 'Мещерякова А.' === item.getExpertName()) return true;
 				});
 			}
 		}
@@ -1081,7 +1075,6 @@ function forBtnAddNewExp() {
 	let id = form.elements.id.value.split('/');
 	let currentDate = new Date(form.elements.dateOfReceipt.value);
 	let prolongationDate = new Date(form.elements.prolongation.value);
-	let executionDate = new Date(form.elements.prolongation.value);
 
 	const exp = new Expertise(
 		id[1],
@@ -1097,7 +1090,7 @@ function forBtnAddNewExp() {
 		form.elements.typeOfResearch.value,
 		form.elements.expertName.value,
 		String(+prolongationDate),
-		String(+executionDate),
+		form.elements.execution.value,
 		form.elements.notification.value,
 		form.elements.result.value,
 		form.elements.countObjectsTotal.value,

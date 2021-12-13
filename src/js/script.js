@@ -32,6 +32,8 @@ const sideSearchBtnMaterial = document.querySelector('.sideSearchBtnMaterial');
 const sideSearchDropdownMaterial = document.querySelector('.sideSearchDropdownMaterial');
 const sideSearchBtnNumber = document.querySelector('.sideSearchBtnNumber');
 const sideSearchDropdownNumber = document.querySelector('.sideSearchDropdownNumber');
+const sideSearchBtnNumberExp = document.querySelector('.sideSearchBtnNumberExp');
+const sideSearchDropdownNumberExp = document.querySelector('.sideSearchDropdownNumberExp');
 const sideSearchBtnArticle = document.querySelector('.sideSearchBtnArticle');
 const sideSearchDropdownArticle = document.querySelector('.sideSearchDropdownArticle');
 const sideSearchBtnFact = document.querySelector('.sideSearchBtnFact');
@@ -671,6 +673,10 @@ function forBtnSearchOn() {
 			dul: `${sideSearchDropdownMaterial.children[5].children[1].checked}`
 		};
 		findList.number = `${sideSearchDropdownNumber.children[0].children[0].value}`;
+		findList.numberExp = {
+			start: `${sideSearchDropdownNumberExp.children[0].children[1].value}`,
+			stop: `${sideSearchDropdownNumberExp.children[1].children[1].value}`
+		};
 		findList.article = `${sideSearchDropdownArticle.children[0].children[0].value}`;
 		findList.fact = {
 			ob: `${sideSearchDropdownFact.children[0].children[1].checked}`,
@@ -808,6 +814,23 @@ function forBtnSearchOn() {
 					if (item.getNumber().toLocaleLowerCase().includes(findList.number)) {
 						return true;
 					}
+				});
+			}
+		}
+		if (findList.numberExp.start || findList.numberExp.stop) {
+			if (dbOfFindExpertises.length) {
+				dbOfFindExpertises = dbOfFindExpertises.filter(item => {
+					if (findList.numberExp.start && !findList.numberExp.stop && item.getId() >= findList.numberExp.start) return true;
+					if (!findList.numberExp.start && findList.numberExp.stop && item.getId() <= findList.numberExp.stop) return true;
+					if (findList.numberExp.start && findList.numberExp.stop
+						&& item.getId() >= findList.numberExp.start && item.getId() <= findList.numberExp.stop) return true;
+				});
+			} else {
+				dbOfFindExpertises = dbOfExpertises.filter(item => {
+					if (findList.numberExp.start && !findList.numberExp.stop && item.getId() >= findList.numberExp.start) return true;
+					if (!findList.numberExp.start && findList.numberExp.stop && item.getId() <= findList.numberExp.stop) return true;
+					if (findList.numberExp.start && findList.numberExp.stop
+						&& item.getId() >= findList.numberExp.start && item.getId() <= findList.numberExp.stop) return true;
 				});
 			}
 		}
@@ -1393,6 +1416,7 @@ sideSearchBtnOrgan.addEventListener('click', () => sideSearchDropdownOrgan.class
 sideSearchBtnUnit.addEventListener('click', () => sideSearchDropdownUnit.classList.toggle('hide'));
 sideSearchBtnMaterial.addEventListener('click', () => sideSearchDropdownMaterial.classList.toggle('hide'));
 sideSearchBtnNumber.addEventListener('click', () => sideSearchDropdownNumber.classList.toggle('hide'));
+sideSearchBtnNumberExp.addEventListener('click', () => sideSearchDropdownNumberExp.classList.toggle('hide'));
 sideSearchBtnArticle.addEventListener('click', () => sideSearchDropdownArticle.classList.toggle('hide'));
 sideSearchBtnFact.addEventListener('click', () => sideSearchDropdownFact.classList.toggle('hide'));
 sideSearchBtnType.addEventListener('click', () => sideSearchDropdownType.classList.toggle('hide'));

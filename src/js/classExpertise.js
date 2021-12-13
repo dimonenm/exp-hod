@@ -27,7 +27,7 @@ class Expertise {
 		this.expertId = expertId;
 	}
 
-	getId() { return this.id; }
+	getId() { return +this.id; }
 	getDateOfReceipt() { return this.dateOfReceipt; }
 	getOrganAppointedExpertise() { return this.organAppointedExpertise; }
 	getUnitOforgan() { return this.unitOforgan; }

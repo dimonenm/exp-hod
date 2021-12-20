@@ -1379,7 +1379,7 @@ btnSearch.addEventListener('click', forBtnSearchOn);
 function selectRow(allRows) {
 	allRows.forEach(element => {
 		element.addEventListener('click', (event) => {
-			const id = event.currentTarget.getAttribute('id');
+			const id = +event.currentTarget.getAttribute('id');
 			dbOfExpertises.forEach(element => {
 				if (element.getId() === id) {
 					forBtnUpdateExpertise(element);
